@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# workplace-communication-app-capstone-react
 
-## Available Scripts
+WorkPlace is where employers can communicate with employees in
+order to keep everyone in the loop and up to date with the day to day events of their workplace.
 
-In the project directory, you can run:
+## Website
 
-### `npm start`
+The website is a Heroku/Zeit application and may take a minute to start up when logging in.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+url: coming very soon
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Demo User: coming soon
 
-### `npm test`
+## Site Map
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[place holder for sitemap]
 
-### `npm run build`
+## User Stories
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Landing Page**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As a new user, I would like to learn more about what the site is about.
 
-### `npm run eject`
+**Register**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As a user, I want to register and create a workplace as an employer.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Employer Registration](src\img\wireframes\employer-registration-page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+As a user, I want to register and join a workplace as an employee
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Employee Registration](src\img\wireframes\employee-registration-page.png)
 
-## Learn More
+**Sign In**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+As a user, I want to sign in to my workplace
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Sign In Page](src\img\wireframes\sign-in.png)
 
-### Code Splitting
+**User Feed**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+As a user, I want to see what has been posted on my workplace
 
-### Analyzing the Bundle Size
+![WorkPlace Feed](src\img\wireframes\workplace-feed.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+**Ideas Page**
 
-### Making a Progressive Web App
+As a user, I want to post an idea so my employer can see it
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![Ideas Page](src\img\wireframes\ideas-page.png)
 
-### Advanced Configuration
+## Technical
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+---
 
-### Deployment
+WorkPlace was built with:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### Front End
 
-### `npm run build` fails to minify
+- ReactJS
+- JavaScript
+- CSS3
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Back End
+
+- Node.js
+- Express.js
+- PostgreSQL
+- Mocha and Chai
