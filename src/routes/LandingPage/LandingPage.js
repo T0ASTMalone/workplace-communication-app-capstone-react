@@ -7,6 +7,7 @@ export default class LandingPage extends Component {
     return (
       <div className="landing-page">
         <h1>WorkPlace</h1>
+
         <div id="existing-user" className="landing-info">
           <h3>Already part of a WorkPlace</h3>
           <Link to={"/sign-in"}>Sign In</Link>

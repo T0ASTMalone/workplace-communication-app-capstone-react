@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
+import LandingPage from "../../routes/LandingPage/LandingPage";
+import SignInPage from "../../routes/SignInPage/SignInPage";
 
 function App() {
   return (
@@ -11,7 +13,11 @@ function App() {
       </header>
 
       <main>
-        <Switch></Switch>
+        <Switch>
+          <Route exact path={"/"} component={LandingPage} />
+          {/*<Route path={"/workplace"} component={WorkPlace} />*/}
+          <Route path={"/sign-in"} component={SignInPage} />
+        </Switch>
       </main>
     </div>
   );

@@ -1,0 +1,31 @@
+.sign-in-page {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in-container {
+  min-height: 50vh;
+  display: flex;
+  max-width: 1420px;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 1200px) {
+  .sign-in-page {
+    flex-direction: row;
+    padding-right: 0;
+  }
+
+  .sign-in {
+    padding: 20px;
+  }
+
+  .sign-in-container {
+    min-width: 300px;
+  }
+}
