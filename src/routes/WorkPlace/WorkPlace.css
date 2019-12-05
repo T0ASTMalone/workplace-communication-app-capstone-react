@@ -1,0 +1,8 @@
+.workplace {
+  padding: 15px;
+}
+
+.workplace-info {
+  display: flex;
+  justify-content: space-between;
+}

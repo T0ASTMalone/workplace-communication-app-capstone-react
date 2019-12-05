@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./SignInForm.css";
 import SignInError from "./SignInError";
+import { Link } from "react-router-dom";
 //import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
@@ -119,7 +120,8 @@ export default class SignInForm extends Component {
             className="login-error"
           />
           <button id="sign-in-button" className="button">
-            Sign In
+            {/*Temp link to workplace */}
+            <Link to={"/workplace"}>Sign In</Link>
           </button>
         </form>
       </>

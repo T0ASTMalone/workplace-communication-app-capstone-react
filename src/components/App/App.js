@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
 import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
+import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path={"/"} component={LandingPage} />
-          {/*<Route path={"/workplace"} component={WorkPlace} />*/}
+          <Route path={"/workplace"} component={WorkPlace} />
           <Route path={"/sign-in"} component={SignInPage} />
         </Switch>
       </main>

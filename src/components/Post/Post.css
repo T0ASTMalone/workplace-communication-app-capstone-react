@@ -1,0 +1,16 @@
+.post {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.post-title {
+  border-bottom: 1px solid black;
+  padding: 10px 0 10px 0;
+}
+
+.acknowledge {
+  background-color: white;
+  border: 1px solid black;
+  width: 100px;
+  height: 40px;
+}
