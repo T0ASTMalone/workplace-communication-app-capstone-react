@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./WorkPlace.css";
 import Post from "../../components/Post/Post";
+import PostForm from "../../components/PostForm/PostForm";
 
 class WorkPlace extends Component {
   state = {
@@ -16,11 +17,17 @@ class WorkPlace extends Component {
     return (
       <div className="workplace">
         <div className="workplace-info">
-          <h2 className="user-name">Your Name</h2>
-          <h2 className="workplace-name">Company Name</h2>
+          <h2 className="user-name">Miguel Ponce</h2>
+          <h2 className="workplace-name">Tesla</h2>
         </div>
+
         <div className="feed">
+          <div className="post">
+            <PostForm />
+          </div>
           {/*Iterate over posts in state */}
+          <Post />
+          <Post />
           <Post />
         </div>
       </div>

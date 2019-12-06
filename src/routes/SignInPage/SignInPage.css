@@ -6,6 +6,7 @@
 }
 
 .sign-in-container {
+  border: 1px solid black;
   min-height: 50vh;
   display: flex;
   max-width: 1420px;

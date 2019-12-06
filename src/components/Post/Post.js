@@ -5,6 +5,14 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
+        <div className="post-creator">
+          <img
+            src="https://picsum.photos/50/50"
+            alt="test user"
+            className="user-img"
+          />
+          <p className="user-name">User Name</p>
+        </div>
         <h3 className="post-title">Test Post</h3>
         <p className="post-content">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia

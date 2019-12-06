@@ -1,0 +1,9 @@
+.post-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.post-form-item {
+  margin-bottom: 15px;
+}
