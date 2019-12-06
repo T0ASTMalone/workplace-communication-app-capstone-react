@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
+import Registration from "../../routes/Registration/Registration";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route exact path={"/"} component={LandingPage} />
           <Route path={"/workplace"} component={WorkPlace} />
           <Route path={"/sign-in"} component={SignInPage} />
+          <Route path={"/create"} component={Registration} />
+          <Route path={"/join"} component={Registration} />
         </Switch>
       </main>
     </div>

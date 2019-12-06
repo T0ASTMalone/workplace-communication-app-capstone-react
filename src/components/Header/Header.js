@@ -6,7 +6,6 @@ export default class Header extends Component {
   renderLogoutLink(signOut) {
     let loggedIn = false;
     let location = this.props.location.pathname || null;
-    console.log(location);
     return (
       <div className="header-logged-in">
         {location === "/" && loggedIn ? (

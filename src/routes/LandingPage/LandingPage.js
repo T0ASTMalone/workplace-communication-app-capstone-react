@@ -22,15 +22,14 @@ export default class LandingPage extends Component {
             As an employer once registered a WorkPlace code will be generated
             for the company
           </p>
-          {
-            //link to employer registration page
-          }
+
+          {/* link to employer registration page */}
+          <Link to={"/create"}>Register</Link>
           <p className="landing-text">
             As an employee you can join a WorkPlace created by your employer
           </p>
-          {
-            //link to employee registration page
-          }
+          {/* link to employee registration page */}
+          <Link to={"/join"}>Join a workplace</Link>
         </div>
         {
           // div describing creating events for your WorkPlace

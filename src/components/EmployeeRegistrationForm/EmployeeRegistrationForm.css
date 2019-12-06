@@ -1,0 +1,15 @@
+.employee-registration-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.registration-button {
+  width: 100%;
+}
+
+.new-employer,
+.new-employee,
+.registration-button {
+  margin-bottom: 15px;
+}
