@@ -6,8 +6,9 @@ export default function PostForm() {
     <div className="post-form-container">
       <form action="" className="post-form">
         {/* post title */}
+        <legend htmlFor="post-form">Make a new post</legend>
         <label htmlFor="title" className="post-form-item">
-          title
+          Title
         </label>
         <input
           type="text"
@@ -19,7 +20,7 @@ export default function PostForm() {
         <label htmlFor="post-content" className="post-form-item">
           Post
         </label>
-        <input type="text" id="post-content" className="post-form-item" />
+        <textarea type="text" id="post-content" className="post-form-item" />
         <button className="creat-post">Post</button>
       </form>
     </div>

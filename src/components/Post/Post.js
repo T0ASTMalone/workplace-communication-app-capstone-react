@@ -11,7 +11,7 @@ class Post extends Component {
             alt="test user"
             className="user-img"
           />
-          <p className="user-name">User Name</p>
+          <p className="user-name">Miguel Ponce</p>
         </div>
         <h3 className="post-title">Test Post</h3>
         <p className="post-content">

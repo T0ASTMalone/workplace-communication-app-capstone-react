@@ -9,3 +9,26 @@
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.workplace-name {
+  text-align: right;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  border: 1px solid black;
+  border-bottom: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.feed {
+  border: 1px solid black;
+  padding: 10px;
+}

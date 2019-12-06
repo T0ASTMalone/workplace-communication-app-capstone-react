@@ -119,6 +119,12 @@ export default class SignInForm extends Component {
             touched={this.state.password.touched}
             className="login-error"
           />
+          <div className="type-of-user">
+            <label htmlFor="employer-select">Employer</label>
+            <input id="employer-select" type="radio" />
+            <label htmlFor="employee-select">Employee</label>
+            <input type="radio" />
+          </div>
           <button id="sign-in-button" className="button">
             {/*Temp link to workplace */}
             <Link to={"/workplace"}>Sign In</Link>
