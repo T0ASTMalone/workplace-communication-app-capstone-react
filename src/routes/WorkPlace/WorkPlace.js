@@ -3,7 +3,16 @@ import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
 
 class WorkPlace extends Component {
+  state = {
+    main: "feed"
+  };
+
+  updateWpMain = e => {
+    this.setState({ main: e });
+  };
+
   render() {
+    const main = this.state.main;
     return (
       <div className="workplace">
         <div className="workplace-info">
@@ -12,11 +21,23 @@ class WorkPlace extends Component {
         </div>
 
         <div className="tabs">
-          <div className="tab">Feed</div>
-          <div className="tab">Ideas</div>
+          <button
+            className="tab"
+            value="feed"
+            onClick={e => this.updateWpMain(e.target.value)}
+          >
+            Feed
+          </button>
+          <button
+            className="tab"
+            value="ideas"
+            onClick={e => this.updateWpMain(e.target.value)}
+          >
+            Ideas
+          </button>
         </div>
         <div className="workplace-main">
-          <Feed />
+          {main === "feed" ? <Feed /> : <></>}
         </div>
       </div>
     );
