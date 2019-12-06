@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
+import IdeasFrom from "../../components/Ideas/IdeasForm";
 
 class WorkPlace extends Component {
   state = {
@@ -37,7 +38,7 @@ class WorkPlace extends Component {
           </button>
         </div>
         <div className="workplace-main">
-          {main === "feed" ? <Feed /> : <></>}
+          {main === "feed" ? <Feed /> : <IdeasFrom />}
         </div>
       </div>
     );

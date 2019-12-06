@@ -1,9 +1,11 @@
-.post-form {
+.post-form,
+.idea-form {
   display: flex;
   flex-direction: column;
   padding: 15px;
 }
 
-.post-form-item {
+.post-form-item,
+.idea-item {
   margin-bottom: 15px;
 }

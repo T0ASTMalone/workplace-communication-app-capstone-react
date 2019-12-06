@@ -25,3 +25,5 @@ const dummyPosts = [
     userImg: "https://picsum.photos/50/50"
   }
 ];
+
+export default dummyPosts;

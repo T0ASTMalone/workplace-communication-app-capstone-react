@@ -1,0 +1,8 @@
+.idea-form,
+.ideas-form-container {
+  border: 1px solid black;
+}
+
+.ideas-form-container {
+  padding: 10px;
+}

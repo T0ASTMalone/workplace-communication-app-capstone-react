@@ -3,22 +3,15 @@ import "./Post.css";
 
 class Post extends Component {
   render() {
+    const post = this.props.post;
     return (
       <div className="post">
         <div className="post-creator">
-          <img
-            src="https://picsum.photos/50/50"
-            alt="test user"
-            className="user-img"
-          />
-          <p className="user-name">Miguel Ponce</p>
+          <img src={post.userImg} alt="test user" className="user-img" />
+          <p className="user-name">{post.user}</p>
         </div>
-        <h3 className="post-title">Test Post</h3>
-        <p className="post-content">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
-          eligendi magni natus rem recusandae fuga eos dolorem quam modi? Ex
-          quidem a ratione ipsa labore voluptas aut rem odit. Nisi!
-        </p>
+        <h3 className="post-title">{post.title}</h3>
+        <p className="post-content">{post.content}</p>
         <div className="post-button-container">
           <button className="acknowledge">Seen</button>
         </div>

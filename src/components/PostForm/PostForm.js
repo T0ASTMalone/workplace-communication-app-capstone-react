@@ -6,7 +6,9 @@ export default function PostForm() {
     <div className="post-form-container">
       <form action="" className="post-form">
         {/* post title */}
-        <legend htmlFor="post-form">Make a new post</legend>
+        <legend htmlFor="post-form">
+          <h3>Make a new post</h3>
+        </legend>
         <label htmlFor="title" className="post-form-item">
           Title
         </label>
