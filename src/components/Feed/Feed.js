@@ -12,12 +12,12 @@ export default class Feed extends Component {
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
+    //fetch most recent posts from database where workplace
     await this.context.setPosts(dummyPosts);
-    this.setState({ posts: this.context.posts });
   }
 
   render() {
-    let posts = this.state.posts;
+    let posts = this.context.posts;
     return (
       <div className="feed">
         <div className="post">
