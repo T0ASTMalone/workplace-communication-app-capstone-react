@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./PostForm.css";
 import posts from "../../dummy-posts";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 
 export default class PostForm extends Component {
   state = {
@@ -13,6 +14,8 @@ export default class PostForm extends Component {
       touched: false
     }
   };
+
+  static contextType = WorkPlaceContext;
 
   handleAddPost = () => {};
 

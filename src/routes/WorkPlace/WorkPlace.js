@@ -4,6 +4,7 @@ import Feed from "../../components/Feed/Feed";
 import IdeasFrom from "../../components/Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import users from "../../test-users";
+import dummyPosts from "../../dummy-posts";
 
 class WorkPlace extends Component {
   state = {
