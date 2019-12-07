@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./SignInForm.css";
 import SignInError from "./SignInError";
-import { Link } from "react-router-dom";
+import users from "../../test-users";
 //import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
@@ -22,6 +22,13 @@ export default class SignInForm extends Component {
   }
 
   static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  };
+
+  static defaultProps = {
     onLoginSuccess: () => {}
   };
 
@@ -36,6 +43,16 @@ export default class SignInForm extends Component {
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     console.log(this.state);
+    let userName = this.state.userName.value;
+    let validUser = null;
+    users.forEach(user => {
+      if (user.user_alias === userName) {
+        validUser = user;
+      }
+    });
+    if (validUser !== null) {
+      this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
+    }
     /*this.setState({ error: null });
     const { email, password } = this.state;
     AuthApiService.postLogin({
@@ -83,6 +100,7 @@ export default class SignInForm extends Component {
 
   render() {
     const { error } = this.state;
+    console.log(this.props.history);
     return (
       <>
         <form
@@ -125,9 +143,10 @@ export default class SignInForm extends Component {
             <label htmlFor="employee-select">Employee</label>
             <input type="radio" />
           </div>
-          <button id="sign-in-button" className="button">
+          <button id="sign-in-button" className="button" type="submit">
+            Sign In
             {/*Temp link to workplace */}
-            <Link to={"/workplace"}>Sign In</Link>
+            {/* <Link to={"/workplace"}>Sign In</Link> */}
           </button>
         </form>
       </>

@@ -17,7 +17,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path={"/"} component={LandingPage} />
-          <Route path={"/workplace"} component={WorkPlace} />
+          <Route path={"/workplace/:wp/:user"} component={WorkPlace} />
           <Route path={"/sign-in"} component={SignInPage} />
           <Route path={"/create"} component={Registration} />
           <Route path={"/join"} component={Registration} />

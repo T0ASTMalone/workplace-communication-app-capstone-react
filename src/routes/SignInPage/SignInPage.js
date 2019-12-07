@@ -10,9 +10,11 @@ export default class SignInPage extends Component {
     }
   };
 
-  handleLoginSuccess = id => {
+  handleLoginSuccess = (wp, userName) => {
     const { location, history } = this.props;
-    const destination = (location.state || {}).from || `/user/${id}`;
+    const destination =
+      (location.state || {}).from || `/workplace/${wp}/${userName}`;
+    console.log(destination);
     history.push(destination);
   };
 
