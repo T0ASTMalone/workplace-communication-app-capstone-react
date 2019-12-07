@@ -8,7 +8,7 @@ const WorkPlaceContext = React.createContext({
   addPost: () => {},
   setUserType: () => {},
   setUserName: () => {},
-  setWo: () => {},
+  setWp: () => {},
   setPosts: () => {}
 });
 

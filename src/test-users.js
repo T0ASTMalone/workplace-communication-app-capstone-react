@@ -5,7 +5,8 @@ const users = [
     user_name: "test user alias",
     workplace: "Tesla",
     user_type: "admin",
-    user_status: "active"
+    user_status: "active",
+    user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "2",
@@ -13,7 +14,8 @@ const users = [
     user_name: "test user alias 2",
     workplace: "Tesla",
     user_type: "user",
-    user_status: "active"
+    user_status: "active",
+    user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "3",
@@ -21,7 +23,8 @@ const users = [
     user_name: "test user alias 3",
     workplace: "RMO",
     user_type: "user",
-    user_status: "active"
+    user_status: "active",
+    user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "4",
@@ -29,7 +32,8 @@ const users = [
     user_name: "test user alias 4",
     workplace: "Hunter Douglas",
     user_type: "user",
-    user_status: "pending"
+    user_status: "pending",
+    user_img: "https://picsum.photos/50/50"
   }
 ];
 

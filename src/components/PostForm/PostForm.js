@@ -55,7 +55,6 @@ export default class PostForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { title, content } = this.state;
     return (
       <div className="post-form-container">

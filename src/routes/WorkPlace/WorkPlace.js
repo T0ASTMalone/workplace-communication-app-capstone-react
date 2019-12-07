@@ -5,6 +5,7 @@ import IdeasFrom from "../../components/Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import users from "../../test-users";
 import dummyPosts from "../../dummy-posts";
+import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 
 class WorkPlace extends Component {
   state = {
@@ -35,7 +36,11 @@ class WorkPlace extends Component {
     return (
       <div className="workplace">
         <div className="workplace-info">
-          <h2 className="user-name">{userName}</h2>
+          <h2 className="user-name">
+            {userName}
+            {"\n"}
+            {userType}
+          </h2>
           <h2 className="workplace-name">{workPlace}</h2>
         </div>
 
@@ -56,7 +61,7 @@ class WorkPlace extends Component {
           </button>
         </div>
         <div className="workplace-main">
-          {main === "feed" ? <Feed /> : <IdeasFrom />}
+          {main === "feed" ? <Feed /> : <IdeasFeed />}
         </div>
       </div>
     );
