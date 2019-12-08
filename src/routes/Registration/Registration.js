@@ -6,7 +6,6 @@ import EmployerRegistrationForm from "../../components/EmployerRegistrationForm/
 export default class Registration extends Component {
   render() {
     let location = this.props.location.pathname;
-    console.log(location);
     return (
       <div className="registration">
         {location === "/join" ? (

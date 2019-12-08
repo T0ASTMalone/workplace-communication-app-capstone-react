@@ -14,7 +14,6 @@ export default class SignInPage extends Component {
     const { location, history } = this.props;
     const destination =
       (location.state || {}).from || `/workplace/${wp}/${userName}`;
-    console.log(destination);
     history.push(destination);
   };
 

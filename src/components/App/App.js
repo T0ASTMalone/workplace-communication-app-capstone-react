@@ -17,6 +17,7 @@ export default class App extends React.Component {
   state = {
     timestamp: "no timestamp yet"
   };
+
   render() {
     return (
       <div className="App">

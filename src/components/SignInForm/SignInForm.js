@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./SignInForm.css";
 import SignInError from "./SignInError";
 import users from "../../test-users";
+import { Link } from "react-router-dom";
 //import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
@@ -42,7 +43,7 @@ export default class SignInForm extends Component {
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    if (this.validatePassword() || this.validateUserName()) {
+    if (this.validatePassword() /*|| this.validateUserName()*/) {
       this.setAllToTouched();
     } else {
       let userName = this.state.userName.value;
@@ -75,9 +76,10 @@ export default class SignInForm extends Component {
   };
 
   setAllToTouched = () => {
+    const { userName, password } = this.state;
     this.setState({
-      userName: { value: "", touched: true },
-      password: { value: "", touched: true }
+      userName: { value: userName.value, touched: true },
+      password: { value: password.value, touched: true }
     });
   };
 
@@ -121,6 +123,7 @@ export default class SignInForm extends Component {
             type="text"
             className="sign-in-input login"
             placeholder="User Name"
+            value={userName.value}
             onChange={e => this.handleUpdateUserName(e.target.value)}
             //required
           />
@@ -133,6 +136,7 @@ export default class SignInForm extends Component {
             type="password"
             className="sign-in-input login"
             placeholder="password"
+            value={password.value}
             onChange={e => this.handleUpdatePassword(e.target.value)}
             //required
             id="password"
@@ -153,6 +157,10 @@ export default class SignInForm extends Component {
             {/*Temp link to workplace */}
             {/* <Link to={"/workplace"}>Sign In</Link> */}
           </button>
+          <p className="new-user">Are you new to WorkPlace?</p>
+          <Link to={"/join"}>
+            <button className="register-button">Register</button>
+          </Link>
         </form>
       </>
     );
