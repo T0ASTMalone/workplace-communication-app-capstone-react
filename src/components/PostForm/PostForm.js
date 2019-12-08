@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./PostForm.css";
-import dummyPosts from "../../dummy-posts";
+import PostFormError from "./PostFormError";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 
 export default class PostForm extends Component {
@@ -19,29 +19,49 @@ export default class PostForm extends Component {
 
   handleAddPost = e => {
     e.preventDefault();
-    let user = this.context.userName;
+    if (this.validateTitle() || this.validateContent()) {
+      this.setAllToTouched();
+    } else {
+      let user = this.context.userName;
+      let title = this.state.title.value;
+      let content = this.state.content.value;
+      let date = new Date();
+      let userImg = "https://picsum.photos/50/50";
+
+      const post = {
+        user,
+        title,
+        content,
+        date,
+        userImg
+      };
+
+      let updatedPosts = [post, ...this.context.posts];
+      this.context.setPosts(updatedPosts);
+      this.setState({
+        title: {
+          value: "",
+          touched: false
+        },
+        content: {
+          value: "",
+          touched: false
+        }
+      });
+    }
+  };
+
+  setAllToTouched = () => {
     let title = this.state.title.value;
     let content = this.state.content.value;
-    let date = new Date();
-    let userImg = "https://picsum.photos/50/50";
-    const post = {
-      user,
-      title,
-      content,
-      date,
-      userImg
-    };
-
-    let updatedPosts = [...this.context.posts, post];
-    this.context.setPosts(updatedPosts);
     this.setState({
       title: {
-        value: "",
-        touched: false
+        value: title,
+        touched: true
       },
       content: {
-        value: "",
-        touched: false
+        value: content,
+        touched: true
       }
     });
   };
@@ -52,6 +72,21 @@ export default class PostForm extends Component {
 
   updateContent = value => {
     this.setState({ content: { value, touched: true } });
+  };
+
+  validateTitle = () => {
+    let title = this.state.title.value;
+    console.log(title);
+    if (title.length < 1 || title.length > 50) {
+      return "A title is required to be between 1 and 50 characters";
+    }
+  };
+
+  validateContent = () => {
+    let content = this.state.content.value;
+    if (content.length < 1) {
+      return "A post is required";
+    }
   };
 
   render() {
@@ -73,6 +108,10 @@ export default class PostForm extends Component {
             value={title.value}
             onChange={e => this.updateTitle(e.target.value)}
           />
+          <PostFormError
+            hasError={this.validateTitle()}
+            touched={title.touched}
+          />
           <label htmlFor="post-content" className="post-form-item">
             Post
           </label>
@@ -80,8 +119,13 @@ export default class PostForm extends Component {
             type="text"
             id="post-content"
             className="post-form-item"
+            placeholder="Post"
             value={content.value}
             onChange={e => this.updateContent(e.target.value)}
+          />
+          <PostFormError
+            hasError={this.validateContent()}
+            touched={content.touched}
           />
           <button className="creat-post">Post</button>
         </form>

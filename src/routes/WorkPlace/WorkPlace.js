@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
-import IdeasFrom from "../../components/Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import users from "../../test-users";
-import dummyPosts from "../../dummy-posts";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 
 class WorkPlace extends Component {
@@ -32,7 +30,7 @@ class WorkPlace extends Component {
 
   render() {
     const main = this.state.main;
-    const { userName, userType, workPlace, posts } = this.context;
+    const { userName, userType, workPlace } = this.context;
     return (
       <div className="workplace">
         <div className="workplace-info">

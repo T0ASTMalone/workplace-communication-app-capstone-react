@@ -6,25 +6,37 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
+import { subscribeToTimer } from "../../api";
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <Route path={"/"} component={Header} />
-      </header>
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
+  }
 
-      <main>
-        <Switch>
-          <Route exact path={"/"} component={LandingPage} />
-          <Route path={"/workplace/:wp/:user"} component={WorkPlace} />
-          <Route path={"/sign-in"} component={SignInPage} />
-          <Route path={"/create"} component={Registration} />
-          <Route path={"/join"} component={Registration} />
-        </Switch>
-      </main>
-    </div>
-  );
+  state = {
+    timestamp: "no timestamp yet"
+  };
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <Route path={"/"} component={Header} />
+        </header>
+
+        <main>
+          <p className="timestamp">
+            This is the timer value: {this.state.timestamp}
+          </p>
+          <Switch>
+            <Route exact path={"/"} component={LandingPage} />
+            <Route path={"/workplace/:wp/:user"} component={WorkPlace} />
+            <Route path={"/sign-in"} component={SignInPage} />
+            <Route path={"/create"} component={Registration} />
+            <Route path={"/join"} component={Registration} />
+          </Switch>
+        </main>
+      </div>
+    );
+  }
 }
-
-export default App;
