@@ -27,7 +27,6 @@ export default class PostForm extends Component {
       let content = this.state.content.value;
       let date = new Date();
       let userImg = "https://picsum.photos/50/50";
-
       const post = {
         user,
         title,

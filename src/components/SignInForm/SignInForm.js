@@ -42,65 +42,70 @@ export default class SignInForm extends Component {
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    console.log(this.state);
-    let userName = this.state.userName.value;
-    let validUser = null;
-    users.forEach(user => {
-      if (user.user_alias === userName) {
-        validUser = user;
+    if (this.validatePassword() || this.validateUserName()) {
+      this.setAllToTouched();
+    } else {
+      let userName = this.state.userName.value;
+      let validUser = null;
+      users.forEach(user => {
+        if (user.user_alias === userName) {
+          validUser = user;
+        }
+      });
+      if (validUser !== null) {
+        this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
       }
-    });
-    if (validUser !== null) {
-      this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
-    }
-    /*this.setState({ error: null });
-    const { email, password } = this.state;
-    AuthApiService.postLogin({
-      userName: userName.value,
-      password: password.value
-    })
-      .then(res => {
-        this.setState({
-          userName: { value: "", touched: false },
-          password: { value: "", touched: false }
-        });
-        this.props.onLoginSuccess(res.payload.user_id);
+      /*this.setState({ error: null });
+      const { email, password } = this.state;
+      AuthApiService.postLogin({
+        userName: userName.value,
+        password: password.value
       })
-      .catch(res => {
-        this.setState({ error: res.error });
-      });*/
+        .then(res => {
+          this.setState({
+            userName: { value: "", touched: false },
+            password: { value: "", touched: false }
+          });
+          this.props.onLoginSuccess(res.payload.user_id);
+        })
+        .catch(res => {
+          this.setState({ error: res.error });
+        });*/
+    }
+  };
+
+  setAllToTouched = () => {
+    this.setState({
+      userName: { value: "", touched: true },
+      password: { value: "", touched: true }
+    });
   };
 
   updateUserName = userName => {
     this.setState({ userName: { value: userName, touched: true } });
   };
+
   updatePassword = password => {
     this.setState({ password: { value: password, touched: true } });
   };
 
-  validateUserName() {
+  validateUserName = () => {
     const userName = this.state.userName.value;
     if (userName < 1) {
-      return "An user name is required";
+      return "A user name is required";
     }
-  }
+  };
 
-  validatePassword() {
+  validatePassword = () => {
     const password = this.state.password.value;
     if (password < 1) {
       return "A password is required";
     }
-  }
-  validateConfirmPassword() {
-    const confirmPassword = this.state.confirmPassword.value;
-    if (confirmPassword < 1) {
-      return "You must confirm the password";
-    }
-  }
+  };
 
   render() {
-    const { error } = this.state;
-    console.log(this.props.history);
+    const { error, userName, password } = this.state;
+    console.log(this.validatePassword(), this.validateUserName());
     return (
       <>
         <form
@@ -121,7 +126,7 @@ export default class SignInForm extends Component {
           />
           <SignInError
             hasError={this.validateUserName()}
-            touched={this.state.userName.touched}
+            touched={userName.touched}
           />
           <label htmlFor="password">Password</label>
           <input
@@ -134,7 +139,7 @@ export default class SignInForm extends Component {
           />
           <SignInError
             hasError={this.validatePassword()}
-            touched={this.state.password.touched}
+            touched={password.touched}
             className="login-error"
           />
           <div className="type-of-user">

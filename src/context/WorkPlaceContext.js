@@ -9,7 +9,8 @@ const WorkPlaceContext = React.createContext({
   setUserType: () => {},
   setUserName: () => {},
   setWp: () => {},
-  setPosts: () => {}
+  setPosts: () => {},
+  setIdeas: () => {}
 });
 
 export default WorkPlaceContext;
@@ -53,7 +54,8 @@ export class WorkPlaceProvider extends Component {
       setUserType: this.setUserType,
       setWp: this.setWp,
       setPosts: this.setPosts,
-      setUserName: this.setUserName
+      setUserName: this.setUserName,
+      setIdeas: this.setIdeas
     };
 
     return (
