@@ -77,8 +77,8 @@ export default class EmployeeRegistrationForm extends Component {
         user_name: userName.value,
         password: password.value,
         code: code.value,
-        user_type: "admin",
-        user_status: "active",
+        user_type: "user",
+        user_status: "pending",
         user_img: "https://picsum.photos/50/50"
       };
 

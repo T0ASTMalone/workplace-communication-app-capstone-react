@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputError from "./IdeasFormError";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 import "./IdeasForm.css";
 
 export default class IdeasFrom extends Component {
@@ -8,17 +9,21 @@ export default class IdeasFrom extends Component {
     idea: { value: "", touched: false }
   };
 
+  static contextType = WorkPlaceContext;
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.validateTitle() || this.validateIdea()) {
       this.setAllToTouched();
     } else {
       const { title, idea } = this.state;
+      const { userName, workPlace } = this.context;
       let newIdea = {
-        user: "", //get user from context,
+        user: userName,
         title: title.value,
         idea: idea.value,
-        date: new Date()
+        date: new Date(),
+        workplace: workPlace
       };
       this.clearValues();
       console.log(newIdea);
