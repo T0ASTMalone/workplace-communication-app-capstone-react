@@ -5,6 +5,7 @@ const WorkPlaceContext = React.createContext({
   userName: "",
   workPlace: "",
   posts: [],
+  logged: null,
   addPost: () => {},
   setUserType: () => {},
   setUserName: () => {},
@@ -20,6 +21,7 @@ export class WorkPlaceProvider extends Component {
     super(props);
     this.state = {
       userType: null,
+      logged: null,
       userName: "",
       workPlace: "",
       posts: [],
@@ -44,18 +46,24 @@ export class WorkPlaceProvider extends Component {
     this.setState({ posts });
   };
 
+  setLogged = logged => {
+    this.setState({ logged });
+  };
+
   render() {
     const value = {
       userType: this.state.userType,
       userName: this.state.userName,
       workPlace: this.state.workPlace,
+      logged: this.state.logged,
       posts: this.state.posts,
       error: this.state.error,
       setUserType: this.setUserType,
       setWp: this.setWp,
       setPosts: this.setPosts,
       setUserName: this.setUserName,
-      setIdeas: this.setIdeas
+      setIdeas: this.setIdeas,
+      setLogged: this.setLogged
     };
 
     return (

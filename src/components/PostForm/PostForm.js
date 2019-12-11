@@ -75,7 +75,6 @@ export default class PostForm extends Component {
 
   validateTitle = () => {
     let title = this.state.title.value;
-    console.log(title);
     if (title.length < 1 || title.length > 50) {
       return "A title is required to be between 1 and 50 characters";
     }

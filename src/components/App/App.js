@@ -26,9 +26,9 @@ export default class App extends React.Component {
         </header>
 
         <main>
-          <p className="timestamp">
+          {/* <p className="timestamp">
             This is the timer value: {this.state.timestamp}
-          </p>
+          </p> */}
           <Switch>
             <Route exact path={"/"} component={LandingPage} />
             <Route path={"/workplace/:wp/:user"} component={WorkPlace} />

@@ -1,40 +1,49 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 import "./Header.css";
 
 export default class Header extends Component {
+  static contextType = WorkPlaceContext;
+
   renderLogoutLink(signOut) {
-    let loggedIn = false;
+    console.log(signOut);
     let location = this.props.location.pathname || null;
     return (
       <div className="header-logged-in">
-        {location === "/" && loggedIn ? (
+        {location === "/" ? (
           <button
             className="to-dash"
             onClick={() => this.props.history.goBack()}
           >
-            Back to Dashboard ->
+            Back to WorkPlace
           </button>
         ) : (
-          <Link className="login-out" onClick={signOut} to="/">
+          <Link className="login-out" to="/">
             Sign out
           </Link>
         )}
       </div>
     );
   }
+
+  signOut = () => {
+    this.context.setLogged(false);
+  };
+
   render() {
+    let logged = this.context.logged;
     return (
       <>
         <nav className="header">
           <div className="icon-name">
             <h1>
               <Link className="header-title" to="/">
-                WorkPlace
+                Wp
               </Link>
             </h1>
           </div>
-          {this.renderLogoutLink()}
+          {logged ? this.renderLogoutLink(this.signOut) : <></>}
         </nav>
       </>
     );

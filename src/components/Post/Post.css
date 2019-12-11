@@ -20,6 +20,10 @@
   display: flex;
 }
 
+.post-content {
+  word-wrap: break-word;
+}
+
 .user-img {
   margin-right: 10px;
   border-radius: 50%;

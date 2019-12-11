@@ -10,7 +10,9 @@ export default class LandingPage extends Component {
 
         <div id="existing-user" className="landing-info">
           <h3>Already part of a WorkPlace</h3>
-          <Link to={"/sign-in"}>Sign In</Link>
+          <Link to={"/sign-in"} className="to-wp">
+            <span className="to-wp">Sign In</span>
+          </Link>
         </div>
 
         <div id="new-user" className="landing-info">
@@ -24,12 +26,16 @@ export default class LandingPage extends Component {
           </p>
 
           {/* link to employer registration page */}
-          <Link to={"/create"}>Register</Link>
+          <Link to={"/create"} className="to-wp">
+            <span className="to-wp">Register</span>
+          </Link>
           <p className="landing-text">
             As an employee you can join a WorkPlace created by your employer
           </p>
           {/* link to employee registration page */}
-          <Link to={"/join"}>Join a workplace</Link>
+          <Link to={"/join"}>
+            <span className="to-wp">Join a workplace</span>
+          </Link>
         </div>
         {
           // div describing creating events for your WorkPlace

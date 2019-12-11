@@ -3,7 +3,7 @@ const users = [
     user_id: "1",
     user_alias: "toasty",
     user_name: "test user alias",
-    workplace: "Tesla",
+    workplace: "RMO",
     user_type: "admin",
     user_status: "active",
     user_img: "https://picsum.photos/50/50"
@@ -12,7 +12,7 @@ const users = [
     user_id: "2",
     user_alias: "alleykat",
     user_name: "test user alias 2",
-    workplace: "Tesla",
+    workplace: "DDFL",
     user_type: "user",
     user_status: "active",
     user_img: "https://picsum.photos/50/50"

@@ -4,6 +4,7 @@ import "./SignInForm.css";
 import SignInError from "./SignInError";
 import users from "../../test-users";
 import { Link } from "react-router-dom";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 //import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
@@ -21,6 +22,8 @@ export default class SignInForm extends Component {
       }
     };
   }
+
+  static contextType = WorkPlaceContext;
 
   static defaultProps = {
     location: {},
@@ -46,6 +49,9 @@ export default class SignInForm extends Component {
     if (this.validatePassword() /*|| this.validateUserName()*/) {
       this.setAllToTouched();
     } else {
+      // check if user is workplace creator or workplace user
+      // if user make api call to user table in db
+      // else make api call to creator table in db
       let userName = this.state.userName.value;
       let validUser = null;
       users.forEach(user => {
@@ -54,6 +60,9 @@ export default class SignInForm extends Component {
         }
       });
       if (validUser !== null) {
+        console.log(this.context.setLogged);
+        this.context.setLogged(true);
+        console.log(this.context.logged);
         this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
       }
       /*this.setState({ error: null });
@@ -148,9 +157,9 @@ export default class SignInForm extends Component {
           />
           <div className="type-of-user">
             <label htmlFor="employer-select">Employer</label>
-            <input id="employer-select" type="radio" />
+            <input name="user-type" id="employer-select" type="radio" checked />
             <label htmlFor="employee-select">Employee</label>
-            <input type="radio" />
+            <input name="user-type" type="radio" />
           </div>
           <button id="sign-in-button" className="button" type="submit">
             Sign In
