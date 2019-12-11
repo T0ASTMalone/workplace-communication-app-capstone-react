@@ -42,7 +42,6 @@ export class WorkPlaceProvider extends Component {
   };
 
   setPosts = posts => {
-    console.log(posts);
     this.setState({ posts });
   };
 

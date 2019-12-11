@@ -60,9 +60,7 @@ export default class SignInForm extends Component {
         }
       });
       if (validUser !== null) {
-        console.log(this.context.setLogged);
         this.context.setLogged(true);
-        console.log(this.context.logged);
         this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
       }
       /*this.setState({ error: null });
@@ -116,7 +114,6 @@ export default class SignInForm extends Component {
 
   render() {
     const { error, userName, password } = this.state;
-    console.log(this.validatePassword(), this.validateUserName());
     return (
       <>
         <form

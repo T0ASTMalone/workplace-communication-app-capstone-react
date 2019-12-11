@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import uuid from "uuid";
+// import uuid from "uuid";
 import InputError from "./EmployeeRegistrationFormErr";
 
 export default class EmployerRegistrationForm extends Component {
@@ -70,18 +70,16 @@ export default class EmployerRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      const { userName, password, company } = this.state;
-      const user = {
-        user_id: uuid(),
-        user_name: userName.value,
-        password: password.value,
-        company: company.value,
-        user_type: "admin",
-        user_status: "active",
-        user_img: "https://picsum.photos/50/50"
-      };
-
-      console.log(user);
+      // const { userName, password, company } = this.state;
+      // const user = {
+      //   user_id: uuid(),
+      //   user_name: userName.value,
+      //   password: password.value,
+      //   company: company.value,
+      //   user_type: "admin",
+      //   user_status: "active",
+      //   user_img: "https://picsum.photos/50/50"
+      // };
     }
   };
 

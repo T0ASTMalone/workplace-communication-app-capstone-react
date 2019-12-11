@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./EmployeeRegistrationForm.css";
 import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
-import uuid from "uuid";
+//import uuid from "uuid";
 
 export default class EmployeeRegistrationForm extends Component {
   state = {
@@ -71,18 +71,16 @@ export default class EmployeeRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      const { userName, password, code } = this.state;
-      const user = {
-        user_id: uuid(),
-        user_name: userName.value,
-        password: password.value,
-        code: code.value,
-        user_type: "user",
-        user_status: "pending",
-        user_img: "https://picsum.photos/50/50"
-      };
-
-      console.log(user);
+      // const { userName, password, code } = this.state;
+      // const user = {
+      //   user_id: uuid(),
+      //   user_name: userName.value,
+      //   password: password.value,
+      //   code: code.value,
+      //   user_type: "user",
+      //   user_status: "pending",
+      //   user_img: "https://picsum.photos/50/50"
+      // };
     }
   };
 

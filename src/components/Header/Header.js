@@ -7,7 +7,6 @@ export default class Header extends Component {
   static contextType = WorkPlaceContext;
 
   renderLogoutLink(signOut) {
-    console.log(signOut);
     let location = this.props.location.pathname || null;
     return (
       <div className="header-logged-in">
