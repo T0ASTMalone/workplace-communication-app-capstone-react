@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import EmployerRegistrationForm from "./EmployerRegistrationForm";
 import { BrowserRouter as Router } from "react-router-dom";
-import Feed from "./Feed";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <Router>
-      <Feed />
+      <EmployerRegistrationForm />
     </Router>,
+
     div
   );
   ReactDOM.unmountComponentAtNode(div);

@@ -1,9 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header";
+import { BrowserRouter as Router } from "react-router-dom";
 
-it.skip("renders without crashing", () => {
+it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<Header />, div);
+  ReactDOM.render(
+    <Router>
+      <Header />
+    </Router>,
+
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });
