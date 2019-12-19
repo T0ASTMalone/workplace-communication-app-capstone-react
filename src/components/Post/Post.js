@@ -45,6 +45,8 @@ class Post extends Component {
         <p className="post-content">{post.content}</p>
         <div className="post-button-container">
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
+            {/* replace "seen" text with icon of an eye or some other icon 
+              that is an acknowledgement of having seen the post */}
             Seen {numSeen}
           </button>
         </div>

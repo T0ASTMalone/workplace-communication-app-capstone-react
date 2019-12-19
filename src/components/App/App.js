@@ -11,7 +11,7 @@ import { subscribeToTimer } from "../../api";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
+    //subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
   }
 
   state = {

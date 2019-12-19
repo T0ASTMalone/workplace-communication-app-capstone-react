@@ -7,9 +7,13 @@ order to keep everyone in the loop and up to date with the day to day events of 
 
 The website is a Heroku/Zeit application and may take a minute to start up when logging in.
 
-url: coming very soon
+url: https://workplace-communication-app.toastmalone.now.sh/
 
-Demo User: coming soon
+Demo User:
+
+    user name: toasty
+
+    password: anything
 
 ## Site Map
 

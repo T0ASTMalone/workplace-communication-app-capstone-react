@@ -22,6 +22,10 @@ class WorkPlace extends Component {
     await this.context.setUserType(currUser.user_type);
     await this.context.setUserName(currUser.user_alias);
     await this.context.setWp(wp);
+    // if user type is wpCreator
+    // let users = fetch pending users
+    // if users
+    // this.setState({pending})
   }
 
   updateWpMain = e => {
@@ -59,6 +63,20 @@ class WorkPlace extends Component {
           </button>
         </div>
         <div className="workplace-main">
+          {/* 
+
+              add component if there are new users pending and user
+              is the WorkPlace creator 
+
+              this should call another component that renders 
+              the user name picture if applicable and buttons to
+              accept or deny
+
+              accepting will update the user status from pending to user
+
+              denying will delete the user from the database
+
+          */}
           {main === "feed" ? <Feed /> : <IdeasFeed />}
         </div>
       </div>

@@ -9,12 +9,17 @@ export default class IdeasFeed extends React.Component {
   state = {
     ideas: []
   };
-
-  componentDidMount() {
-    this.setState({ ideas });
-  }
-
   static contextType = WorkPlaceContext;
+
+  async componentDidMount() {
+    const { userType, userName } = this.context;
+    if (userType === "admin") {
+      this.setState({ ideas });
+    } else {
+      const usersIdeas = ideas.filter(idea => idea.user === userName);
+      this.setState({ ideas: usersIdeas });
+    }
+  }
 
   render() {
     let ideas = this.state.ideas;
@@ -22,9 +27,20 @@ export default class IdeasFeed extends React.Component {
     return (
       <div className="ideas-feed">
         {userType === "admin" ? (
-          ideas.map(idea => <Post post={idea} />)
+          <>
+            <h4>Here are some Ideas posted by people in your WorkPlace</h4>
+            {ideas.map(idea => (
+              <Post post={idea} />
+            ))}
+          </>
         ) : (
-          <IdeasForm />
+          <>
+            <IdeasForm />
+            <p className="user-ideas">Here are the ideas you have posted</p>
+            {ideas.map(idea => (
+              <Post post={idea} />
+            ))}
+          </>
         )}
       </div>
     );

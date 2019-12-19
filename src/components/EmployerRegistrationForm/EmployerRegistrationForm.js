@@ -83,6 +83,7 @@ export default class EmployerRegistrationForm extends Component {
     }
   };
 
+  // add input for workplace type (project, company, team)
   render() {
     const { userName, company, password, passwordConfirm } = this.state;
     return (
