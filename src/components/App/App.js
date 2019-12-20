@@ -6,13 +6,13 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
-import { subscribeToTimer } from "../../api";
+//import { subscribeToTimer } from "../../api";
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    //subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
-  }
+  //constructor(props) {
+  //  super(props);
+  //subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
+  //}
 
   state = {
     timestamp: "no timestamp yet"

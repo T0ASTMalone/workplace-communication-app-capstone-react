@@ -24,9 +24,9 @@ export default function NewMembers() {
 
   return penUsers.length >= 1 ? (
     <div className={show ? "pending-members show-members" : "pending-members"}>
-      <a className="pen-title" onClick={handleShowPenUsers}>
+      <button className="pen-title" onClick={handleShowPenUsers}>
         Pending Members
-      </a>
+      </button>
       {penUsers.map((user, i) => (
         <PendingMember key={i} member={user} accept={handleAccept} />
       ))}
