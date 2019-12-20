@@ -154,7 +154,12 @@ export default class SignInForm extends Component {
           />
           <div className="type-of-user">
             <label htmlFor="employer-select">Employer</label>
-            <input name="user-type" id="employer-select" type="radio" checked />
+            <input
+              name="user-type"
+              id="employer-select"
+              type="radio"
+              defaultChecked
+            />
             <label htmlFor="employee-select">Employee</label>
             <input name="user-type" type="radio" />
           </div>

@@ -2,37 +2,44 @@ const users = [
   {
     user_id: "1",
     user_alias: "toasty",
-    user_name: "test user alias",
+    user_name: "test member alias",
     workplace: "RMO",
-    user_type: "admin",
+    user_type: "creator",
     user_status: "active",
     user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "2",
     user_alias: "alleykat",
-    user_name: "test user alias 2",
+    user_name: "test member alias 2",
     workplace: "DDFL",
-    user_type: "user",
+    user_type: "member",
     user_status: "active",
     user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "3",
-    user_alias: "test user 3",
-    user_name: "test user alias 3",
+    user_alias: "test member 3",
+    user_name: "test member alias 3",
     workplace: "RMO",
-    user_type: "user",
+    user_type: "pending",
     user_status: "active",
     user_img: "https://picsum.photos/50/50"
   },
   {
     user_id: "4",
-    user_alias: "test user 4",
-    user_name: "test user alias 4",
+    user_alias: "test member 4",
+    user_name: "test member alias 4",
     workplace: "Hunter Douglas",
-    user_type: "user",
-    user_status: "pending",
+    user_type: "pending",
+    user_img: "https://picsum.photos/50/50"
+  },
+  {
+    user_id: "5",
+    user_alias: "test member 5",
+    user_name: "test member alias 5",
+    workplace: "Hunter Douglas",
+    user_type: "pending",
     user_img: "https://picsum.photos/50/50"
   }
 ];

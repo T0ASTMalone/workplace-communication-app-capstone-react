@@ -93,7 +93,7 @@ export default class PostForm extends Component {
       <div className="post-form-container">
         <form action="" className="post-form" onSubmit={this.handleAddPost}>
           <p className="form-desc">
-            Have Something everyone in your workplace should know?
+            Have Something everyone in your WorkPlace should know?
           </p>
           <legend htmlFor="post-form">
             <h3>Make a new post</h3>

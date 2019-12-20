@@ -18,9 +18,7 @@ export default class Header extends Component {
             Back to WorkPlace
           </button>
         ) : (
-          <Link className="login-out" to="/">
-            Sign out
-          </Link>
+          <button onClick={() => this.signOut()}>Sign Out</button>
         )}
       </div>
     );
@@ -28,6 +26,7 @@ export default class Header extends Component {
 
   signOut = () => {
     this.context.setLogged(false);
+    this.props.history.push("/");
   };
 
   render() {

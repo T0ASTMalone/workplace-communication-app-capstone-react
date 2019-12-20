@@ -3,7 +3,7 @@ const ideas = [
     user: "migui",
     user_id: 3,
     title: "test title",
-    content: "test idea for admins to see",
+    content: "test idea for my workplace",
     userImg: "https://picsum.photos/50/50",
     datePosted: new Date()
   },
@@ -11,7 +11,7 @@ const ideas = [
     user: "alleykat",
     user_id: 2,
     title: "test title",
-    content: "test idea for admins to see",
+    content: "test idea for my workplace",
     userImg: "https://picsum.photos/50/50",
     datePosted: new Date()
   },
@@ -19,7 +19,7 @@ const ideas = [
     user: "alleykat",
     user_id: 2,
     title: "test title",
-    content: "test idea for admins to see",
+    content: "test idea for my workplace",
     userImg: "https://picsum.photos/50/50",
     datePosted: new Date()
   },
@@ -27,7 +27,7 @@ const ideas = [
     user: "Oscar",
     user_id: 4,
     title: "test title",
-    content: "test idea for admins to see",
+    content: "test idea for my workplace",
     userImg: "https://picsum.photos/50/50",
     datePosted: new Date()
   }

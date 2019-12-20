@@ -1,0 +1,14 @@
+.pending-member {
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  margin-right: 10px;
+}

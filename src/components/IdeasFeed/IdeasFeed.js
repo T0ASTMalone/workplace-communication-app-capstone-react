@@ -11,9 +11,9 @@ export default class IdeasFeed extends React.Component {
   };
   static contextType = WorkPlaceContext;
 
-  async componentDidMount() {
+  componentDidMount() {
     const { userType, userName } = this.context;
-    if (userType === "admin") {
+    if (userType === "creator") {
       this.setState({ ideas });
     } else {
       const usersIdeas = ideas.filter(idea => idea.user === userName);
@@ -26,19 +26,19 @@ export default class IdeasFeed extends React.Component {
     let { userType } = this.context;
     return (
       <div className="ideas-feed">
-        {userType === "admin" ? (
+        {userType === "creator" ? (
           <>
             <h4>Here are some Ideas posted by people in your WorkPlace</h4>
-            {ideas.map(idea => (
-              <Post post={idea} />
+            {ideas.map((idea, i) => (
+              <Post key={i} post={idea} />
             ))}
           </>
         ) : (
           <>
             <IdeasForm />
             <p className="user-ideas">Here are the ideas you have posted</p>
-            {ideas.map(idea => (
-              <Post post={idea} />
+            {ideas.map((idea, i) => (
+              <Post key={i} post={idea} />
             ))}
           </>
         )}

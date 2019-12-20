@@ -1,0 +1,17 @@
+.pending-members {
+  padding: 10px;
+  border: 1px solid black;
+  max-height: 70px;
+  overflow-y: hidden;
+}
+
+.pen-title {
+  margin-top: 16px;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.show-members {
+  overflow-y: scroll;
+  max-height: 300px;
+}

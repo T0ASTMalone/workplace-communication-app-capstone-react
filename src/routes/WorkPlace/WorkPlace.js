@@ -4,6 +4,7 @@ import Feed from "../../components/Feed/Feed";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import users from "../../test-users";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
+import NewMembers from "../../components/NewMembers/NewMembers";
 
 class WorkPlace extends Component {
   state = {
@@ -46,6 +47,10 @@ class WorkPlace extends Component {
           <h2 className="workplace-name">{workPlace}</h2>
         </div>
 
+        <div className="new-members">
+          {userType === "creator" ? <NewMembers /> : <></>}
+        </div>
+
         <div className="tabs">
           <button
             className="tab"
@@ -63,20 +68,6 @@ class WorkPlace extends Component {
           </button>
         </div>
         <div className="workplace-main">
-          {/* 
-
-              add component if there are new users pending and user
-              is the WorkPlace creator 
-
-              this should call another component that renders 
-              the user name picture if applicable and buttons to
-              accept or deny
-
-              accepting will update the user status from pending to user
-
-              denying will delete the user from the database
-
-          */}
           {main === "feed" ? <Feed /> : <IdeasFeed />}
         </div>
       </div>
