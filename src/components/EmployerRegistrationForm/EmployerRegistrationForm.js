@@ -145,7 +145,7 @@ export default class EmployerRegistrationForm extends Component {
           <button className="registration-button" type="submit">
             Register
           </button>
-          <p className="existing-user">Already part of a WorkPlace?</p>
+          <p className="existing-user">Already a member of a WorkPlace?</p>
           <Link to={"/sign-in"}>
             <button className="registration-button">Sign In</button>
           </Link>

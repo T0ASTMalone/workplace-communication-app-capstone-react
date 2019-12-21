@@ -16,15 +16,19 @@ export default class IdeasFrom extends Component {
     if (this.validateTitle() || this.validateIdea()) {
       this.setAllToTouched();
     } else {
-      // const { title, idea } = this.state;
-      // const { userName, workPlace } = this.context;
-      // let newIdea = {
-      //   user: userName,
-      //   title: title.value,
-      //   idea: idea.value,
-      //   date: new Date(),
-      //   workplace: workPlace
-      // };
+      const { title, idea } = this.state;
+      const { userName, workPlace } = this.context;
+      let newIdea = {
+        username: userName,
+        user_id: 1,
+        title: title.value,
+        content: idea.value,
+        date_added: new Date(),
+        priority: 0,
+        wp_id: 1,
+        type: "idea"
+      };
+      console.log(newIdea);
       this.clearValues();
     }
   };

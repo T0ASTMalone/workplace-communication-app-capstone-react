@@ -153,14 +153,14 @@ export default class SignInForm extends Component {
             className="login-error"
           />
           <div className="type-of-user">
-            <label htmlFor="employer-select">Employer</label>
+            <label htmlFor="employer-select">Creator</label>
             <input
               name="user-type"
               id="employer-select"
               type="radio"
               defaultChecked
             />
-            <label htmlFor="employee-select">Employee</label>
+            <label htmlFor="employee-select">Member</label>
             <input name="user-type" type="radio" />
           </div>
           <button id="sign-in-button" className="button" type="submit">

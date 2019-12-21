@@ -18,11 +18,10 @@ export default class LandingPage extends Component {
         <div id="new-user" className="landing-info">
           <h3>Register</h3>
           <p className="landing-text">
-            Register as an employer or as an employee
+            Register as a creator or member of a WorkPlace.
           </p>
           <p className="landing-text">
-            As an employer once registered a WorkPlace code will be generated
-            for the company
+            When a WorkPlace is created a WorkPlace code will be generated.
           </p>
 
           {/* link to employer registration page */}
@@ -30,7 +29,7 @@ export default class LandingPage extends Component {
             <span className="to-wp">Register</span>
           </Link>
           <p className="landing-text">
-            As an employee you can join a WorkPlace created by your employer
+            As a new member you can use a WorkPlace code to join a WorkPlace.
           </p>
           {/* link to employee registration page */}
           <Link to={"/join"}>
@@ -44,8 +43,8 @@ export default class LandingPage extends Component {
         <div className="landing-info">
           <h3 className="div-title">Keep everyone in the loop</h3>
           <p className="landing-text">
-            As the employer you can post notifications to keep your employees up
-            to date
+            As a member of a WorkPlace you can make posts that other members of
+            your WorkPlace need to see.
           </p>
           {
             //screen shot of WorkPlace main feed
@@ -54,15 +53,17 @@ export default class LandingPage extends Component {
         <div className="landing-info">
           <h3 className="div-title">Feedback</h3>
           <p className="landing-text">
-            As an employee you can let your employer know about safety concerns
-            or ideas for improvement that you might have
+            If you have ideas for improvement, safety concerns, or any other
+            issues you might need to bring up you can make a post under the
+            ideas tab so that the creator of the WorkPlace may see your idea.
           </p>
           {
             //screen shot of ideas form / feed
           }
           <p className="landing-text">
-            As an employer you can see these safety concerns or ideas that your
-            employees have posted
+            As the creator of the WorkPlace you can see theses ideas posted by
+            members of your WorkPlace. As a member of the WorkPlace you can see
+            the ideas you have posted.
           </p>
         </div>
       </div>
