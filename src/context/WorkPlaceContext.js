@@ -3,7 +3,9 @@ import React, { Component } from "react";
 const WorkPlaceContext = React.createContext({
   userType: null,
   userName: "",
+  userId: "",
   workPlace: "",
+  wpId: "",
   posts: [],
   logged: null,
   addPost: () => {},
@@ -11,7 +13,8 @@ const WorkPlaceContext = React.createContext({
   setUserName: () => {},
   setWp: () => {},
   setPosts: () => {},
-  setIdeas: () => {}
+  setIdeas: () => {},
+  setWpId: () => {}
 });
 
 export default WorkPlaceContext;
@@ -23,7 +26,9 @@ export class WorkPlaceProvider extends Component {
       userType: null,
       logged: null,
       userName: "",
+      userId: "",
       workPlace: "",
+      wpId: "",
       posts: [],
       error: null
     };
@@ -37,8 +42,17 @@ export class WorkPlaceProvider extends Component {
     this.setState({ userName });
   };
 
+  setUserId = id => {
+    this.setState({ userId: id });
+  };
+
   setWp = workPlace => {
     this.setState({ workPlace });
+  };
+
+  setWpId = id => {
+    console.log(id);
+    this.setState({ wpId: id });
   };
 
   setPosts = posts => {
@@ -53,7 +67,9 @@ export class WorkPlaceProvider extends Component {
     const value = {
       userType: this.state.userType,
       userName: this.state.userName,
+      userId: this.state.userId,
       workPlace: this.state.workPlace,
+      wpId: this.state.wpId,
       logged: this.state.logged,
       posts: this.state.posts,
       error: this.state.error,
@@ -62,7 +78,9 @@ export class WorkPlaceProvider extends Component {
       setPosts: this.setPosts,
       setUserName: this.setUserName,
       setIdeas: this.setIdeas,
-      setLogged: this.setLogged
+      setLogged: this.setLogged,
+      setWpId: this.setWpId,
+      setUserId: this.setUserId
     };
 
     return (

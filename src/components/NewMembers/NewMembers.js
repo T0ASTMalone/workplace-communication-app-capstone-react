@@ -30,7 +30,6 @@ export default function NewMembers() {
       {penUsers.map((user, i) => (
         <PendingMember key={i} member={user} accept={handleAccept} />
       ))}
-      f
     </div>
   ) : (
     <></>

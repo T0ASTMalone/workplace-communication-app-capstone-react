@@ -19,10 +19,15 @@ class WorkPlace extends Component {
     let currUser = users.find(x => {
       return x.user_alias === user;
     });
+
+    const { user_type, user_alias, user_id, wp_id } = currUser;
     //set this in context
-    await this.context.setUserType(currUser.user_type);
-    await this.context.setUserName(currUser.user_alias);
+    await this.context.setUserType(user_type);
+    await this.context.setUserName(user_alias);
+    await this.context.setUserId(user_id);
     await this.context.setWp(wp);
+    await this.context.setWpId(wp_id);
+    // set wp id in context
     // if user type is wpCreator
     // let users = fetch pending users
     // if users
