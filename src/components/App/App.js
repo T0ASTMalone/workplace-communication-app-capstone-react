@@ -6,6 +6,7 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
+import Footer from "../../components/Footer/Footer";
 //import { subscribeToTimer } from "../../api";
 
 export default class App extends React.Component {
@@ -37,6 +38,7 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
+        <Footer />
       </div>
     );
   }
