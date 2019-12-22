@@ -28,7 +28,6 @@ export default class PostForm extends Component {
       let date_added = new Date();
       let userImg = "https://picsum.photos/50/50";
 
-      console.log(wpId);
       const post = {
         username: userName,
         wp_id: wpId,
@@ -42,7 +41,7 @@ export default class PostForm extends Component {
 
       let updatedPosts = [post, ...this.context.posts];
       this.context.setPosts(updatedPosts);
-      console.log(updatedPosts);
+
       this.setState({
         title: {
           value: "",
@@ -93,6 +92,13 @@ export default class PostForm extends Component {
     }
   };
 
+  cancelPost = () => {
+    this.setState({
+      title: { value: "", touched: false },
+      content: { value: "", touched: false }
+    });
+  };
+
   render() {
     const { title, content } = this.state;
     return (
@@ -134,7 +140,14 @@ export default class PostForm extends Component {
             hasError={this.validateContent()}
             touched={content.touched}
           />
-          <button className="creat-post">Post</button>
+          <div className="button-container">
+            <button type="button" onClick={() => this.cancelPost()}>
+              Cancel
+            </button>
+            <button type="submit" className="creat-post">
+              Post
+            </button>
+          </div>
         </form>
       </div>
     );
