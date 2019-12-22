@@ -29,14 +29,14 @@ export default class PostForm extends Component {
       let userImg = "https://picsum.photos/50/50";
 
       const post = {
-        username: userName,
+        user: userName,
         wp_id: wpId,
         user_id: userId,
         title,
         content,
         type: "post",
         date_added,
-        userImg
+        user_img: userImg
       };
 
       let updatedPosts = [post, ...this.context.posts];

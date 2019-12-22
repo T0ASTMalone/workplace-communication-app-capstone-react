@@ -2,8 +2,8 @@ import React from "react";
 import IdeasForm from "../Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
-import ideas from "../../dummy-ideas";
 import "./IdeasFeed.css";
+import posts from "../../dummy-posts";
 
 export default class IdeasFeed extends React.Component {
   state = {
@@ -14,9 +14,12 @@ export default class IdeasFeed extends React.Component {
   componentDidMount() {
     const { userType, userName } = this.context;
     if (userType === "creator") {
-      this.setState({ ideas });
+      const wpIdeas = posts.filter(post => post.type === "idea");
+      this.setState({ ideas: wpIdeas });
     } else {
-      const usersIdeas = ideas.filter(idea => idea.user === userName);
+      const usersIdeas = posts.filter(
+        post => post.user === userName && post.type === "idea"
+      );
       this.setState({ ideas: usersIdeas });
     }
   }

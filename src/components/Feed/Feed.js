@@ -13,7 +13,9 @@ export default class Feed extends Component {
 
   async componentDidMount() {
     //fetch most recent posts from database where workplace
-    await this.context.setPosts(dummyPosts);
+    await this.context.setPosts(
+      dummyPosts.filter(post => post.type === "posts")
+    );
   }
 
   render() {

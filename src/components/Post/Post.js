@@ -38,7 +38,7 @@ class Post extends Component {
     return (
       <div className="post">
         <div className="post-creator">
-          <img src={post.userImg} alt="test user" className="user-img" />
+          <img src={post.user_img} alt="test user" className="user-img" />
           <p className="user-name">{post.user}</p>
         </div>
         <h3 className="post-title">{post.title}</h3>
