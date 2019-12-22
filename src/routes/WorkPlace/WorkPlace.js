@@ -44,11 +44,10 @@ class WorkPlace extends Component {
     return (
       <div className="workplace">
         <div className="workplace-info">
-          <h2 className="user-name">
-            {userName}
-            {"\n"}
-            {userType}
-          </h2>
+          <div className="user-info">
+            <h2 className="user user-name">{userName}</h2>
+            <h3 className="user user-type">{userType}</h3>
+          </div>
           <h2 className="workplace-name">{workPlace}</h2>
         </div>
 

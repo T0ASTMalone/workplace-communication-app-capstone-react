@@ -140,7 +140,7 @@ export default class PostForm extends Component {
             hasError={this.validateContent()}
             touched={content.touched}
           />
-          <div className="button-container">
+          <div className="form-button-container">
             <button type="button" onClick={() => this.cancelPost()}>
               Cancel
             </button>

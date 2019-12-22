@@ -70,6 +70,13 @@ export default class IdeasFrom extends Component {
     }
   };
 
+  cancelPost = () => {
+    this.setState({
+      title: { value: "", touched: false },
+      idea: { value: "", touched: false }
+    });
+  };
+
   render() {
     const { title, idea } = this.state;
     return (
@@ -82,7 +89,8 @@ export default class IdeasFrom extends Component {
           <legend>
             <h3>Have an Idea?</h3>
           </legend>
-          {/* idea title */}
+
+          <p className="form-desc">Have an that can improve your WorkPlace?</p>
           <label htmlFor="idea-title" className="idea-item">
             Title
           </label>
@@ -99,15 +107,23 @@ export default class IdeasFrom extends Component {
           <label htmlFor="idea-content" className="idea-item">
             Idea
           </label>
-          <input
+          <textarea
             type="text"
             id="idea-content"
             className="idea-item"
             value={idea.value}
             onChange={e => this.updateIdea(e.target.value)}
+            placeholder="Idea"
           />
           <InputError hasError={this.validateIdea()} touched={idea.touched} />
-          <button className="post-idea idea-item">Send</button>
+          <div className=" form-button-container">
+            <button type="button" onClick={() => this.cancelPost()}>
+              Cancel
+            </button>
+            <button type="submit" className="creat-post post-idea idea-item">
+              Send
+            </button>
+          </div>
         </form>
       </div>
     );

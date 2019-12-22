@@ -1,37 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import testUsers from "../../test-users";
 import PendingMember from "../PendingMember/PendingMember";
 import "./NewMembers.css";
 
 export default function NewMembers() {
+  // pending users
   let [penUsers, setPenUsers] = useState([]);
 
+  // show pending users
   let [show, setShow] = useState(false);
 
-  useEffect(() => {
-    let users = testUsers.filter(user => user.user_type === "pending");
-    setPenUsers(users);
-  }, []);
-
   const handleAccept = name => {
+    // PATCH user type from 'pending' to 'member'
     const remainingUsers = penUsers.filter(user => user.user_alias !== name);
+    // update pending users in state
     setPenUsers(remainingUsers);
   };
 
   const handleShowPenUsers = () => {
+    //fetch pending users
+    let users = testUsers.filter(user => user.user_type === "pending");
+    // toggle pending users
+    if (penUsers.length > 1) {
+      setPenUsers([]);
+    } else {
+      setPenUsers(users);
+    }
+    // show pending users
     setShow(!show);
   };
 
-  return penUsers.length >= 1 ? (
+  return (
     <div className={show ? "pending-members show-members" : "pending-members"}>
       <button className="pen-title" onClick={handleShowPenUsers}>
         Pending Members
       </button>
-      {penUsers.map((user, i) => (
-        <PendingMember key={i} member={user} accept={handleAccept} />
-      ))}
+      {penUsers.length > 1 ? (
+        penUsers.map((user, i) => (
+          <PendingMember key={i} member={user} accept={handleAccept} />
+        ))
+      ) : (
+        <></>
+      )}
     </div>
-  ) : (
-    <></>
   );
 }
