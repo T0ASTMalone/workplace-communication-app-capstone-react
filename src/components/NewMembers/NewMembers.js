@@ -30,6 +30,13 @@ export default function NewMembers() {
     setShow(!show);
   };
 
+  const handleDecline = () => {
+    // delete users
+    let users = penUsers.filter(user => user.user_alias === "pending");
+    // update users
+    setPenUsers(users);
+  };
+
   return (
     <div
       className={
@@ -43,7 +50,12 @@ export default function NewMembers() {
       </button>
       {penUsers.length >= 1 ? (
         penUsers.map((user, i) => (
-          <PendingMember key={i} member={user} accept={handleAccept} />
+          <PendingMember
+            key={i}
+            member={user}
+            accept={handleAccept}
+            decline={handleDecline}
+          />
         ))
       ) : (
         <></>

@@ -17,7 +17,7 @@ export default class IdeasFrom extends Component {
       this.setAllToTouched();
     } else {
       const { title, idea } = this.state;
-      const { userName, workPlace } = this.context;
+      const { userName, wpId } = this.context;
       let newIdea = {
         username: userName,
         user_id: 1,
@@ -25,7 +25,7 @@ export default class IdeasFrom extends Component {
         content: idea.value,
         date_added: new Date(),
         priority: 0,
-        wp_id: 1,
+        wp_id: wpId,
         type: "idea"
       };
       console.log(newIdea);

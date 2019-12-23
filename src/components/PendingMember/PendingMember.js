@@ -12,6 +12,7 @@ const PendingMember = props => {
       </div>
 
       <button onClick={() => props.accept(member.user_alias)}>Accept</button>
+      <button onClick={() => props.decline(member.user_alias)}> Decline</button>
     </div>
   );
 };

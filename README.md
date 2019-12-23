@@ -73,3 +73,9 @@ WorkPlace was built with:
 - Express.js
 - PostgreSQL
 - Mocha and Chai
+
+## Development Road Map
+
+- Pinned comments by WorkPlace creator
+- Comments for posts
+-

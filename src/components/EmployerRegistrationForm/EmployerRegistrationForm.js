@@ -100,6 +100,7 @@ export default class EmployerRegistrationForm extends Component {
             id="employer-name"
             type="text"
             className="new-employer"
+            placeholder="Name"
             onChange={e => this.updateUserName(e.target.value)}
           />
           <InputError
@@ -112,6 +113,7 @@ export default class EmployerRegistrationForm extends Component {
             id="company-name"
             type="text"
             className="new-employer"
+            placeholder="WorkPlace Name"
             onChange={e => this.updateCompany(e.target.value)}
           />
           <InputError
@@ -124,6 +126,7 @@ export default class EmployerRegistrationForm extends Component {
             id="password"
             type="text"
             className="new-employer"
+            placeholder="Password"
             onChange={e => this.updatePassword(e.target.value)}
           />
           <InputError
@@ -136,6 +139,7 @@ export default class EmployerRegistrationForm extends Component {
             id="password-confirm"
             type="text"
             className="new-employer"
+            placeholder="Confirm Password"
             onChange={e => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError
