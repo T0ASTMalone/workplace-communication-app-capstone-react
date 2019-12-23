@@ -1,7 +1,7 @@
 const users = [
   {
     user_id: "1",
-    user_alias: "toasty",
+    nickname: "toasty",
     password: "thisisatestpassword",
     user_name: "test member alias",
     workplace: "RMO",
@@ -12,7 +12,7 @@ const users = [
   },
   {
     user_id: "2",
-    user_alias: "alleykat",
+    nickname: "alleykat",
     password: "thisisatestpassword",
     user_name: "test member alias 2",
     workplace: "RMO",
@@ -23,7 +23,7 @@ const users = [
   },
   {
     user_id: "3",
-    user_alias: "test member 3",
+    nickname: "Mosca",
     password: "thisisatestpassword",
     user_name: "Oscar",
     workplace: "RMO",
@@ -34,9 +34,9 @@ const users = [
   },
   {
     user_id: "4",
-    user_alias: "test member 4",
+    user_name: "test member 4",
     password: "thisisatestpassword",
-    user_name: "Migui",
+    nickname: "Migui",
     workplace: "RMO",
     user_type: "pending",
     wp_id: "1",
@@ -44,7 +44,7 @@ const users = [
   },
   {
     user_id: "5",
-    user_alias: "test member 5",
+    nickname: "test member 5",
     password: "thisisatestpassword",
     user_name: "test member alias 5",
     workplace: "RMO",

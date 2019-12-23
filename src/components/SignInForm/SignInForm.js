@@ -55,13 +55,13 @@ export default class SignInForm extends Component {
       let nickname = this.state.nickname.value;
       let validUser = null;
       users.forEach(user => {
-        if (user.user_alias === nickname) {
+        if (user.nickname === nickname) {
           validUser = user;
         }
       });
       if (validUser !== null) {
         this.context.setLogged(true);
-        this.props.onLoginSuccess(validUser.workplace, validUser.user_alias);
+        this.props.onLoginSuccess(validUser.workplace, validUser.nickname);
       }
       /*this.setState({ error: null });
       const { email, password } = this.state;

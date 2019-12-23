@@ -17,13 +17,14 @@ class WorkPlace extends Component {
     let { user, wp } = this.props.match.params;
     //get user info where user and wp
     let currUser = users.find(x => {
-      return x.user_alias === user;
+      return x.nickname === user;
     });
 
-    const { user_type, user_alias, user_id, wp_id } = currUser;
+    console.log(currUser);
+    const { user_type, nickname, user_id, wp_id } = currUser;
     //set this in context
     await this.context.setUserType(user_type);
-    await this.context.setUserName(user_alias);
+    await this.context.setUserName(nickname);
     await this.context.setUserId(user_id);
     await this.context.setWp(wp);
     await this.context.setWpId(wp_id);
