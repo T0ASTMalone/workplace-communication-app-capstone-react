@@ -6,9 +6,6 @@ import "./IdeasFeed.css";
 import dummyPosts from "../../dummy-posts";
 
 export default class IdeasFeed extends React.Component {
-  state = {
-    ideas: []
-  };
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
@@ -17,14 +14,12 @@ export default class IdeasFeed extends React.Component {
       await this.context.setIdeas(
         dummyPosts.filter(post => post.type === "idea")
       );
-      this.setState({ ideas: this.context.posts });
     } else {
       await this.context.setIdeas(
         dummyPosts.filter(
           post => post.type === "idea" && post.nickname === nickname
         )
       );
-      this.setState({ ideas: this.context.posts });
     }
   }
 

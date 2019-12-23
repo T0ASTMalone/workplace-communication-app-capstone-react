@@ -7,8 +7,8 @@ const users = [
     workplace: "RMO",
     wp_id: 1,
     user_type: "creator",
-    user_status: "active"
-    //user_img: "https://picsum.photos/50/50"
+    user_status: "active",
+    user_img: "https:picsum.photos/50/50"
   },
   {
     user_id: 2,
@@ -18,8 +18,8 @@ const users = [
     workplace: "RMO",
     wp_id: 1,
     user_type: "member",
-    user_status: "active"
-    //user_img: "https://picsum.photos/50/50"
+    user_status: "active",
+    user_img: "https:picsum.photos/50/50"
   },
   {
     user_id: 3,
@@ -29,8 +29,8 @@ const users = [
     workplace: "RMO",
     wp_id: 1,
     user_type: "pending",
-    user_status: "active"
-    //user_img: "https://picsum.photos/50/50"
+    user_status: "active",
+    user_img: "https:picsum.photos/50/50"
   },
   {
     user_id: 4,
@@ -39,8 +39,8 @@ const users = [
     nickname: "Migui",
     workplace: "RMO",
     user_type: "pending",
-    wp_id: 1
-    //user_img: "https://picsum.photos/50/50"
+    wp_id: 1,
+    user_img: "https:picsum.photos/50/50"
   },
   {
     user_id: 5,
@@ -49,8 +49,8 @@ const users = [
     user_name: "Sammie Flores",
     workplace: "RMO",
     user_type: "pending",
-    wp_id: 1
-    //user_img: "https://picsum.photos/50/50"
+    wp_id: 1,
+    user_img: "https:picsum.photos/50/50"
   }
 ];
 
