@@ -10,12 +10,18 @@
   padding: 10px;
 }
 
+.nickname {
+  margin-bottom: 0;
+}
+
 .user-info {
   display: flex;
   flex-direction: column;
 }
 
-.user-type {
+.user-type,
+.user-name {
+  font-size: 14px;
   margin: 0;
   font-weight: 500;
   font-style: italic;

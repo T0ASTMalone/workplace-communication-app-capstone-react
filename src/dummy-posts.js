@@ -1,7 +1,7 @@
 const dummyPosts = [
   {
     post_id: 1,
-    user: "Migui",
+    nickname: "Migui",
     user_id: 4,
     title: "test title",
     content: "test idea for my workplace",
@@ -13,7 +13,7 @@ const dummyPosts = [
   },
   {
     post_id: 2,
-    user: "alleykat",
+    nickname: "alleykat",
     user_id: 2,
     title: "test title",
     content:
@@ -26,7 +26,7 @@ const dummyPosts = [
   },
   {
     post_id: 3,
-    user: "alleykat",
+    nickname: "alleykat",
     user_id: 2,
     title: "test title",
     content: "test idea for my workplace",
@@ -38,7 +38,7 @@ const dummyPosts = [
   },
   {
     post_id: 4,
-    user: "alleykat",
+    nickname: "alleykat",
     user_id: 2,
     title: "test title",
     content: "test idea for my workplace",
@@ -50,7 +50,7 @@ const dummyPosts = [
   },
   {
     post_id: 5,
-    user: "Migui",
+    nickname: "Migui",
     user_id: 4,
     title: "test title 2",
     content: "Hey everyone, there will be no work tomorrow!",
@@ -62,7 +62,7 @@ const dummyPosts = [
   },
   {
     post_id: 6,
-    user: "Oscar",
+    nickname: "Oscar",
     user_id: 3,
     title: "test title",
     content: "test idea for my workplace",
@@ -74,7 +74,7 @@ const dummyPosts = [
   },
   {
     post_id: 7,
-    user: "Kate",
+    nickname: "Kate",
     user_id: 3,
     title: "test title 3",
     content:

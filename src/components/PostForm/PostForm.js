@@ -22,14 +22,14 @@ export default class PostForm extends Component {
     if (this.validateTitle() || this.validateContent()) {
       this.setAllToTouched();
     } else {
-      let { userName, wpId, userId } = this.context;
+      let { nickname, wpId, userId } = this.context;
       let title = this.state.title.value;
       let content = this.state.content.value;
       let date_added = new Date();
       let userImg = "https://picsum.photos/50/50";
 
       const post = {
-        user: userName,
+        nickname,
         wp_id: wpId,
         user_id: userId,
         title,

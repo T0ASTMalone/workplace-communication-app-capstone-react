@@ -3,7 +3,7 @@ const users = [
     user_id: "1",
     nickname: "toasty",
     password: "thisisatestpassword",
-    user_name: "test member alias",
+    user_name: "Miguel Ponce",
     workplace: "RMO",
     wp_id: "1",
     user_type: "creator",

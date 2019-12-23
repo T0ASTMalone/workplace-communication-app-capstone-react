@@ -4,6 +4,7 @@ const WorkPlaceContext = React.createContext({
   userType: null,
   userName: "",
   userId: "",
+  nickname: "",
   workPlace: "",
   wpId: "",
   posts: [],
@@ -26,6 +27,7 @@ export class WorkPlaceProvider extends Component {
       userType: null,
       logged: null,
       userName: "",
+      nickname: "",
       userId: "",
       workPlace: "",
       wpId: "",
@@ -40,6 +42,9 @@ export class WorkPlaceProvider extends Component {
 
   setUserName = userName => {
     this.setState({ userName });
+  };
+  setNickname = nickname => {
+    this.setState({ nickname });
   };
 
   setUserId = id => {
@@ -68,6 +73,7 @@ export class WorkPlaceProvider extends Component {
       userType: this.state.userType,
       userName: this.state.userName,
       userId: this.state.userId,
+      nickname: this.state.nickname,
       workPlace: this.state.workPlace,
       wpId: this.state.wpId,
       logged: this.state.logged,
@@ -80,7 +86,8 @@ export class WorkPlaceProvider extends Component {
       setIdeas: this.setIdeas,
       setLogged: this.setLogged,
       setWpId: this.setWpId,
-      setUserId: this.setUserId
+      setUserId: this.setUserId,
+      setNickname: this.setNickname
     };
 
     return (
