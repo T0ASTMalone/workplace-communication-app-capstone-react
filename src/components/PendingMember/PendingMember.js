@@ -10,7 +10,8 @@ const PendingMember = props => {
     <div className="pending-member">
       <div className="new-user-info">
         <img className="user-img" src={member.user_img} alt="profile" />
-        <p>{member.nickname}</p>
+
+        <p>{member.user_name}</p>
       </div>
 
       <button onClick={() => props.accept(member.nickname)}>Accept</button>
