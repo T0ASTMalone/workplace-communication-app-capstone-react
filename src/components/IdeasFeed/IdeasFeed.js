@@ -12,13 +12,13 @@ export default class IdeasFeed extends React.Component {
   static contextType = WorkPlaceContext;
 
   componentDidMount() {
-    const { userType, userName } = this.context;
+    const { userType, nickname } = this.context;
     if (userType === "creator") {
       const wpIdeas = posts.filter(post => post.type === "idea");
       this.setState({ ideas: wpIdeas });
     } else {
       const usersIdeas = posts.filter(
-        post => post.user === userName && post.type === "idea"
+        post => post.nickname === nickname && post.type === "idea"
       );
       this.setState({ ideas: usersIdeas });
     }

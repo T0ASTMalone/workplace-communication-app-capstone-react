@@ -8,12 +8,17 @@ export default class Header extends Component {
 
   renderLogoutLink(signOut) {
     let location = this.props.location.pathname || null;
+    let { workPlace, nickname } = this.context;
+    let path = `workplace/${workPlace}/${nickname}`;
     return (
       <div className="header-logged-in">
-        {location === "/" ? (
+        {location === "/" ||
+        location === "/create" ||
+        location === "/join" ||
+        location === "/sign-in" ? (
           <button
             className="to-dash"
-            onClick={() => this.props.history.goBack()}
+            onClick={() => this.props.history.push(path)}
           >
             Back to WorkPlace
           </button>

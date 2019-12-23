@@ -15,6 +15,7 @@ class WorkPlace extends Component {
 
   async componentDidMount() {
     let { user, wp } = this.props.match.params;
+    console.log(user, wp);
     //get user info where user and wp
     let currUser = users.find(x => {
       return x.nickname === user;

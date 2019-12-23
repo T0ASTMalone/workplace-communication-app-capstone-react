@@ -19,7 +19,8 @@ export default class SignInForm extends Component {
       password: {
         value: "",
         touched: false
-      }
+      },
+      type: "creator"
     };
   }
 
@@ -44,6 +45,10 @@ export default class SignInForm extends Component {
     this.setState({ nickname: { value: ev, touched: true } });
   }
 
+  handleUpdateType(type) {
+    this.setState({ type });
+  }
+
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     if (this.validatePassword() /*|| this.validateUserName()*/) {
@@ -52,16 +57,22 @@ export default class SignInForm extends Component {
       // check if user is workplace creator or workplace user
       // if user make api call to user table in db
       // else make api call to creator table in db
-      let nickname = this.state.nickname.value;
+      let { nickname, password, type } = this.state;
       let validUser = null;
       users.forEach(user => {
-        if (user.nickname === nickname) {
+        if (
+          user.nickname === nickname.value &&
+          user.password === password.value &&
+          user.user_type === type
+        ) {
           validUser = user;
         }
       });
       if (validUser !== null) {
         this.context.setLogged(true);
         this.props.onLoginSuccess(validUser.workplace, validUser.nickname);
+      } else {
+        this.setState({ error: "Invalid Nickname or Password" });
       }
       /*this.setState({ error: null });
       const { email, password } = this.state;
@@ -158,10 +169,17 @@ export default class SignInForm extends Component {
               name="user-type"
               id="employer-select"
               type="radio"
+              value="creator"
+              onChange={e => this.handleUpdateType(e.target.value)}
               defaultChecked
             />
             <label htmlFor="employee-select">Member</label>
-            <input name="user-type" type="radio" />
+            <input
+              name="user-type"
+              type="radio"
+              value="member"
+              onChange={e => this.handleUpdateType(e.target.value)}
+            />
           </div>
           <button id="sign-in-button" className="button" type="submit">
             Sign In
