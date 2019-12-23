@@ -1,7 +1,7 @@
 .pending-members {
   padding: 10px;
   border: 1px solid black;
-  max-height: 70px;
+  max-height: 65px;
   overflow-y: hidden;
 }
 
