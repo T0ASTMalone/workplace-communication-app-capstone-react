@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import "./Header.css";
 
@@ -52,3 +53,9 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

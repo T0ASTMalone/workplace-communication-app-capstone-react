@@ -197,8 +197,5 @@ export default class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  onLoginSuccess: PropTypes.func,
-  history: PropTypes.object,
-  location: PropTypes.object,
-  match: PropTypes.object
+  onLoginSuccess: PropTypes.func
 };

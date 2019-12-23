@@ -54,16 +54,19 @@ export default class LandingPage extends Component {
           <h3 className="div-title">Feedback</h3>
           <p className="landing-text">
             If you have ideas for improvement, safety concerns, or any other
-            issues you might need to bring up you can make a post under the
+            issues you might need to bring up, you can make a post under the
             ideas tab so that the creator of the WorkPlace may see your idea.
           </p>
           {
             //screen shot of ideas form / feed
           }
           <p className="landing-text">
-            As the creator of the WorkPlace you can see theses ideas posted by
-            members of your WorkPlace. As a member of the WorkPlace you can see
-            the ideas you have posted.
+            As the creator of the WorkPlace you can see these ideas posted by
+            members of your WorkPlace.
+          </p>
+          <p className="landing-text">
+            As a member of the WorkPlace you can see the ideas you have posted
+            and if they have been seen by the creator of the WorkPlace
           </p>
         </div>
       </div>

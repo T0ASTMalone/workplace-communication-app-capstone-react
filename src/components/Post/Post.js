@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Post.css";
 
 class Post extends Component {
@@ -54,5 +55,20 @@ class Post extends Component {
     );
   }
 }
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    post_id: PropTypes.number,
+    nickname: PropTypes.string,
+    user_id: PropTypes.number,
+    title: PropTypes.string,
+    content: PropTypes.string,
+    data_added: PropTypes.instanceOf(Date),
+    user_img: PropTypes.string,
+    priority: PropTypes.number,
+    type: PropTypes.string,
+    wp_id: PropTypes.number
+  })
+};
 
 export default Post;

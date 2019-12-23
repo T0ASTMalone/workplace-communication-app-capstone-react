@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
@@ -81,5 +82,11 @@ class WorkPlace extends Component {
     );
   }
 }
+
+WorkPlace.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};
 
 export default WorkPlace;

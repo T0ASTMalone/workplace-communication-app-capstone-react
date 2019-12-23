@@ -76,8 +76,9 @@ WorkPlace was built with:
 
 ## Development Road Map
 
-- Pinned comments by WorkPlace creator
+- Pinned posts by WorkPlace creator
 - Comments for posts
 - See all users in your workplace
   - Delete users from your workplace (for creators only)
 - Edit user information
+- Approving Ideas (creators)

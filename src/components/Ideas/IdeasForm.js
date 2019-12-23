@@ -11,27 +11,33 @@ export default class IdeasFrom extends Component {
 
   static contextType = WorkPlaceContext;
 
-  handleSubmit = e => {
+  async handleSubmit(e) {
     e.preventDefault();
     if (this.validateTitle() || this.validateIdea()) {
       this.setAllToTouched();
     } else {
-      const { title, idea } = this.state;
-      const { userName, wpId } = this.context;
-      let newIdea = {
-        username: userName,
-        user_id: 1,
-        title: title.value,
-        content: idea.value,
-        date_added: new Date(),
-        priority: 0,
+      let { nickname, wpId, userId } = this.context;
+      let title = this.state.title.value;
+      let idea = this.state.idea.value;
+      let date_added = new Date();
+      let userImg = "https://picsum.photos/50/50";
+
+      const post = {
+        nickname,
         wp_id: wpId,
-        type: "idea"
+        user_id: userId,
+        title,
+        content: idea,
+        type: "idea",
+        date_added,
+        user_img: userImg
       };
-      console.log(newIdea);
+
+      let updatedPosts = [post, ...this.context.ideas];
+      this.context.setIdeas(updatedPosts);
       this.clearValues();
     }
-  };
+  }
 
   clearValues = () => {
     this.setState({
@@ -103,13 +109,13 @@ export default class IdeasFrom extends Component {
             onChange={e => this.updateTitle(e.target.value)}
           />
           <InputError hasError={this.validateTitle()} touched={title.touched} />
-          {/* idea content */}
-          <label htmlFor="idea-content" className="idea-item">
+          {/* idea idea */}
+          <label htmlFor="idea-idea" className="idea-item">
             Idea
           </label>
           <textarea
             type="text"
-            id="idea-content"
+            id="idea-idea"
             className="idea-item"
             value={idea.value}
             onChange={e => this.updateIdea(e.target.value)}
@@ -120,9 +126,7 @@ export default class IdeasFrom extends Component {
             <button type="button" onClick={() => this.cancelPost()}>
               Cancel
             </button>
-            <button type="submit" className="creat-post post-idea idea-item">
-              Send
-            </button>
+            <button type="submit">Send</button>
           </div>
         </form>
       </div>

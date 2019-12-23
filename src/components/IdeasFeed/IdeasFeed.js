@@ -3,7 +3,7 @@ import IdeasForm from "../Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
 import "./IdeasFeed.css";
-import posts from "../../dummy-posts";
+import dummyPosts from "../../dummy-posts";
 
 export default class IdeasFeed extends React.Component {
   state = {
@@ -11,21 +11,25 @@ export default class IdeasFeed extends React.Component {
   };
   static contextType = WorkPlaceContext;
 
-  componentDidMount() {
+  async componentDidMount() {
     const { userType, nickname } = this.context;
     if (userType === "creator") {
-      const wpIdeas = posts.filter(post => post.type === "idea");
-      this.setState({ ideas: wpIdeas });
-    } else {
-      const usersIdeas = posts.filter(
-        post => post.nickname === nickname && post.type === "idea"
+      await this.context.setIdeas(
+        dummyPosts.filter(post => post.type === "idea")
       );
-      this.setState({ ideas: usersIdeas });
+      this.setState({ ideas: this.context.posts });
+    } else {
+      await this.context.setIdeas(
+        dummyPosts.filter(
+          post => post.type === "idea" && post.nickname === nickname
+        )
+      );
+      this.setState({ ideas: this.context.posts });
     }
   }
 
   render() {
-    let ideas = this.state.ideas;
+    let ideas = this.context.ideas;
     let { userType } = this.context;
     return (
       <div id="ideas-feed" className=" feed">

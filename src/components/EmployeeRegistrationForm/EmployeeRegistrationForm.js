@@ -73,6 +73,16 @@ export default class EmployeeRegistrationForm extends Component {
     });
   };
 
+  clearValues = () => {
+    this.setState({
+      userName: { value: "", touched: false },
+      code: { value: "", touched: false },
+      password: { value: "", touched: false },
+      passwordConfirm: { value: "", touched: false },
+      nickname: { value: "", touched: false }
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     if (
@@ -84,16 +94,16 @@ export default class EmployeeRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      const { userName, nickname, password, code } = this.state;
-      const user = {
-        user_name: userName.value,
-        nickname: nickname.value,
-        password: password.value,
-        code: code.value,
-        type: "pending",
-        user_img: "https://picsum.photos/50/50"
-      };
-      console.log(user);
+      // const { userName, nickname, password, code } = this.state;
+      // const user = {
+      // user_name: userName.value,
+      // nickname: nickname.value,
+      //  password: password.value,
+      //  code: code.value,
+      //  type: "pending",
+      //  user_img: "https://picsum.photos/50/50"
+      // };
+      this.clearValues();
     }
   };
 
@@ -114,6 +124,7 @@ export default class EmployeeRegistrationForm extends Component {
             type="text"
             className="new-employee"
             placeholder="Name"
+            value={userName.value}
             onChange={e => this.updateUserName(e.target.value)}
           />
           <InputError
@@ -126,6 +137,7 @@ export default class EmployeeRegistrationForm extends Component {
             type="text"
             className="new-employee"
             placeholder="Nickname"
+            value={nickname.value}
             onChange={e => this.updateNickname(e.target.value)}
           />
           <InputError
@@ -138,6 +150,7 @@ export default class EmployeeRegistrationForm extends Component {
             type="password"
             className="new-employee"
             placeholder="Password"
+            value={password.value}
             onChange={e => this.updatePassword(e.target.value)}
           />
           <InputError
@@ -150,6 +163,7 @@ export default class EmployeeRegistrationForm extends Component {
             type="password"
             className="new-employee"
             placeholder="Confirm Password"
+            value={passwordConfirm.value}
             onChange={e => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError
@@ -163,6 +177,7 @@ export default class EmployeeRegistrationForm extends Component {
             type="number"
             className="new-employee"
             placeholder="WorkPlace Code"
+            value={code.value}
             onChange={e => this.updateCode(e.target.value)}
           />
           <InputError hasError={this.validateCode()} touched={code.touched} />
@@ -174,7 +189,9 @@ export default class EmployeeRegistrationForm extends Component {
           </Link>
           <p className="create-wp">Are you creating a new WorkPlace?</p>
           <Link to={"/create"}>
-            <button className="create-wp">Create a WorkPlace</button>
+            <button className="registration-button create-wp">
+              Create a WorkPlace
+            </button>
           </Link>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
+import "./EmployerRegistrationForm.css";
 
 export default class EmployerRegistrationForm extends Component {
   state = {
@@ -69,6 +70,16 @@ export default class EmployerRegistrationForm extends Component {
     });
   };
 
+  clearValues = () => {
+    this.setState({
+      userName: { value: "", touched: false },
+      company: { value: "", touched: false },
+      password: { value: "", touched: false },
+      passwordConfirm: { value: "", touched: false },
+      nickname: { value: "", touched: false }
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     if (
@@ -79,17 +90,17 @@ export default class EmployerRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      const { userName, nickname, password, company } = this.state;
-      const user = {
-        user_name: userName.value,
-        nickname: nickname.value,
-        password: password.value,
-        company: company.value,
-        user_type: "creator",
-        user_status: "active",
-        user_img: "https://picsum.photos/50/50"
-      };
-      console.log(user);
+      //const { userName, nickname, password, company } = this.state;
+      //const user = {
+      //  user_name: userName.value,
+      //  nickname: nickname.value,
+      //  password: password.value,
+      //  company: company.value,
+      //  user_type: "creator",
+      //  user_status: "active",
+      //  user_img: "https://picsum.photos/50/50"
+      // };
+      this.clearValues();
     }
   };
 
@@ -117,6 +128,7 @@ export default class EmployerRegistrationForm extends Component {
             type="text"
             className="new-employer"
             placeholder="Name"
+            value={userName.value}
             onChange={e => this.updateUserName(e.target.value)}
           />
           <InputError
@@ -129,6 +141,7 @@ export default class EmployerRegistrationForm extends Component {
             type="text"
             className="new-employer"
             placeholder="Nickname"
+            value={nickname.value}
             onChange={e => this.updateNickname(e.target.value)}
           />
           <InputError
@@ -142,6 +155,7 @@ export default class EmployerRegistrationForm extends Component {
             type="text"
             className="new-employer"
             placeholder="WorkPlace Name"
+            value={company.value}
             onChange={e => this.updateCompany(e.target.value)}
           />
           <InputError
@@ -155,6 +169,7 @@ export default class EmployerRegistrationForm extends Component {
             type="password"
             className="new-employer"
             placeholder="Password"
+            value={password.value}
             onChange={e => this.updatePassword(e.target.value)}
           />
           <InputError
@@ -168,6 +183,7 @@ export default class EmployerRegistrationForm extends Component {
             type="password"
             className="new-employer"
             placeholder="Confirm Password"
+            value={passwordConfirm.value}
             onChange={e => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError

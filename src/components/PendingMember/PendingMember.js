@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./PendingMember.css";
 
 const PendingMember = props => {
@@ -16,6 +17,20 @@ const PendingMember = props => {
       <button onClick={() => props.decline(member.nickname)}> Decline</button>
     </div>
   );
+};
+
+PendingMember.propTypes = {
+  member: PropTypes.shape({
+    user_id: PropTypes.number.isRequired,
+    nickname: PropTypes.string.isRequired,
+    user_name: PropTypes.string.isRequired,
+    workplace: PropTypes.string,
+    wp_id: PropTypes.number,
+    user_type: PropTypes.string,
+    user_img: PropTypes.string
+  }),
+  accept: PropTypes.func.isRequired,
+  decline: PropTypes.func.isRequired
 };
 
 export default PendingMember;

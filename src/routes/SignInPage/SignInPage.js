@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./SignInPage.css";
 import SignInForm from "../../components/SignInForm/SignInForm";
 
@@ -27,3 +28,9 @@ export default class SignInPage extends Component {
     );
   }
 }
+
+SignInPage.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

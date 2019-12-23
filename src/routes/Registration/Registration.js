@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./Registration.css";
 import EmployeeRegistrationForm from "../../components/EmployeeRegistrationForm/EmployeeRegistrationForm";
 import EmployerRegistrationForm from "../../components/EmployerRegistrationForm/EmployerRegistrationForm";
@@ -17,3 +18,9 @@ export default class Registration extends Component {
     );
   }
 }
+
+Registration.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

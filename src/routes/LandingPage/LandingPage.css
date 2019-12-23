@@ -1,5 +1,8 @@
 .landing-page {
   padding: 15px;
+  max-width: 1420px;
+  margin: auto;
+  min-height: 70vh;
 }
 
 .landing-info {

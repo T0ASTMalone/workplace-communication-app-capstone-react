@@ -19,11 +19,11 @@
   margin-bottom: 15px;
 }
 
-.employee-registration {
+.employer-registration {
   display: flex;
   justify-content: center;
 }
 
-.new-employee {
+.new-employer {
   width: 80%;
 }
