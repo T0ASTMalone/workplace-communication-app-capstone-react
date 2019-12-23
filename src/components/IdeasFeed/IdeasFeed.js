@@ -28,7 +28,7 @@ export default class IdeasFeed extends React.Component {
     let ideas = this.state.ideas;
     let { userType } = this.context;
     return (
-      <div className="ideas-feed">
+      <div id="ideas-feed" className=" feed">
         {userType === "creator" ? (
           <>
             <h4>Here are some Ideas posted by people in your WorkPlace</h4>

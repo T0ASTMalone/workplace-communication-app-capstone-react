@@ -1,5 +1,9 @@
 .workplace {
+  display: flex;
+  flex-direction: column;
   padding: 15px;
+  margin: auto;
+  max-width: 1000px;
 }
 
 .workplace-info {
@@ -31,6 +35,10 @@
   text-align: right;
 }
 
+.workplace-main {
+  max-width: 700px;
+}
+
 .tabs {
   display: flex;
 }
@@ -49,4 +57,32 @@
 .feed {
   border: 1px solid black;
   padding: 10px;
+}
+
+@media only screen and (min-width: 700px) {
+  .workplace {
+    flex-direction: row;
+  }
+
+  .workplace-header {
+    margin-right: 10px;
+    min-width: 250px;
+  }
+
+  .workplace-main {
+    width: 100%;
+  }
+
+  .new-members {
+    margin-bottom: 10px;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab {
+    border: 1px solid black;
+    width: auto;
+  }
 }

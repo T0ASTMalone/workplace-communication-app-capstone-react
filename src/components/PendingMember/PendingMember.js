@@ -4,8 +4,6 @@ import "./PendingMember.css";
 const PendingMember = props => {
   let member = props.member;
 
-  console.log(member);
-
   return (
     <div className="pending-member">
       <div className="new-user-info">

@@ -56,7 +56,6 @@ export class WorkPlaceProvider extends Component {
   };
 
   setWpId = id => {
-    console.log(id);
     this.setState({ wpId: id });
   };
 

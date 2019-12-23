@@ -78,4 +78,6 @@ WorkPlace was built with:
 
 - Pinned comments by WorkPlace creator
 - Comments for posts
--
+- See all users in your workplace
+  - Delete users from your workplace (for creators only)
+- Edit user information

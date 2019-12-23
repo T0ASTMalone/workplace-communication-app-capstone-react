@@ -3,6 +3,7 @@ import PostForm from "../PostForm/PostForm";
 import Post from "../Post/Post";
 import dummyPosts from "../../dummy-posts";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
+import "./Feed.css";
 
 export default class Feed extends Component {
   state = {
