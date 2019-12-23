@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import uuid from "uuid";
 import InputError from "./EmployeeRegistrationFormErr";
 
 export default class EmployerRegistrationForm extends Component {
@@ -8,11 +7,15 @@ export default class EmployerRegistrationForm extends Component {
     userName: { value: "", touched: false },
     company: { value: "", touched: false },
     password: { value: "", touched: false },
-    passwordConfirm: { value: "", touched: false }
+    passwordConfirm: { value: "", touched: false },
+    nickname: { value: "", touched: false }
   };
 
   updateUserName = value => {
     this.setState({ userName: { value, touched: true } });
+  };
+  updateNickname = value => {
+    this.setState({ nickname: { value, touched: true } });
   };
   updateCompany = value => {
     this.setState({ company: { value, touched: true } });
@@ -27,6 +30,12 @@ export default class EmployerRegistrationForm extends Component {
   validateUserName = () => {
     let userName = this.state.userName.value;
     if (userName.length < 1) {
+      return "A user name is required";
+    }
+  };
+  validateNickname = () => {
+    let nickname = this.state.nickname.value;
+    if (nickname.length < 1) {
       return "A user name is required";
     }
   };
@@ -70,22 +79,29 @@ export default class EmployerRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      // const { userName, password, company } = this.state;
-      // const user = {
-      //   user_id: uuid(),
-      //   user_name: userName.value,
-      //   password: password.value,
-      //   company: company.value,
-      //   user_type: "creator",
-      //   user_status: "active",
-      //   user_img: "https://picsum.photos/50/50"
-      // };
+      const { userName, nickname, password, company } = this.state;
+      const user = {
+        user_name: userName.value,
+        nickname: nickname.value,
+        password: password.value,
+        company: company.value,
+        user_type: "creator",
+        user_status: "active",
+        user_img: "https://picsum.photos/50/50"
+      };
+      console.log(user);
     }
   };
 
   // add input for workplace type (project, company, team)
   render() {
-    const { userName, company, password, passwordConfirm } = this.state;
+    const {
+      userName,
+      nickname,
+      company,
+      password,
+      passwordConfirm
+    } = this.state;
     return (
       <div className="employer-registration">
         <form
@@ -94,8 +110,8 @@ export default class EmployerRegistrationForm extends Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <legend htmlFor="">Create a WorkPlace</legend>
-          {/* user name */}
-          <label htmlFor="employer-name">User Name</label>
+
+          <label htmlFor="employer-name">Name</label>
           <input
             id="employer-name"
             type="text"
@@ -106,6 +122,18 @@ export default class EmployerRegistrationForm extends Component {
           <InputError
             hasError={this.validateUserName()}
             touched={userName.touched}
+          />
+          <label htmlFor="employer-nickname">Nickname</label>
+          <input
+            id="employer-nickname"
+            type="text"
+            className="new-employer"
+            placeholder="Nickname"
+            onChange={e => this.updateNickname(e.target.value)}
+          />
+          <InputError
+            hasError={this.validateNickname()}
+            touched={nickname.touched}
           />
           <label htmlFor="company-name">WorkPlace Name</label>
           {/* project name */}
@@ -124,7 +152,7 @@ export default class EmployerRegistrationForm extends Component {
           {/* password */}
           <input
             id="password"
-            type="text"
+            type="password"
             className="new-employer"
             placeholder="Password"
             onChange={e => this.updatePassword(e.target.value)}
@@ -137,7 +165,7 @@ export default class EmployerRegistrationForm extends Component {
           {/* confirm password */}
           <input
             id="password-confirm"
-            type="text"
+            type="password"
             className="new-employer"
             placeholder="Confirm Password"
             onChange={e => this.updatePasswordConfirm(e.target.value)}

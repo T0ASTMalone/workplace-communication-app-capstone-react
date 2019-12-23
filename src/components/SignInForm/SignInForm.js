@@ -12,7 +12,7 @@ export default class SignInForm extends Component {
     super(props);
     this.state = {
       error: null,
-      userName: {
+      nickname: {
         value: "",
         touched: false
       },
@@ -41,7 +41,7 @@ export default class SignInForm extends Component {
   }
 
   handleUpdateUserName(ev) {
-    this.setState({ userName: { value: ev, touched: true } });
+    this.setState({ nickname: { value: ev, touched: true } });
   }
 
   handleSubmitJwtAuth = ev => {
@@ -52,10 +52,10 @@ export default class SignInForm extends Component {
       // check if user is workplace creator or workplace user
       // if user make api call to user table in db
       // else make api call to creator table in db
-      let userName = this.state.userName.value;
+      let nickname = this.state.nickname.value;
       let validUser = null;
       users.forEach(user => {
-        if (user.user_alias === userName) {
+        if (user.user_alias === nickname) {
           validUser = user;
         }
       });
@@ -66,12 +66,12 @@ export default class SignInForm extends Component {
       /*this.setState({ error: null });
       const { email, password } = this.state;
       AuthApiService.postLogin({
-        userName: userName.value,
+        nickname: nickname.value,
         password: password.value
       })
         .then(res => {
           this.setState({
-            userName: { value: "", touched: false },
+            nickname: { value: "", touched: false },
             password: { value: "", touched: false }
           });
           this.props.onLoginSuccess(res.payload.user_id);
@@ -83,15 +83,15 @@ export default class SignInForm extends Component {
   };
 
   setAllToTouched = () => {
-    const { userName, password } = this.state;
+    const { nickname, password } = this.state;
     this.setState({
-      userName: { value: userName.value, touched: true },
+      nickname: { value: nickname.value, touched: true },
       password: { value: password.value, touched: true }
     });
   };
 
-  updateUserName = userName => {
-    this.setState({ userName: { value: userName, touched: true } });
+  updateUserName = nickname => {
+    this.setState({ nickname: { value: nickname, touched: true } });
   };
 
   updatePassword = password => {
@@ -99,8 +99,8 @@ export default class SignInForm extends Component {
   };
 
   validateUserName = () => {
-    const userName = this.state.userName.value;
-    if (userName < 1) {
+    const nickname = this.state.nickname.value;
+    if (nickname < 1) {
       return "A user name is required";
     }
   };
@@ -113,7 +113,7 @@ export default class SignInForm extends Component {
   };
 
   render() {
-    const { error, userName, password } = this.state;
+    const { error, nickname, password } = this.state;
     return (
       <>
         <form
@@ -128,14 +128,14 @@ export default class SignInForm extends Component {
             id="user"
             type="text"
             className="sign-in-input login"
-            placeholder="User Name"
-            value={userName.value}
+            placeholder="Nickname"
+            value={nickname.value}
             onChange={e => this.handleUpdateUserName(e.target.value)}
             //required
           />
           <SignInError
             hasError={this.validateUserName()}
-            touched={userName.touched}
+            touched={nickname.touched}
           />
           <label htmlFor="password">Password</label>
           <input

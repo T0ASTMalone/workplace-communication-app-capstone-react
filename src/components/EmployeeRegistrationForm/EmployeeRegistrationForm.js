@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./EmployeeRegistrationForm.css";
 import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
-//import uuid from "uuid";
 
 export default class EmployeeRegistrationForm extends Component {
   state = {
@@ -18,7 +17,7 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   updateNickname = value => {
-    this.setState({ Nickname: { value, touched: true } });
+    this.setState({ nickname: { value, touched: true } });
   };
   updateCode = value => {
     this.setState({ code: { value, touched: true } });
@@ -85,16 +84,16 @@ export default class EmployeeRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      // const { userName, nickname, password, code } = this.state;
-      // const user = {
-      //   user_id: uuid(),
-      //   user_name: userName.value,
-      //   nickname: nickname.value,
-      //   password: password.value,
-      //   code: code.value,
-      //   type: "pending",
-      //   user_img: "https://picsum.photos/50/50"
-      // };
+      const { userName, nickname, password, code } = this.state;
+      const user = {
+        user_name: userName.value,
+        nickname: nickname.value,
+        password: password.value,
+        code: code.value,
+        type: "pending",
+        user_img: "https://picsum.photos/50/50"
+      };
+      console.log(user);
     }
   };
 
@@ -125,7 +124,7 @@ export default class EmployeeRegistrationForm extends Component {
           <input
             id="member-nickname"
             type="text"
-            className="new-member"
+            className="new-employee"
             placeholder="Nickname"
             onChange={e => this.updateNickname(e.target.value)}
           />
@@ -133,11 +132,10 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validateNickname()}
             touched={nickname.touched}
           />
-          {/* employee password */}
           <label htmlFor="password">Password</label>
           <input
             id="password"
-            type="text"
+            type="password"
             className="new-employee"
             placeholder="Password"
             onChange={e => this.updatePassword(e.target.value)}
@@ -146,14 +144,13 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validatePassword()}
             touched={password.touched}
           />
-          {/* employee password confirm */}
           <label htmlFor="password-confirm">Confirm Password</label>
           <input
             id="password-confirm"
-            type="text"
+            type="password"
             className="new-employee"
             placeholder="Confirm Password"
-            onChange={e => this.updatePassword(e.target.value)}
+            onChange={e => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError
             hasError={this.validatePasswordConfirm()}
