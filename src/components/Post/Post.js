@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import usrImg from "../../img/usr/default-user-image.png";
 import "./Post.css";
 
 class Post extends Component {
@@ -39,7 +40,7 @@ class Post extends Component {
     return (
       <div className="post">
         <div className="post-creator">
-          <img src={post.user_img} alt="test user" className="user-img" />
+          <img src={usrImg} alt="test user" className="user-img" />
           <p className="nickname">{post.nickname}</p>
         </div>
         <h3 className="post-title">{post.title}</h3>
