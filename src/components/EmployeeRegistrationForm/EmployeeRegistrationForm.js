@@ -19,12 +19,15 @@ export default class EmployeeRegistrationForm extends Component {
   updateNickname = value => {
     this.setState({ nickname: { value, touched: true } });
   };
+
   updateCode = value => {
     this.setState({ code: { value, touched: true } });
   };
+
   updatePassword = value => {
     this.setState({ password: { value, touched: true } });
   };
+
   updatePasswordConfirm = value => {
     this.setState({ passwordConfirm: { value, touched: true } });
   };
@@ -49,12 +52,14 @@ export default class EmployeeRegistrationForm extends Component {
       return "A WorkPlace code is required";
     }
   };
+
   validatePassword = () => {
     let value = this.state.password.value;
     if (value.length < 1) {
       return "A password is required";
     }
   };
+
   validatePasswordConfirm = () => {
     let value = this.state.passwordConfirm.value;
     if (value.length < 1) {
@@ -96,12 +101,12 @@ export default class EmployeeRegistrationForm extends Component {
     } else {
       // const { userName, nickname, password, code } = this.state;
       // const user = {
-      // user_name: userName.value,
+      // username: userName.value,
       // nickname: nickname.value,
       //  password: password.value,
       //  code: code.value,
       //  type: "pending",
-      //  user_img: "https://picsum.photos/50/50"
+      //  img: "https://picsum.photos/50/50"
       // };
       this.clearValues();
     }

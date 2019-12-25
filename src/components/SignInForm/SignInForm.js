@@ -72,7 +72,7 @@ export default class SignInForm extends Component {
         this.context.setLogged(true);
         this.props.onLoginSuccess(validUser.workplace, validUser.nickname);
       } else {
-        this.setState({ error: "Invalid Nickname or Password" });
+        this.setState({ error: "Invalid Nickname, Password, or User Type" });
       }
       /*this.setState({ error: null });
       const { email, password } = this.state;
