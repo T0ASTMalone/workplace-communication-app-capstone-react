@@ -134,7 +134,7 @@ export default class SignInForm extends Component {
         >
           <h2 className="form-name">Sign In</h2>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
-          <label htmlFor="user">User Name</label>
+          <label htmlFor="user">Nickname</label>
           <input
             id="user"
             type="text"
