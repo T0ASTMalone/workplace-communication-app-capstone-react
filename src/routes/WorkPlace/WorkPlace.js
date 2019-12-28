@@ -17,11 +17,8 @@ class WorkPlace extends Component {
 
   async componentDidMount() {
     let { user, wp } = this.props.match.params;
-    //fetch user info
-
     //get user info by id
-    WpService.getUserInfo(user).then(async res => {
-      console.log(res);
+    await WpService.getUserInfo(user).then(async res => {
       const { username, type, nickname, user_id, wp_id } = res;
       //set user info in context
       await this.context.setUserType(type);
@@ -30,6 +27,7 @@ class WorkPlace extends Component {
       await this.context.setUserId(user_id);
       await this.context.setWp(wp);
       await this.context.setWpId(wp_id);
+      this.setState({ ready: true });
     });
     // if user type is wpCreator
     //  display pending users component
@@ -40,7 +38,7 @@ class WorkPlace extends Component {
   };
 
   render() {
-    const main = this.state.main;
+    const { main, ready } = this.state;
     const { userName, nickname, userType, workPlace } = this.context;
     return (
       <div className="workplace">
@@ -76,7 +74,7 @@ class WorkPlace extends Component {
           </div>
         </div>
         <div className="workplace-main">
-          {main === "feed" ? <Feed /> : <IdeasFeed />}
+          {ready ? main === "feed" ? <Feed /> : <IdeasFeed /> : <></>}
         </div>
       </div>
     );
