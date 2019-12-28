@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import InputError from "./IdeasFormError";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import "./IdeasForm.css";
+import WpService from "../../Services/wp-api-service";
 
 export default class IdeasFrom extends Component {
   state = {
@@ -16,26 +17,21 @@ export default class IdeasFrom extends Component {
     if (this.validateTitle() || this.validateIdea()) {
       this.setAllToTouched();
     } else {
-      let { nickname, wpId, userId } = this.context;
-      let title = this.state.title.value;
-      let idea = this.state.idea.value;
-      let date_added = new Date();
-      let userImg = "https://picsum.photos/50/50";
+      let { wpId, userId } = this.context;
+      const { title, idea } = this.state;
 
       const post = {
-        nickname,
         wp_id: wpId,
         user_id: userId,
-        title,
-        content: idea,
-        type: "idea",
-        date_added,
-        user_img: userImg
+        title: title.value,
+        content: idea.value,
+        type: "idea"
       };
 
-      let updatedPosts = [post, ...this.context.ideas];
-      this.context.setIdeas(updatedPosts);
-      this.clearValues();
+      WpService.post(post).then(res => {
+        console.log(res);
+        this.clearValues();
+      });
     }
   }
 
