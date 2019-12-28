@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
-import users from "../../test-users";
+//import users from "../../test-users";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 import NewMembers from "../../components/NewMembers/NewMembers";
+import WpService from "../../Services/wp-api-service";
 
 class WorkPlace extends Component {
   state = {
@@ -15,24 +16,23 @@ class WorkPlace extends Component {
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
-    let { userId, wp } = this.props.match.params;
-    //get user info where user and wp
-    let currUser = users.find(x => {
-      return x.user_id === userId;
+    let { user, wp } = this.props.match.params;
+    //fetch user info
+
+    //get user info by id
+    WpService.getUserInfo(user).then(async res => {
+      console.log(res);
+      const { username, type, nickname, user_id, wp_id } = res;
+      //set user info in context
+      await this.context.setUserType(type);
+      await this.context.setNickname(nickname);
+      await this.context.setUserName(username);
+      await this.context.setUserId(user_id);
+      await this.context.setWp(wp);
+      await this.context.setWpId(wp_id);
     });
-    const { user_name, user_type, nickname, wp_id } = currUser;
-    //set this in context
-    await this.context.setUserType(user_type);
-    await this.context.setNickname(nickname);
-    await this.context.setUserName(user_name);
-    await this.context.setUserId(userId);
-    await this.context.setWp(wp);
-    await this.context.setWpId(wp_id);
-    // set wp id in context
     // if user type is wpCreator
-    // let users = fetch pending users
-    // if users
-    // this.setState({pending})
+    //  display pending users component
   }
 
   updateWpMain = e => {
