@@ -5,9 +5,10 @@ import IdleService from "./idle-service";
 const AuthApiService = {
   postCreator(info) {
     const wp = {
-      wp_name: info.wp_name,
+      name: info.wp_name,
       type: info.wp_type
     };
+
     const user = {
       username: info.username,
       type: info.user_type,
@@ -26,19 +27,34 @@ const AuthApiService = {
       if (!res.ok) {
         return res.json().then(e => Promise.reject(e));
       }
-      const wp = res.json();
 
-      user.wp_code = wp.wp_code;
+      res.json().then(resJson => {
+        const { wp_code, wp_id } = resJson;
 
-      return fetch(`${config.API_ENDPOINT}/users`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify(user)
-      }).then(res =>
-        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-      );
+        user.code = wp_code;
+
+        return fetch(`${config.API_ENDPOINT}/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(user)
+        }).then(res =>
+          !res.ok
+            ? res.json().then(e => {
+                Promise.reject(e);
+                return fetch(`${config.API_ENDPOINT}/wp/err/${wp_id}`, {
+                  method: "DELETE",
+                  headers: {
+                    "content-type": "application/json"
+                  }
+                }).then(res =>
+                  !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+                );
+              })
+            : res.json()
+        );
+      });
     });
   },
 
