@@ -14,6 +14,18 @@ const WpService = {
     );
   },
 
+  getUsers(id, type) {
+    return fetch(`${config.API_ENDPOINT}/users/wp/${id}?type=${type}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  },
+
   getWpPosts(id, type) {
     return fetch(`${config.API_ENDPOINT}/posts/${id}/wp?type=${type}`, {
       method: "GET",
