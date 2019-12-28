@@ -5,7 +5,7 @@ import SignInError from "./SignInError";
 import users from "../../test-users";
 import { Link } from "react-router-dom";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
-//import AuthApiService from "../../Services/auth-api-services";
+import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
   constructor(props) {
@@ -57,39 +57,24 @@ export default class SignInForm extends Component {
       // check if user is workplace creator or workplace user
       // if user make api call to user table in db
       // else make api call to creator table in db
-      let { nickname, password, type } = this.state;
-      let validUser = null;
-      users.forEach(user => {
-        if (
-          user.nickname === nickname.value &&
-          user.password === password.value &&
-          user.user_type === type
-        ) {
-          validUser = user;
-        }
-      });
-      if (validUser !== null) {
-        this.context.setLogged(true);
-        this.props.onLoginSuccess(validUser.workplace, validUser.nickname);
-      } else {
-        this.setState({ error: "Invalid Nickname, Password, or User Type" });
-      }
-      /*this.setState({ error: null });
-      const { email, password } = this.state;
+
+      const { nickname, password, type } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,
-        password: password.value
+        password: password.value,
+        type
       })
         .then(res => {
           this.setState({
             nickname: { value: "", touched: false },
-            password: { value: "", touched: false }
+            password: { value: "", touched: false },
+            type: { value: "creator" }
           });
-          this.props.onLoginSuccess(res.payload.user_id);
+          this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
         .catch(res => {
           this.setState({ error: res.error });
-        });*/
+        });
     }
   };
 

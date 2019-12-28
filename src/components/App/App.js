@@ -7,6 +7,8 @@ import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
 import Footer from "../../components/Footer/Footer";
+import PublicOnlyRoute from "../utils/PublicOnlyRoute";
+import PrivateOnlyRoute from "../utils/PrivateRoute";
 //import { subscribeToTimer } from "../../api";
 
 export default class App extends React.Component {
@@ -32,7 +34,10 @@ export default class App extends React.Component {
           </p> */}
           <Switch>
             <Route exact path={"/"} component={LandingPage} />
-            <Route path={"/workplace/:wp/:user"} component={WorkPlace} />
+            <PrivateOnlyRoute
+              path={"/workplace/:wp/:user"}
+              component={WorkPlace}
+            />
             <Route path={"/sign-in"} component={SignInPage} />
             <Route path={"/create"} component={Registration} />
             <Route path={"/join"} component={Registration} />

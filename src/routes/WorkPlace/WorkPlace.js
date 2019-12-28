@@ -15,17 +15,17 @@ class WorkPlace extends Component {
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
-    let { user, wp } = this.props.match.params;
+    let { userId, wp } = this.props.match.params;
     //get user info where user and wp
     let currUser = users.find(x => {
-      return x.nickname === user;
+      return x.user_id === userId;
     });
-    const { user_name, user_type, nickname, user_id, wp_id } = currUser;
+    const { user_name, user_type, nickname, wp_id } = currUser;
     //set this in context
     await this.context.setUserType(user_type);
     await this.context.setNickname(nickname);
     await this.context.setUserName(user_name);
-    await this.context.setUserId(user_id);
+    await this.context.setUserId(userId);
     await this.context.setWp(wp);
     await this.context.setWpId(wp_id);
     // set wp id in context
