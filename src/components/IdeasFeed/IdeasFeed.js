@@ -15,7 +15,7 @@ export default class IdeasFeed extends React.Component {
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
-    const { userType, wpId, userId, nickname } = this.context;
+    const { userType, wpId, nickname } = this.context;
     if (userType === "creator") {
       await WpService.getWpPosts(wpId, "idea")
         .then(ideas =>
@@ -38,7 +38,6 @@ export default class IdeasFeed extends React.Component {
   };
 
   render() {
-    let { ideas } = this.state;
     let { userType } = this.context;
     return (
       <div id="ideas-feed" className=" feed">

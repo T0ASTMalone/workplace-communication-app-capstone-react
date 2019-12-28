@@ -6,6 +6,7 @@ import WpService from "../../Services/wp-api-service";
 
 export default class PostForm extends Component {
   state = {
+    err: null,
     title: {
       value: "",
       touched: false
@@ -23,10 +24,14 @@ export default class PostForm extends Component {
     if (this.validateTitle() || this.validateContent()) {
       this.setAllToTouched();
     } else {
+      // get user and wp id
       let { wpId, userId } = this.context;
+
+      // get post content and title
       let title = this.state.title.value;
       let content = this.state.content.value;
 
+      // build post object
       const post = {
         wp_id: wpId,
         user_id: userId,
@@ -35,10 +40,12 @@ export default class PostForm extends Component {
         type: "posts"
       };
 
-      WpService.post(post).then(res => {
-        console.log(res);
-        this.clearValues();
-      });
+      //post post lol
+      WpService.post(post)
+        .then(res => {
+          this.clearValues();
+        })
+        .catch(err => this.setState({ err }));
     }
   };
 

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import testUsers from "../../test-users";
 import PendingMember from "../PendingMember/PendingMember";
 import "./NewMembers.css";
+import WpService from "../../Services/wp-api-service";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 
 export default function NewMembers() {
   // pending users
@@ -12,6 +14,8 @@ export default function NewMembers() {
 
   // show pending users
   let [show, setShow] = useState(false);
+
+  let context = useContext(WorkPlaceContext);
 
   const handleAccept = name => {
     // PATCH user type from 'pending' to 'member'
@@ -24,16 +28,18 @@ export default function NewMembers() {
 
   const handleShowPenUsers = () => {
     //fetch pending users
-    let users = testUsers.filter(user => user.user_type === "pending");
-    // toggle pending users
-    if (users.length < 1) {
-      setErr(`There are no pending users`);
-    }
-    if (penUsers.length > 1) {
-      setPenUsers([]);
-    } else {
-      setPenUsers(users);
-    }
+    WpService.getUsers(context.wpId, "pending").then(users => {
+      if (users.length < 1) {
+        setErr(`There are no pending users`);
+      }
+      // toggle pending users
+      if (penUsers.length > 1) {
+        setPenUsers([]);
+      } else {
+        setPenUsers(users);
+      }
+    });
+
     // show pending users
     setShow(!show);
   };
