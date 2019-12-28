@@ -32,6 +32,11 @@ export default class IdeasFeed extends React.Component {
     }
   }
 
+  renderIdeas = () => {
+    const { ideas } = this.state;
+    return ideas ? ideas.map((idea, i) => <Post key={i} post={idea} />) : <></>;
+  };
+
   render() {
     let { ideas } = this.state;
     let { userType } = this.context;
@@ -40,19 +45,13 @@ export default class IdeasFeed extends React.Component {
         {userType === "creator" ? (
           <>
             <h4>Here are some Ideas posted by people in your WorkPlace</h4>
-            {ideas ? (
-              ideas.map((idea, i) => <Post key={i} post={idea} />)
-            ) : (
-              <></>
-            )}
+            {this.renderIdeas()}
           </>
         ) : (
           <>
             <IdeasForm />
             <p className="user-ideas">Here are the ideas you have posted</p>
-            {ideas.map((idea, i) => (
-              <Post key={i} post={idea} />
-            ))}
+            {this.renderIdeas()}
           </>
         )}
       </div>
