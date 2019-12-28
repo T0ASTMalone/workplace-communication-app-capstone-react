@@ -7,7 +7,7 @@ import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
 import Footer from "../../components/Footer/Footer";
-import PublicOnlyRoute from "../utils/PublicOnlyRoute";
+//import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
 //import { subscribeToTimer } from "../../api";
 
