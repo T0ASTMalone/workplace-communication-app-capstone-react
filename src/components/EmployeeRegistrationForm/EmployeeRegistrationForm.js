@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./EmployeeRegistrationForm.css";
 import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
+import AuthApiService from "../../Services/auth-api-services";
 
 export default class EmployeeRegistrationForm extends Component {
-
   state = {
     userName: { value: "", touched: false },
 
@@ -13,7 +13,7 @@ export default class EmployeeRegistrationForm extends Component {
     password: { value: "", touched: false },
 
     passwordConfirm: { value: "", touched: false },
-    
+
     nickname: { value: "", touched: false }
   };
 
@@ -38,7 +38,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validateUserName = () => {
-
     let userName = this.state.userName.value;
 
     if (userName.length < 1) {
@@ -47,7 +46,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validateNickname = () => {
-
     let nickname = this.state.nickname.value;
 
     if (nickname.length < 1) {
@@ -56,7 +54,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validateCode = () => {
-
     let code = this.state.code.value;
 
     if (code.length < 1) {
@@ -65,7 +62,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validatePassword = () => {
-
     let value = this.state.password.value;
 
     if (value.length < 1) {
@@ -74,7 +70,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validatePasswordConfirm = () => {
-
     let value = this.state.passwordConfirm.value;
 
     if (value.length < 1) {
@@ -83,7 +78,6 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   setAllToTouched = () => {
-
     const { userName, nickname, code, password, passwordConfirm } = this.state;
 
     this.setState({
@@ -117,16 +111,23 @@ export default class EmployeeRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      // const { userName, nickname, password, code } = this.state;
-      // const user = {
-      // username: userName.value,
-      // nickname: nickname.value,
-      //  password: password.value,
-      //  code: code.value,
-      //  type: "pending",
-      //  img: "https://picsum.photos/50/50"
-      // };
-      this.clearValues();
+      const { userName, nickname, password, code } = this.state;
+      const user = {
+        username: userName.value,
+        nickname: nickname.value,
+        password: password.value,
+        code: code.value,
+        type: "pending",
+        img: ""
+      };
+      AuthApiService.postMember(user)
+        .then(res => {
+          this.clearValues();
+          //this.handleRegistrationSuccess();
+        })
+        .catch(err => {
+          this.setState({ error: err.error });
+        });
     }
   };
 
