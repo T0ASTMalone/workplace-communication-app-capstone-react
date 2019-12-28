@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
 
 export default class EmployeeRegistrationForm extends Component {
+
   state = {
     userName: { value: "", touched: false },
+
     code: { value: "", touched: false },
+
     password: { value: "", touched: false },
+
     passwordConfirm: { value: "", touched: false },
+    
     nickname: { value: "", touched: false }
   };
 
@@ -33,42 +38,54 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validateUserName = () => {
+
     let userName = this.state.userName.value;
+
     if (userName.length < 1) {
       return "A user name is required";
     }
   };
 
   validateNickname = () => {
+
     let nickname = this.state.nickname.value;
+
     if (nickname.length < 1) {
       return "A nickname is required";
     }
   };
 
   validateCode = () => {
+
     let code = this.state.code.value;
+
     if (code.length < 1) {
       return "A WorkPlace code is required";
     }
   };
 
   validatePassword = () => {
+
     let value = this.state.password.value;
+
     if (value.length < 1) {
       return "A password is required";
     }
   };
 
   validatePasswordConfirm = () => {
+
     let value = this.state.passwordConfirm.value;
+
     if (value.length < 1) {
       return "Please confirm password";
     }
   };
 
   setAllToTouched = () => {
+
     const { userName, nickname, code, password, passwordConfirm } = this.state;
+
     this.setState({
       userName: { value: userName.value, touched: true },
       code: { value: code.value, touched: true },
@@ -90,6 +107,7 @@ export default class EmployeeRegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     if (
       this.validateUserName() ||
       this.validatePassword() ||
