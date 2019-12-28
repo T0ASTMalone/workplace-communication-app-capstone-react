@@ -37,7 +37,7 @@ const WpService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-
+  // post ideas of posts
   post(post) {
     return fetch(`${config.API_ENDPOINT}/posts`, {
       method: "POST",
@@ -49,6 +49,33 @@ const WpService = {
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
+  },
+
+  // post acknowledgement method
+
+  postAcknowledgement(ack) {
+    return fetch(`${config.API_ENDPOINT}/seen`, {
+      method: "POST",
+      body: JSON.stringify(ack),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  },
+
+  deleteAcknowledgement(id) {
+    return fetch(`${config.API_ENDPOINT}/seen/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => {
+      if (!res.ok) res.json().then(e => Promise.reject(e));
+    });
   }
 };
 
