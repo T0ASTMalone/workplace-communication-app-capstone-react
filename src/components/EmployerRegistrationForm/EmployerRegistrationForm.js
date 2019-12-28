@@ -92,13 +92,13 @@ export default class EmployerRegistrationForm extends Component {
     } else {
       //const { userName, nickname, password, company } = this.state;
       //const user = {
-      //  user_name: userName.value,
+      //  username: userName.value,
       //  nickname: nickname.value,
       //  password: password.value,
       //  company: company.value,
+      //  wp_type: 'company',
       //  user_type: "creator",
-      //  user_status: "active",
-      //  user_img: "https://picsum.photos/50/50"
+      //  img: "https://picsum.photos/50/50"
       // };
       this.clearValues();
     }
