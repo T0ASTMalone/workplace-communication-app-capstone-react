@@ -24,6 +24,19 @@ const WpService = {
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
+  },
+
+  post(post) {
+    return fetch(`${config.API_ENDPOINT}/posts`, {
+      method: "POST",
+      body: JSON.stringify(post),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
   }
 };
 

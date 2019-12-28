@@ -33,16 +33,18 @@ export default class IdeasFeed extends React.Component {
   }
 
   render() {
-    let ideas = this.context.ideas;
+    let { ideas } = this.state;
     let { userType } = this.context;
     return (
       <div id="ideas-feed" className=" feed">
         {userType === "creator" ? (
           <>
             <h4>Here are some Ideas posted by people in your WorkPlace</h4>
-            {ideas.map((idea, i) => (
-              <Post key={i} post={idea} />
-            ))}
+            {ideas ? (
+              ideas.map((idea, i) => <Post key={i} post={idea} />)
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <>
