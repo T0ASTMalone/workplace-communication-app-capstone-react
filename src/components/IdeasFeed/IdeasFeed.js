@@ -4,16 +4,25 @@ import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
 import "./IdeasFeed.css";
 import dummyPosts from "../../dummy-posts";
+import WpService from "../../Services/wp-api-service";
 
 export default class IdeasFeed extends React.Component {
+  state = {
+    err: null,
+    ideas: null
+  };
+
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
-    const { userType, nickname } = this.context;
+    const { userType, wpId, userId, nickname } = this.context;
     if (userType === "creator") {
-      await this.context.setIdeas(
-        dummyPosts.filter(post => post.type === "idea")
-      );
+      await WpService.getWpPosts(wpId, "idea")
+        .then(ideas =>
+          //set posts in state
+          this.setState({ ideas })
+        )
+        .catch(err => this.setState({ err }));
     } else {
       await this.context.setIdeas(
         dummyPosts.filter(

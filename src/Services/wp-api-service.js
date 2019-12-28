@@ -14,9 +14,8 @@ const WpService = {
     );
   },
 
-  getWpPosts(id) {
-    console.log(id);
-    return fetch(`${config.API_ENDPOINT}/posts/${id}/wp`, {
+  getWpPosts(id, type) {
+    return fetch(`${config.API_ENDPOINT}/posts/${id}/wp?type=${type}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

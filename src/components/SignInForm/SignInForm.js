@@ -162,7 +162,7 @@ export default class SignInForm extends Component {
             <input
               name="user-type"
               type="radio"
-              value="member"
+              value="user"
               onChange={e => this.handleUpdateType(e.target.value)}
             />
           </div>
