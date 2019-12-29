@@ -17,13 +17,17 @@ export default function NewMembers() {
 
   let context = useContext(WorkPlaceContext);
 
-  const handleAccept = name => {
+  const handleAccept = id => {
     // PATCH user type from 'pending' to 'member'
-    let user = testUsers.find(penUser => penUser.nickname === name);
-    user.user_type = "member";
-    const remainingUsers = penUsers.filter(user => user.nickname !== name);
-    // update pending users in state
-    setPenUsers(remainingUsers);
+    WpService.acceptPendingUser(id)
+      .then(res => {
+        if (res) {
+          const remainingUsers = penUsers.filter(user => user.user_id !== id);
+          // update pending users in state
+          setPenUsers(remainingUsers);
+        }
+      })
+      .catch(err => setErr(err));
   };
 
   const handleShowPenUsers = () => {
