@@ -25,7 +25,7 @@ class Post extends Component {
         // if user id is included in res then currUser has
         // not previously acknowledged the post
         if (res.user_id) {
-          // update num of seen in state to reflect currUser
+          // update num of seen in state to reflect currUser's
           // new acknowledgement
           let seen = this.state.seen;
           seen++;
@@ -35,7 +35,7 @@ class Post extends Component {
           // the user has already acknowledged the post
           // so delete the acknowledgement
           WpService.deleteAcknowledgement(res.id).then(res => {
-            // update the state to reflect currUser deleted
+            // update the state to reflect currUser's deleted
             // acknowledgement
             let seen = this.state.seen;
             seen--;
@@ -43,7 +43,7 @@ class Post extends Component {
           });
         }
       })
-      .catch(err => console.err(err));
+      .catch(err => console.error(err));
   };
 
   render() {

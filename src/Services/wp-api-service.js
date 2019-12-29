@@ -76,6 +76,19 @@ const WpService = {
     }).then(res => {
       if (!res.ok) res.json().then(e => Promise.reject(e));
     });
+  },
+
+  acceptPendingUser(id) {
+    return fetch(`${config.API_ENDPOINT}/users/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ type: "user" }),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.ok
+    );
   }
 };
 
