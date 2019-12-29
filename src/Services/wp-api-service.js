@@ -89,6 +89,18 @@ const WpService = {
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.ok
     );
+  },
+
+  declinePendingUser(id) {
+    return fetch(`${config.API_ENDPOINT}/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.ok
+    );
   }
 };
 
