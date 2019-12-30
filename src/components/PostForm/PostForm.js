@@ -43,6 +43,9 @@ export default class PostForm extends Component {
       //post post lol
       WpService.post(post)
         .then(res => {
+          let { posts } = this.context;
+          posts = [post, ...posts];
+          this.context.setPosts(posts);
           this.clearValues();
         })
         .catch(err => this.setState({ err }));

@@ -7,8 +7,7 @@ import WpService from "../../Services/wp-api-service";
 
 export default class Feed extends Component {
   state = {
-    err: null,
-    posts: null
+    err: null
   };
 
   static contextType = WorkPlaceContext;
@@ -18,14 +17,16 @@ export default class Feed extends Component {
     const { wpId } = this.context;
     await WpService.getWpPosts(wpId, "posts")
       .then(posts =>
-        //set posts in state
-        this.setState({ posts })
+        //set posts in context
+        {
+          this.context.setPosts(posts);
+        }
       )
       .catch(err => this.setState({ err }));
   }
 
   render() {
-    let posts = this.state.posts;
+    let posts = this.context.posts;
     return (
       <div className="feed">
         <div className="post">

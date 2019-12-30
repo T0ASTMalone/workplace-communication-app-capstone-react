@@ -7,8 +7,11 @@ import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
 import Footer from "../../components/Footer/Footer";
+import IdleService from "../../Services/idle-service";
 //import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
+import AuthApiService from "../../Services/auth-api-services";
+import TokenService from "../../Services/token-service";
 //import { subscribeToTimer } from "../../api";
 
 export default class App extends React.Component {
@@ -18,7 +21,36 @@ export default class App extends React.Component {
   //}
 
   state = {
+    hasError: false,
     timestamp: "no timestamp yet"
+  };
+
+  static getDerivedStateFromError(error) {
+    console.error(error);
+    return { hasError: true };
+  }
+
+  componentDidMount() {
+    IdleService.setIdleCallBack(this.logoutFromIdle);
+    if (TokenService.hasAuthToken()) {
+      IdleService.registerIdleTimerResets();
+
+      TokenService.queueCallBackBeforeExpiry(() =>
+        AuthApiService.postRefreshToken()
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.forceUpdate();
   };
 
   render() {

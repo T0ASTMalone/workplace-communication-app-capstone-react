@@ -7,8 +7,7 @@ import WpService from "../../Services/wp-api-service";
 
 export default class IdeasFeed extends React.Component {
   state = {
-    err: null,
-    ideas: null
+    err: null
   };
 
   static contextType = WorkPlaceContext;
@@ -19,21 +18,21 @@ export default class IdeasFeed extends React.Component {
       await WpService.getWpPosts(wpId, "idea")
         .then(ideas =>
           //set posts in state
-          this.setState({ ideas })
+          this.context.setIdeas(ideas)
         )
         .catch(err => this.setState({ err }));
     } else {
       await WpService.getUserPosts(userId, "idea")
         .then(ideas =>
           //set posts in state
-          this.setState({ ideas })
+          this.context.setIdeas(ideas)
         )
         .catch(err => this.setState({ err }));
     }
   }
 
   renderIdeas = () => {
-    const { ideas } = this.state;
+    const { ideas } = this.context;
     return ideas ? ideas.map((idea, i) => <Post key={i} post={idea} />) : <></>;
   };
 
