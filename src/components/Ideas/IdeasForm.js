@@ -29,7 +29,9 @@ export default class IdeasFrom extends Component {
       };
 
       WpService.post(post).then(res => {
-        console.log(res);
+        let { ideas } = this.context;
+        ideas = [post, ...ideas];
+        this.context.setIdeas(ideas);
         this.clearValues();
       });
     }
