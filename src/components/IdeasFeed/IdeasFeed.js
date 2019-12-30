@@ -3,7 +3,6 @@ import IdeasForm from "../Ideas/IdeasForm";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
 import "./IdeasFeed.css";
-import dummyPosts from "../../dummy-posts";
 import WpService from "../../Services/wp-api-service";
 
 export default class IdeasFeed extends React.Component {
@@ -15,7 +14,7 @@ export default class IdeasFeed extends React.Component {
   static contextType = WorkPlaceContext;
 
   async componentDidMount() {
-    const { userType, wpId, nickname } = this.context;
+    const { userType, wpId, userId } = this.context;
     if (userType === "creator") {
       await WpService.getWpPosts(wpId, "idea")
         .then(ideas =>
@@ -24,11 +23,12 @@ export default class IdeasFeed extends React.Component {
         )
         .catch(err => this.setState({ err }));
     } else {
-      await this.context.setIdeas(
-        dummyPosts.filter(
-          post => post.type === "idea" && post.nickname === nickname
+      await WpService.getUserPosts(userId, "idea")
+        .then(ideas =>
+          //set posts in state
+          this.setState({ ideas })
         )
-      );
+        .catch(err => this.setState({ err }));
     }
   }
 
