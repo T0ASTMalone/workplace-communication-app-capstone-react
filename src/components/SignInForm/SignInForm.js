@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./SignInForm.css";
 import SignInError from "./SignInError";
-//import users from "../../test-users";
 import { Link } from "react-router-dom";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import AuthApiService from "../../Services/auth-api-services";
