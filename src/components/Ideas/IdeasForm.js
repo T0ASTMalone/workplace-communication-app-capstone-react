@@ -16,25 +16,6 @@ export default class IdeasFrom extends Component {
     if (this.validateTitle() || this.validateIdea()) {
       this.setAllToTouched();
     } else {
-      let { nickname, wpId, userId } = this.context;
-      let title = this.state.title.value;
-      let idea = this.state.idea.value;
-      let date_added = new Date();
-      let userImg = "https://picsum.photos/50/50";
-
-      const post = {
-        nickname,
-        wp_id: wpId,
-        user_id: userId,
-        title,
-        content: idea,
-        type: "idea",
-        date_added,
-        user_img: userImg
-      };
-
-      let updatedPosts = [post, ...this.context.ideas];
-      this.context.setIdeas(updatedPosts);
       this.clearValues();
     }
   }

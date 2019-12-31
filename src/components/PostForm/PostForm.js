@@ -22,26 +22,6 @@ export default class PostForm extends Component {
     if (this.validateTitle() || this.validateContent()) {
       this.setAllToTouched();
     } else {
-      let { nickname, wpId, userId } = this.context;
-      let title = this.state.title.value;
-      let content = this.state.content.value;
-      let date_added = new Date();
-      let userImg = "https://picsum.photos/50/50";
-
-      const post = {
-        nickname,
-        wp_id: wpId,
-        user_id: userId,
-        title,
-        content,
-        type: "post",
-        date_added,
-        user_img: userImg
-      };
-
-      let updatedPosts = [post, ...this.context.posts];
-      this.context.setPosts(updatedPosts);
-
       this.setState({
         title: {
           value: "",

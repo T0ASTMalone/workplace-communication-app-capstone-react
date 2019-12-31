@@ -15,11 +15,7 @@ export default function NewMembers() {
 
   const handleAccept = name => {
     // PATCH user type from 'pending' to 'member'
-    let user = testUsers.find(penUser => penUser.nickname === name);
-    user.user_type = "member";
-    const remainingUsers = penUsers.filter(user => user.nickname !== name);
     // update pending users in state
-    setPenUsers(remainingUsers);
   };
 
   const handleShowPenUsers = () => {
@@ -40,11 +36,7 @@ export default function NewMembers() {
 
   const handleDecline = name => {
     // delete users
-    let user = testUsers.find(penUser => penUser.nickname === name);
-    user.user_type = "declined";
-    let users = penUsers.filter(user => user.nickname !== name);
     // update users
-    setPenUsers(users);
   };
 
   return (

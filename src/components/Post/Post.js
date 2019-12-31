@@ -5,29 +5,10 @@ import "./Post.css";
 
 class Post extends Component {
   state = {
-    numSeen: 40,
-    seen: false
+    numSeen: 40
   };
 
-  handleSeen = () => {
-    let numSeen = this.state.numSeen + 1;
-    this.setState({ numSeen, seen: true });
-  };
-
-  handleUnsee = () => {
-    let numSeen = this.state.numSeen - 1;
-    this.setState({ numSeen, seen: false });
-  };
-
-  toggleSeen = () => {
-    //temp function for adding to seen count
-    let numSeen = this.state.seen;
-    if (numSeen) {
-      this.handleUnsee();
-    } else {
-      this.handleSeen();
-    }
-  };
+  toggleSeen = () => {};
 
   componentDidMount = () => {
     // fetch post info numSeen, content, username, title,

@@ -5,7 +5,6 @@ import SignInError from "./SignInError";
 import users from "../../test-users";
 import { Link } from "react-router-dom";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
-//import AuthApiService from "../../Services/auth-api-services";
 
 export default class SignInForm extends Component {
   constructor(props) {
@@ -51,45 +50,25 @@ export default class SignInForm extends Component {
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    if (this.validatePassword() /*|| this.validateUserName()*/) {
+    if (this.validatePassword()) {
       this.setAllToTouched();
     } else {
-      // check if user is workplace creator or workplace user
-      // if user make api call to user table in db
-      // else make api call to creator table in db
       let { nickname, password, type } = this.state;
       let validUser = null;
-      users.forEach(user => {
-        if (
-          user.nickname === nickname.value &&
-          user.password === password.value &&
-          user.user_type === type
-        ) {
-          validUser = user;
+      if (nickname && password) {
+        if (type === "creator") {
+          validUser = users[0];
+        } else if (type === "member") {
+          validUser = users[1];
         }
-      });
+      }
+
       if (validUser !== null) {
         this.context.setLogged(true);
         this.props.onLoginSuccess(validUser.workplace, validUser.nickname);
       } else {
         this.setState({ error: "Invalid Nickname, Password, or User Type" });
       }
-      /*this.setState({ error: null });
-      const { email, password } = this.state;
-      AuthApiService.postLogin({
-        nickname: nickname.value,
-        password: password.value
-      })
-        .then(res => {
-          this.setState({
-            nickname: { value: "", touched: false },
-            password: { value: "", touched: false }
-          });
-          this.props.onLoginSuccess(res.payload.user_id);
-        })
-        .catch(res => {
-          this.setState({ error: res.error });
-        });*/
     }
   };
 
