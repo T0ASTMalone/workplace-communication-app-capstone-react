@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./PendingMember.css";
+import usrImg from "../../img/usr/default-user-image.png";
 
 const PendingMember = props => {
   let member = props.member;
@@ -8,7 +9,7 @@ const PendingMember = props => {
   return (
     <div className="pending-member">
       <div className="new-user-info">
-        <img className="user-img" src={member.user_img} alt="profile" />
+        <img className="user-img" src={usrImg} alt="profile" />
 
         <p>{member.user_name}</p>
       </div>
