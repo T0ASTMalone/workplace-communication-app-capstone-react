@@ -39,6 +39,7 @@ class WorkPlace extends Component {
 
   render() {
     const { main, ready } = this.state;
+    console.log(main);
     const { userName, nickname, userType, workPlace } = this.context;
     return (
       <div className="workplace">
@@ -74,7 +75,19 @@ class WorkPlace extends Component {
           </div>
         </div>
         <div className="workplace-main">
-          {ready ? main === "feed" ? <Feed /> : <IdeasFeed /> : <></>}
+          {/* 
+            remove conditional rendering of components
+            instead conditionally apply class hidden 
+            to prevent components from unmounting
+          */}
+          {ready ? (
+            <>
+              <Feed className={main === "feed" ? "" : "hidden"} />
+              <IdeasFeed className={main === "feed" ? "hidden" : ""} />
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     );

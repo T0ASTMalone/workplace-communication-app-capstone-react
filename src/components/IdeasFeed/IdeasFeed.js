@@ -7,29 +7,67 @@ import WpService from "../../Services/wp-api-service";
 
 export default class IdeasFeed extends React.Component {
   state = {
-    err: null
+    err: null,
+    offset: 1,
+    disableLoadMore: false
   };
 
   static contextType = WorkPlaceContext;
 
+  fetchPosts = (wpId, offset) => {
+    return WpService.getWpPosts(wpId, "idea", offset)
+      .then(posts =>
+        //set posts in context
+        {
+          if (posts.length < 10) {
+            this.setState({ disableLoadMore: true });
+          }
+          let currPosts = this.context.ideas;
+          let allPosts = [...currPosts, ...posts];
+          this.context.setIdeas(allPosts);
+        }
+      )
+      .catch(err => this.setState({ err }));
+  };
+
+  fetchUserPosts = (wpId, offset) => {
+    return WpService.getWpPosts(wpId, "idea", offset)
+      .then(posts =>
+        //set posts in context
+        {
+          if (posts.length < 10) {
+            this.setState({ disableLoadMore: true });
+          }
+          let currPosts = this.context.ideas;
+          let allPosts = [...currPosts, ...posts];
+          this.context.setIdeas(allPosts);
+        }
+      )
+      .catch(err => this.setState({ err }));
+  };
+
   async componentDidMount() {
-    const { userType, wpId, userId } = this.context;
+    //fetch posts for workplace
+    const { wpId, userType } = this.context;
+    const { offset } = this.state;
     if (userType === "creator") {
-      await WpService.getWpPosts(wpId, "idea")
-        .then(ideas =>
-          //set posts in state
-          this.context.setIdeas(ideas)
-        )
-        .catch(err => this.setState({ err }));
+      await this.fetchPosts(wpId, offset);
     } else {
-      await WpService.getUserPosts(userId, "idea")
-        .then(ideas =>
-          //set posts in state
-          this.context.setIdeas(ideas)
-        )
-        .catch(err => this.setState({ err }));
+      await this.fetchUserPosts(wpId, offset);
     }
   }
+
+  loadMorePosts = () => {
+    let offset = this.state.offset;
+    const { wpId, userType } = this.context;
+    offset++;
+    if (userType === "creator") {
+      this.fetchPosts(wpId, offset);
+    } else {
+      this.fetchUserPosts(wpId, offset);
+    }
+    this.setState({ offset });
+  };
 
   renderIdeas = () => {
     const { ideas } = this.context;
@@ -38,8 +76,10 @@ export default class IdeasFeed extends React.Component {
 
   render() {
     let { userType } = this.context;
+    let show = this.props.className;
+    const { disableLoadMore } = this.state;
     return (
-      <div id="ideas-feed" className=" feed">
+      <div id="ideas-feed" className={`${show} feed`}>
         {userType === "creator" ? (
           <>
             <h4>Here are some Ideas posted by people in your WorkPlace</h4>
@@ -51,6 +91,13 @@ export default class IdeasFeed extends React.Component {
             <p className="user-ideas">Here are the ideas you have posted</p>
             {this.renderIdeas()}
           </>
+        )}
+        {disableLoadMore ? (
+          <></>
+        ) : (
+          <button className="load-more" onClick={this.loadMorePosts}>
+            load more
+          </button>
         )}
       </div>
     );
