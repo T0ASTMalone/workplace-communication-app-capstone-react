@@ -23,7 +23,7 @@ export default class Feed extends Component {
     let posts = this.context.posts;
     return (
       <div className="feed">
-        <div className="post">
+        <div className="">
           <PostForm />
         </div>
         {posts ? (

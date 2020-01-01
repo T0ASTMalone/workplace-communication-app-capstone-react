@@ -1,16 +1,28 @@
+
+
 .post-form,
 .idea-form {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 5px;
 }
 
 .post-form-item,
 .idea-item {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .form-button-container {
+  
   display: flex;
   justify-content: space-between;
+}
+
+.form-desc {
+ margin: 0;
+}
+
+.post-form-container {
+  border: 1px solid black;
+  margin: 5px 0 10px 0;
 }

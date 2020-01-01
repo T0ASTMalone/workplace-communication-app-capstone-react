@@ -1,7 +1,7 @@
 .workplace {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 5px;
   margin: auto;
   max-width: 1000px;
 }
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 10px;
 }
 
@@ -48,16 +48,11 @@
   height: 40px;
   display: flex;
   border: 1px solid black;
-  border-bottom: none;
   justify-content: center;
   align-items: center;
   background-color: white;
 }
 
-.feed {
-  border: 1px solid black;
-  padding: 10px;
-}
 
 @media only screen and (min-width: 700px) {
   .workplace {

@@ -2,3 +2,11 @@
   max-height: 75vh;
   overflow: scroll;
 }
+
+.feed::-webkit-scrollbar  {
+  display: none;
+}
+
+.post:last-child {
+  margin-bottom: 0;
+}

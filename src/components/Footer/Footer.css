@@ -1,11 +1,16 @@
 .footer {
   border-top: 1px solid black;
-  height: 150px;
+  height: 125px;
   max-width: 1420px;
   align-self: center;
-  margin: 20px auto;
+  margin: 0px auto;
   display: flex;
   justify-content: space-around;
+  font-size: 14px;
+}
+
+footer h3 {
+  font-size: 14px;
 }
 
 li {

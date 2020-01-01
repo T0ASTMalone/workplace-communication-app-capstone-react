@@ -4,6 +4,10 @@
   margin-bottom: 10px;
 }
 
+.pending-members {
+  margin-bottom: 5px;
+}
+
 .user-info {
   display: flex;
   margin-bottom: 10px;

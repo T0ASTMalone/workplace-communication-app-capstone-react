@@ -2,9 +2,13 @@ html {
   height: 100vh;
 }
 
+html::-webkit-scrollbar{ 
+  display: none;
+}
+
 * {
   box-sizing: border-box;
-  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: 'Niramit', sans-serif;
 }
 
 body {
