@@ -82,13 +82,13 @@ export default class PostForm extends Component {
   render() {
     const { title, content } = this.state;
     return (
-      <div className="post-form-container">
-        <form action="" className="post-form" onSubmit={this.handleAddPost}>
+      <div className="post-form-container card">
+        <form action="" className="post-form"  onSubmit={this.handleAddPost}>
+          <legend htmlFor="post-form">
           <p className="form-desc">
             Have Something everyone in your WorkPlace should know?
           </p>
-          <legend htmlFor="post-form">
-            <h3>Make a new post</h3>
+            
           </legend>
           <label htmlFor="title" className="post-form-item">
             Title

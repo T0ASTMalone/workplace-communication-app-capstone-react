@@ -1,20 +1,30 @@
+/* 
+  user colapsable cards for pending users 
+  and for pending users component
+
+*/
+
 .pending-members {
-  padding: 10px;
-  border: 1px solid black;
   max-height: 65px;
-  overflow-y: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: 1s ease-in-out;
 }
 
 .pen-title {
-  margin-top: 16px;
-  margin-bottom: 28px;
-  display: block;
   cursor: pointer;
   border: none;
-  background-color: white;
   font-size: 16px;
+  text-align: left;
+  padding: 18px 10px;
+  width: 100%;
 
+}
+
+.pending-users{
+  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .show-members {
@@ -22,8 +32,3 @@
   max-height: 300px;
 }
 
-@media only screen and (min-width: 700px) {
-  .pen-title {
-    margin: 10px auto 20px auto;
-  }
-}

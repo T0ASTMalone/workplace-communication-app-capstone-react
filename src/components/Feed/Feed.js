@@ -22,7 +22,7 @@ export default class Feed extends Component {
   render() {
     let posts = this.context.posts;
     return (
-      <div className="feed">
+      <div className="feed" >
         <div className="">
           <PostForm />
         </div>
@@ -32,6 +32,7 @@ export default class Feed extends Component {
           <>Looks like no one has posted anything yet</>
         )}
       </div>
+      
     );
   }
 }

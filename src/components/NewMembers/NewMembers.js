@@ -50,7 +50,8 @@ export default function NewMembers() {
       <button className="pen-title" onClick={handleShowPenUsers}>
         Pending Members
       </button>
-      <p className="err">{err}</p>
+      {err? <p className="err">{err}</p>: <></> }
+      <div className='pending-users'>
       {penUsers.length >= 1 ? (
         penUsers.map((user, i) => (
           <PendingMember
@@ -63,6 +64,8 @@ export default function NewMembers() {
       ) : (
         <></>
       )}
+      </div>
+
     </div>
   );
 }

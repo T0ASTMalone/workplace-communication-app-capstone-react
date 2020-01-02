@@ -7,7 +7,7 @@ const PendingMember = props => {
   let member = props.member;
 
   return (
-    <div className="pending-member">
+    <div className="pending-member card">
       <div className="new-user-info">
         <img className="user-img" src={usrImg} alt="profile" />
 

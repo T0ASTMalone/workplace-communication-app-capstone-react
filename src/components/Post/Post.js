@@ -19,7 +19,7 @@ class Post extends Component {
     const post = this.props.post;
     const numSeen = this.state.numSeen;
     return (
-      <div className="post">
+      <div className="post card">
         <div className="post-creator">
           <img src={usrImg} alt="test user" className="user-img" />
           <p className="nickname">{post.nickname}</p>

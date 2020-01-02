@@ -1,13 +1,8 @@
 .pending-member {
-  border: 1px solid black;
   padding: 5px;
-  margin-bottom: 10px;
+  margin: 10px 0px 10px 12.5px;
+  background-color: white;
 }
-
-.pending-members {
-  margin-bottom: 5px;
-}
-
 .user-info {
   display: flex;
   margin-bottom: 10px;

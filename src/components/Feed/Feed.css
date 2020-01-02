@@ -1,12 +1,16 @@
 .feed {
   max-height: 75vh;
   overflow: scroll;
+  box-shadow: 0 -20px -10px 0  rgb(191, 197, 191);
 }
 
 .feed::-webkit-scrollbar  {
   display: none;
 }
 
-.post:last-child {
-  margin-bottom: 0;
+
+@media only screen and (min-width: 700px) {
+  .feed {
+    padding-left: 20px;
+  }
 }

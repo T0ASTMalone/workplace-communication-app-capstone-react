@@ -44,8 +44,8 @@ class WorkPlace extends Component {
     const { userName, nickname, userType, workPlace } = this.context;
     return (
       <div className="workplace">
-        <div className="workplace-header">
-          <div className="workplace-info">
+        <div className="workplace-header rgba-primary-4">
+          <div className="workplace-info card">
             <div className="user-info">
               <h2 className="user nickname">{nickname}</h2>
               <h3 className="user user-name">{userName}</h3>
@@ -58,16 +58,16 @@ class WorkPlace extends Component {
             {userType === "creator" ? <NewMembers /> : <></>}
           </div>
 
-          <div className="tabs">
+          <div className="tabs ">
             <button
-              className="tab"
+              className="tab rgba-primary-4 "
               value="feed"
               onClick={e => this.updateWpMain(e.target.value)}
             >
               Feed
             </button>
             <button
-              className="tab"
+              className="tab rgba-primary-4 "
               value="ideas"
               onClick={e => this.updateWpMain(e.target.value)}
             >

@@ -11,6 +11,7 @@
 
 footer h3 {
   font-size: 14px;
+  margin: 5px
 }
 
 li {
@@ -24,12 +25,12 @@ ul {
 
 @media only screen and (min-width: 775px) {
   .footer {
-    margin: 10px 20px;
+    margin: 0px 20px;
   }
 }
 
 @media only screen and (min-width: 1420px) {
   .footer {
-    margin: 10px auto;
+    margin: 0px auto;
   }
 }
