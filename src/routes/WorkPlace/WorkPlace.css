@@ -23,6 +23,10 @@
   flex-direction: column;
 }
 
+.wp-info {
+  text-align: right;
+}
+
 .user-type,
 .user-name {
   font-size: 14px;
@@ -66,6 +70,7 @@
 
 .wpCode {
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 @media only screen and (min-width: 700px) {
@@ -78,7 +83,7 @@
 
   .workplace-header {
     margin-right: 10px;
-    min-width: 250px;
+    min-width: 300px;
   }
 
   .workplace-main {
