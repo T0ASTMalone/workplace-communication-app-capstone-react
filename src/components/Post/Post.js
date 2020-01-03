@@ -53,16 +53,20 @@ class Post extends Component {
       <div className="post">
         <div className="post-creator">
           <img src={usrImg} alt="test user" className="user-img" />
-          <p className="nickname">{post.nickname}</p>
+          <div className="usernames">
+            <p className="nickname">{post.nickname}</p>
+            <p className="username">{post.username}</p>
+          </div>
         </div>
         <h3 className="post-title">{post.title}</h3>
         <p className="post-content">{post.content}</p>
-        <div className="post-button-container">
+        <div className="post-info">
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
             {/* replace "seen" text with icon of an eye or some other icon 
               that is an acknowledgement of having seen the post */}
             Seen {seen}
           </button>
+          <p className="date">{new Date(post.date_added).toUTCString()}</p>
         </div>
       </div>
     );
