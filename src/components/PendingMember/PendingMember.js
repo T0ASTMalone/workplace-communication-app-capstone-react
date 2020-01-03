@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./PendingMember.css";
-import usrImg from "../../img/usr/default-user-image.png";
 
 import profile from "../../img/usr/default-user-image.png";
 
 const PendingMember = props => {
   let member = props.member;
-
-  console.log(member.user_img);
 
   return (
     <div className="pending-member">
