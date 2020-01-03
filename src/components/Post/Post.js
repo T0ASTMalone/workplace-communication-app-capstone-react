@@ -2,22 +2,53 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import usrImg from "../../img/usr/default-user-image.png";
 import "./Post.css";
+import WpService from "../../Services/wp-api-service";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 
 class Post extends Component {
   state = {
-    numSeen: 40
+    seen: this.props.post.total
   };
 
-  toggleSeen = () => {};
+  static contextType = WorkPlaceContext;
 
-  componentDidMount = () => {
-    // fetch post info numSeen, content, username, title,
-    // populate state with post info
+  toggleSeen = () => {
+    const user_id = this.context.userId;
+    const { post_id } = this.props.post;
+    const ack = {
+      user_id,
+      post_id
+    };
+    // post acknowledgement
+    WpService.postAcknowledgement(ack)
+      .then(res => {
+        // if user id is included in res then currUser has
+        // not previously acknowledged the post
+        if (res.user_id) {
+          // update num of seen in state to reflect currUser's
+          // new acknowledgement
+          let seen = this.state.seen;
+          seen++;
+          this.setState({ seen });
+        } else {
+          // if only the acknowledgement id is returned
+          // the user has already acknowledged the post
+          // so delete the acknowledgement
+          WpService.deleteAcknowledgement(res.id).then(res => {
+            // update the state to reflect currUser's deleted
+            // acknowledgement
+            let seen = this.state.seen;
+            seen--;
+            this.setState({ seen });
+          });
+        }
+      })
+      .catch(err => console.error(err));
   };
 
   render() {
     const post = this.props.post;
-    const numSeen = this.state.numSeen;
+    const seen = this.state.seen;
     return (
       <div className="post">
         <div className="post-creator">
@@ -30,7 +61,7 @@ class Post extends Component {
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
             {/* replace "seen" text with icon of an eye or some other icon 
               that is an acknowledgement of having seen the post */}
-            Seen {numSeen}
+            Seen {seen}
           </button>
         </div>
       </div>

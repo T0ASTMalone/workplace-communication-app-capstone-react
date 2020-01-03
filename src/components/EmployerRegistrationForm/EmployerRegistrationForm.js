@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
 import "./EmployerRegistrationForm.css";
+import AuthApiService from "../../Services/auth-api-services";
 
 export default class EmployerRegistrationForm extends Component {
   state = {
@@ -90,17 +91,22 @@ export default class EmployerRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
-      //const { userName, nickname, password, company } = this.state;
-      //const user = {
-      //  user_name: userName.value,
-      //  nickname: nickname.value,
-      //  password: password.value,
-      //  company: company.value,
-      //  user_type: "creator",
-      //  user_status: "active",
-      //  user_img: "https://picsum.photos/50/50"
-      // };
-      this.clearValues();
+      const { userName, nickname, password, company } = this.state;
+      const user = {
+        username: userName.value,
+        nickname: nickname.value,
+        password: password.value,
+        wp_name: company.value,
+        wp_type: "company",
+        user_type: "creator",
+        img: ""
+      };
+
+      AuthApiService.postCreator(user)
+        .then(res => this.clearValues())
+        .catch(err => {
+          this.setState({ error: err.error });
+        });
     }
   };
 

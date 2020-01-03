@@ -1,4 +1,5 @@
 .feed {
   max-height: 75vh;
+  min-height: 75vh;
   overflow: scroll;
 }
