@@ -19,7 +19,8 @@ class WorkPlace extends Component {
     let { user, wp } = this.props.match.params;
     //get user info by id
     await WpService.getUserInfo(user).then(async res => {
-      const { username, type, nickname, user_id, wp_id } = res;
+      const { username, type, nickname, user_id, wp_id, code } = res;
+      console.log(code);
       //set user info in context
       await this.context.setUserType(type);
       await this.context.setNickname(nickname);
@@ -27,6 +28,7 @@ class WorkPlace extends Component {
       await this.context.setUserId(user_id);
       await this.context.setWp(wp);
       await this.context.setWpId(wp_id);
+      await this.context.setCode(code);
       this.setState({ ready: true });
     });
     // if user type is wpCreator
@@ -39,7 +41,7 @@ class WorkPlace extends Component {
 
   render() {
     const { main, ready } = this.state;
-    const { userName, nickname, userType, workPlace } = this.context;
+    const { userName, nickname, userType, workPlace, wpCode } = this.context;
     return (
       <div className="workplace">
         <div className="workplace-header">
@@ -49,7 +51,10 @@ class WorkPlace extends Component {
               <h3 className="user user-name">{userName}</h3>
               <h3 className="user user-type">{userType}</h3>
             </div>
-            <h2 className="workplace-name">{workPlace}</h2>
+            <div className="wp-info">
+              <h2 className="workplace-name">{workPlace}</h2>
+              <p className="wpCode">wp code: {wpCode}</p>
+            </div>
           </div>
 
           <div className="new-members">
