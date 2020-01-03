@@ -30,7 +30,7 @@ export default class IdeasFrom extends Component {
 
       WpService.post(post).then(res => {
         let { ideas } = this.context;
-        ideas = [post, ...ideas];
+        ideas = [res, ...ideas];
         this.context.setIdeas(ideas);
         this.clearValues();
       });
