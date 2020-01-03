@@ -20,7 +20,6 @@ class WorkPlace extends Component {
     //get user info by id
     await WpService.getUserInfo(user).then(async res => {
       const { username, type, nickname, user_id, wp_id, code } = res;
-      console.log(code);
       //set user info in context
       await this.context.setUserType(type);
       await this.context.setNickname(nickname);

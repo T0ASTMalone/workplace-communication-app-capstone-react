@@ -16,7 +16,8 @@ const WorkPlaceContext = React.createContext({
   setWp: () => {},
   setPosts: () => {},
   setIdeas: () => {},
-  setWpId: () => {}
+  setWpId: () => {},
+  clearContext: () => {}
 });
 
 export default WorkPlaceContext;
@@ -73,6 +74,21 @@ export class WorkPlaceProvider extends Component {
     this.setState({ wpCode });
   };
 
+  clearContext = () => {
+    this.setState({
+      userType: null,
+      wpCode: null,
+      userName: "",
+      nickname: "",
+      userId: "",
+      workPlace: "",
+      wpId: "",
+      posts: [],
+      ideas: [],
+      error: null
+    });
+  };
+
   render() {
     const value = {
       userType: this.state.userType,
@@ -93,7 +109,8 @@ export class WorkPlaceProvider extends Component {
       setWpId: this.setWpId,
       setUserId: this.setUserId,
       setNickname: this.setNickname,
-      setIdeas: this.setIdeas
+      setIdeas: this.setIdeas,
+      clearContext: this.clearContext
     };
 
     return (
