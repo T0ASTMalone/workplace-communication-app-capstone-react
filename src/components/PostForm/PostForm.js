@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import "./PostForm.css";
 import PostFormError from "./PostFormError";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
+import WpService from "../../Services/wp-api-service";
 
 export default class PostForm extends Component {
   state = {
+    err: null,
     title: {
       value: "",
       touched: false
@@ -22,17 +24,45 @@ export default class PostForm extends Component {
     if (this.validateTitle() || this.validateContent()) {
       this.setAllToTouched();
     } else {
-      this.setState({
-        title: {
-          value: "",
-          touched: false
-        },
-        content: {
-          value: "",
-          touched: false
-        }
-      });
+      // get user and wp id
+      let { wpId, userId } = this.context;
+
+      // get post content and title
+      let title = this.state.title.value;
+      let content = this.state.content.value;
+
+      // build post object
+      const post = {
+        wp_id: wpId,
+        user_id: userId,
+        title,
+        content,
+        type: "posts"
+      };
+
+      //post post lol
+      WpService.post(post)
+        .then(res => {
+          let { posts } = this.context;
+          posts = [post, ...posts];
+          this.context.setPosts(posts);
+          this.clearValues();
+        })
+        .catch(err => this.setState({ err }));
     }
+  };
+
+  clearValues = () => {
+    this.setState({
+      title: {
+        value: "",
+        touched: false
+      },
+      content: {
+        value: "",
+        touched: false
+      }
+    });
   };
 
   setAllToTouched = () => {

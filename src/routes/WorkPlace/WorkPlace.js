@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import "./WorkPlace.css";
 import Feed from "../../components/Feed/Feed";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
-import users from "../../test-users";
+//import users from "../../test-users";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 import NewMembers from "../../components/NewMembers/NewMembers";
+import WpService from "../../Services/wp-api-service";
 
 class WorkPlace extends Component {
   state = {
@@ -16,23 +17,20 @@ class WorkPlace extends Component {
 
   async componentDidMount() {
     let { user, wp } = this.props.match.params;
-    //get user info where user and wp
-    let currUser = users.find(x => {
-      return x.nickname === user;
+    //get user info by id
+    await WpService.getUserInfo(user).then(async res => {
+      const { username, type, nickname, user_id, wp_id } = res;
+      //set user info in context
+      await this.context.setUserType(type);
+      await this.context.setNickname(nickname);
+      await this.context.setUserName(username);
+      await this.context.setUserId(user_id);
+      await this.context.setWp(wp);
+      await this.context.setWpId(wp_id);
+      this.setState({ ready: true });
     });
-    const { user_name, user_type, nickname, user_id, wp_id } = currUser;
-    //set this in context
-    await this.context.setUserType(user_type);
-    await this.context.setNickname(nickname);
-    await this.context.setUserName(user_name);
-    await this.context.setUserId(user_id);
-    await this.context.setWp(wp);
-    await this.context.setWpId(wp_id);
-    // set wp id in context
     // if user type is wpCreator
-    // let users = fetch pending users
-    // if users
-    // this.setState({pending})
+    //  display pending users component
   }
 
   updateWpMain = e => {
@@ -40,7 +38,8 @@ class WorkPlace extends Component {
   };
 
   render() {
-    const main = this.state.main;
+    const { main, ready } = this.state;
+    console.log(main);
     const { userName, nickname, userType, workPlace } = this.context;
     return (
       <div className="workplace">
@@ -76,7 +75,19 @@ class WorkPlace extends Component {
           </div>
         </div>
         <div className="workplace-main">
-          {main === "feed" ? <Feed /> : <IdeasFeed />}
+          {/* 
+            remove conditional rendering of components
+            instead conditionally apply class hidden 
+            to prevent components from unmounting
+          */}
+          {ready ? (
+            <>
+              <Feed className={main === "feed" ? "" : "hidden"} />
+              <IdeasFeed className={main === "feed" ? "hidden" : ""} />
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     );

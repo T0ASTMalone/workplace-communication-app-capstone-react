@@ -1,42 +1,65 @@
-import React, { useState } from "react";
-import testUsers from "../../test-users";
+import React, { useState, useContext } from "react";
 import PendingMember from "../PendingMember/PendingMember";
 import "./NewMembers.css";
+import WpService from "../../Services/wp-api-service";
+import WorkPlaceContext from "../../context/WorkPlaceContext";
 
 export default function NewMembers() {
   // pending users
   let [penUsers, setPenUsers] = useState([]);
 
   // err
-  let [err, setErr] = useState("");
+  let [err, setErr] = useState(null);
 
   // show pending users
   let [show, setShow] = useState(false);
 
-  const handleAccept = name => {
+  let context = useContext(WorkPlaceContext);
+
+  const handleAccept = id => {
     // PATCH user type from 'pending' to 'member'
-    // update pending users in state
+    WpService.acceptPendingUser(id)
+      .then(res => {
+        if (res) {
+          const remainingUsers = penUsers.filter(user => user.user_id !== id);
+          // update pending users in state
+          setPenUsers(remainingUsers);
+        }
+      })
+      .catch(err => setErr(err));
+    setShow(!show);
   };
 
   const handleShowPenUsers = () => {
     //fetch pending users
-    let users = testUsers.filter(user => user.user_type === "pending");
-    // toggle pending users
-    if (users.length < 1) {
-      setErr(`There are no pending users`);
-    }
-    if (penUsers.length > 1) {
-      setPenUsers([]);
-    } else {
-      setPenUsers(users);
-    }
+    WpService.getUsers(context.wpId, "pending").then(users => {
+      // toggle pending users
+      if (penUsers < 1) {
+        setErr("There are no pending users");
+      }
+      if (penUsers.length > 1) {
+        setPenUsers([]);
+      } else {
+        setPenUsers(users);
+      }
+    });
     // show pending users
     setShow(!show);
   };
 
-  const handleDecline = name => {
-    // delete users
-    // update users
+  const handleDecline = id => {
+    // PATCH user type from 'pending' to 'member'
+    WpService.declinePendingUser(id)
+      .then(res => {
+        if (res) {
+          const remainingUsers = penUsers.filter(user => user.user_id !== id);
+          // update pending users in state
+          setPenUsers(remainingUsers);
+        }
+      })
+      .catch(err => setErr(err));
+
+    setShow(!show);
   };
 
   return (
@@ -50,7 +73,6 @@ export default function NewMembers() {
       <button className="pen-title" onClick={handleShowPenUsers}>
         Pending Members
       </button>
-      <p className="err">{err}</p>
       {penUsers.length >= 1 ? (
         penUsers.map((user, i) => (
           <PendingMember
@@ -61,7 +83,9 @@ export default function NewMembers() {
           />
         ))
       ) : (
-        <></>
+        <>
+          <p className="error">{err}</p>
+        </>
       )}
     </div>
   );
