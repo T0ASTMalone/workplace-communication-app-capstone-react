@@ -39,7 +39,6 @@ class WorkPlace extends Component {
 
   render() {
     const { main, ready } = this.state;
-    console.log(main);
     const { userName, nickname, userType, workPlace } = this.context;
     return (
       <div className="workplace">
