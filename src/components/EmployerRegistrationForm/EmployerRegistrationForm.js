@@ -103,11 +103,19 @@ export default class EmployerRegistrationForm extends Component {
       };
 
       AuthApiService.postCreator(user)
-        .then(res => this.clearValues())
+        .then(res => {
+          this.clearValues();
+          this.props.registered();
+        })
         .catch(err => {
-          this.setState({ error: err.error });
+          this.setState({ error: err.error.message });
         });
     }
+  };
+
+  handleRegistrationSuccess = () => {
+    const { history } = this.props;
+    history.push("/sign-in");
   };
 
   // add input for workplace type (project, company, team)
@@ -117,7 +125,8 @@ export default class EmployerRegistrationForm extends Component {
       nickname,
       company,
       password,
-      passwordConfirm
+      passwordConfirm,
+      error
     } = this.state;
     return (
       <div className="employer-registration">
@@ -127,7 +136,7 @@ export default class EmployerRegistrationForm extends Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <legend htmlFor="">Create a WorkPlace</legend>
-
+          {error ? <p className="err">{error}</p> : <></>}
           <label htmlFor="employer-name">Name</label>
           <input
             id="employer-name"

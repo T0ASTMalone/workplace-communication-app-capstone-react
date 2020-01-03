@@ -123,16 +123,23 @@ export default class EmployeeRegistrationForm extends Component {
       AuthApiService.postMember(user)
         .then(res => {
           this.clearValues();
-          //this.handleRegistrationSuccess();
+          this.props.registered();
         })
         .catch(err => {
-          this.setState({ error: err.error });
+          this.setState({ error: err.error.message });
         });
     }
   };
 
   render() {
-    const { userName, password, passwordConfirm, code, nickname } = this.state;
+    const {
+      userName,
+      password,
+      passwordConfirm,
+      code,
+      nickname,
+      error
+    } = this.state;
     return (
       <div className="employee-registration">
         <form
@@ -141,6 +148,7 @@ export default class EmployeeRegistrationForm extends Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <legend htmlFor="employee-registration-form">Join a WorkPlace</legend>
+          {error ? <p className="err">{error}</p> : <></>}
           {/* employee name */}
           <label htmlFor="employee-name">User Name</label>
           <input

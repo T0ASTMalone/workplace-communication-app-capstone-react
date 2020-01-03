@@ -64,6 +64,7 @@ export default class SignInForm extends Component {
         type
       })
         .then(res => {
+          this.context.clearContext();
           this.setState({
             nickname: { value: "", touched: false },
             password: { value: "", touched: false },
@@ -72,7 +73,7 @@ export default class SignInForm extends Component {
           this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
         .catch(res => {
-          this.setState({ error: res.error });
+          this.setState({ error: res.error.message });
         });
     }
   };
