@@ -64,6 +64,8 @@ export default class SignInForm extends Component {
         type
       })
         .then(res => {
+          console.log(res);
+          this.context.setCode(res.wp_code);
           this.setState({
             nickname: { value: "", touched: false },
             password: { value: "", touched: false },

@@ -33,6 +33,7 @@
 
 .workplace-name {
   text-align: right;
+  margin-bottom: 0px;
 }
 
 .workplace-main {
@@ -61,6 +62,10 @@
 
 .hidden {
   display: none;
+}
+
+.wpCode {
+  margin: 0;
 }
 
 @media only screen and (min-width: 700px) {
