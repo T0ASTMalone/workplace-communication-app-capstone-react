@@ -54,7 +54,11 @@ export default class Feed extends Component {
         <div className="post">
           <PostForm />
         </div>
-        {posts ? posts.map((post, i) => <Post key={i} post={post} />) : <></>}
+        {posts.length > 0 ? (
+          posts.map((post, i) => <Post key={i} post={post} />)
+        ) : (
+          <p>Looks Like there are not posts here</p>
+        )}
         {disableLoadMore ? (
           <></>
         ) : (
