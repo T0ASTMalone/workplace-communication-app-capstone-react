@@ -28,7 +28,7 @@ const AuthApiService = {
         return res.json().then(e => Promise.reject(e));
       }
 
-      res.json().then(resJson => {
+      return res.json().then(resJson => {
         const { wp_code, wp_id } = resJson;
 
         user.code = wp_code;
@@ -39,20 +39,20 @@ const AuthApiService = {
             "content-type": "application/json"
           },
           body: JSON.stringify(user)
-        }).then(res =>
-          !res.ok
-            ? res.json().then(e => {
-                Promise.reject(e);
-                return fetch(`${config.API_ENDPOINT}/wp/err/${wp_id}`, {
+        }).then(res2 =>
+          !res2.ok
+            ? res2.json().then(e => {
+                fetch(`${config.API_ENDPOINT}/wp/err/${wp_id}`, {
                   method: "DELETE",
                   headers: {
                     "content-type": "application/json"
                   }
-                }).then(res =>
-                  !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-                );
+                }).then(res3 => {
+                  if (!res3.ok) res3.json().then(e => Promise.reject(e));
+                });
+                return Promise.reject(e);
               })
-            : res.json()
+            : res2.json()
         );
       });
     });

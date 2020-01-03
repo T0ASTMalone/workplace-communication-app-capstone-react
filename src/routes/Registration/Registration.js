@@ -5,14 +5,23 @@ import EmployeeRegistrationForm from "../../components/EmployeeRegistrationForm/
 import EmployerRegistrationForm from "../../components/EmployerRegistrationForm/EmployerRegistrationForm";
 
 export default class Registration extends Component {
+  handleRegistrationSuccess = () => {
+    const { history } = this.props;
+    history.push("/sign-in");
+  };
+
   render() {
     let location = this.props.location.pathname;
     return (
       <div className="registration">
         {location === "/join" ? (
-          <EmployeeRegistrationForm />
+          <EmployeeRegistrationForm
+            registered={this.handleRegistrationSuccess}
+          />
         ) : (
-          <EmployerRegistrationForm />
+          <EmployerRegistrationForm
+            registered={this.handleRegistrationSuccess}
+          />
         )}
       </div>
     );
