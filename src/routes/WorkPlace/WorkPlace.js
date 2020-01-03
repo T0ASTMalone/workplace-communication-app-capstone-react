@@ -48,11 +48,17 @@ class WorkPlace extends Component {
             <div className="user-info">
               <h2 className="user nickname">{nickname}</h2>
               <h3 className="user user-name">{userName}</h3>
-              <h3 className="user user-type">{userType}</h3>
+              <h3 className="user user-type">
+                {userType === "user" ? "member" : userType}
+              </h3>
             </div>
             <div className="wp-info">
               <h2 className="workplace-name">{workPlace}</h2>
-              <p className="wpCode">wp code: {wpCode}</p>
+              {userType === "creator" ? (
+                <p className="wpCode">wp code: {wpCode}</p>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 

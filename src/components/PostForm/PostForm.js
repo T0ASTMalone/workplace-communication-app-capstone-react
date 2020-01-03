@@ -43,7 +43,6 @@ export default class PostForm extends Component {
       //post post lol
       WpService.post(post)
         .then(res => {
-          console.log(res);
           let { posts } = this.context;
           posts = [res, ...posts];
           this.context.setPosts(posts);

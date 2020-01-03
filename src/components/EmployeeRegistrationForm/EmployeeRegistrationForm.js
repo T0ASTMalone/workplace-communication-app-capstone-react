@@ -198,7 +198,7 @@ export default class EmployeeRegistrationForm extends Component {
           <label htmlFor="workplace-code">WorkPlace Code</label>
           <input
             id="workplace-code"
-            type="number"
+            type="text"
             className="new-employee"
             placeholder="WorkPlace Code"
             value={code.value}
