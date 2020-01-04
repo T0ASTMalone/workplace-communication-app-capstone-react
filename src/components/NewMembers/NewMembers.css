@@ -10,17 +10,43 @@
   display: flex;
   flex-direction: column;
   transition: 1s ease-in-out;
-  background-color: #01d1ee;
+  background-color: #96e9f5;
 }
 
-.pen-title {
-  background-color: #01d1ee;
+.pending-members::-webkit-scrollbar,
+.pending-users::-webkit-scrollbar {
+  display: none;
+}
+
+.pen-title::after {
+  content: url("https://img.icons8.com/metro/26/000000/chevron-up.png");
+  height: 25px;
+  width: 25px;
+  transform: rotate(180deg);
+  transition: 0.5s ease-in-out;
+}
+
+.open::after {
+  content: url("https://img.icons8.com/metro/26/000000/chevron-up.png");
+  height: 25px;
+  width: 25px;
+  /* transform: rotate(180deg); */
+  transition: 0.5s ease-in-out;
+}
+
+.pen-title,
+.open {
+  background-color: rgba(86, 222, 241, 1);
   cursor: pointer;
   border: none;
   font-size: 16px;
   text-align: left;
   padding: 18px 10px;
   width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
 }
 
 .pending-users {
@@ -30,5 +56,5 @@
 
 .show-members {
   overflow-y: scroll;
-  max-height: 300px;
+  max-height: 400px;
 }

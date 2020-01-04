@@ -47,25 +47,27 @@ export default function NewMembers() {
           : "pending-members"
       }
     >
-      <button className="pen-title" onClick={handleShowPenUsers}>
+      <button
+        className={show && (penUsers.length >= 1 || err) ? "open" : "pen-title"}
+        onClick={handleShowPenUsers}
+      >
         Pending Members
       </button>
-      {err? <p className="err">{err}</p>: <></> }
-      <div className='pending-users'>
-      {penUsers.length >= 1 ? (
-        penUsers.map((user, i) => (
-          <PendingMember
-            key={i}
-            member={user}
-            accept={handleAccept}
-            decline={handleDecline}
-          />
-        ))
-      ) : (
-        <></>
-      )}
+      {err ? <p className="err">{err}</p> : <></>}
+      <div className="pending-users">
+        {penUsers.length >= 1 ? (
+          penUsers.map((user, i) => (
+            <PendingMember
+              key={i}
+              member={user}
+              accept={handleAccept}
+              decline={handleDecline}
+            />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
-
     </div>
   );
 }

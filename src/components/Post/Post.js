@@ -30,7 +30,7 @@ class Post extends Component {
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
             {/* replace "seen" text with icon of an eye or some other icon 
               that is an acknowledgement of having seen the post */}
-            Seen {numSeen}
+            {numSeen}
           </button>
         </div>
       </div>
