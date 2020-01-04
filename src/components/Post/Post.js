@@ -64,7 +64,7 @@ class Post extends Component {
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
             {/* replace "seen" text with icon of an eye or some other icon 
               that is an acknowledgement of having seen the post */}
-            {numSeen}
+            {seen}
           </button>
           <p className="date">{new Date(post.date_added).toUTCString()}</p>
         </div>

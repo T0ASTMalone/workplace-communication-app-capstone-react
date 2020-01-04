@@ -5,12 +5,13 @@
 */
 
 .pending-members {
-  max-height: 65px;
+  border-top: 1px solid #96e9f5;
+  max-height: 60px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  transition: 1s ease-in-out;
-  background-color: #96e9f5;
+  transition: 0.5s ease-in-out;
+  background-color: rgba(1, 209, 238, 1);
 }
 
 .pending-members::-webkit-scrollbar,
@@ -49,9 +50,15 @@
   padding-right: 20px;
 }
 
+.pen-title {
+  border-bottom: 1px solid #96e9f5;
+}
+
 .pending-users {
+  height: 250px;
   overflow-y: hidden;
   overflow-y: scroll;
+  transition: 0.5s ease-in-out;
 }
 
 .show-members {

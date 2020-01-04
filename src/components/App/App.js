@@ -6,7 +6,7 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
-import Footer from "../../components/Footer/Footer";
+// import Footer from "../../components/Footer/Footer";
 import IdleService from "../../Services/idle-service";
 //import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
@@ -56,7 +56,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="header-container">
           <Route path={"/"} component={Header} />
         </header>
 
@@ -75,13 +75,13 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
 }
 
-// Posible fonts 
+// Posible fonts
 
 // Righteous
 
@@ -92,7 +92,6 @@ export default class App extends React.Component {
 
 // <link href="https://fonts.googleapis.com/css?family=Niramit&display=swap" rel="stylesheet">
 // font-family: 'Niramit', sans-serif;
-
 
 // possible color palletes
 
@@ -108,8 +107,5 @@ export default class App extends React.Component {
 // [#35618f, #67a5ca, #56ebd3]
 // darker blue, lighter blue, teal
 
-
 // [#827db8, #1e438d, #f996f1]
 // pink purple, dark blue, pink
-
-

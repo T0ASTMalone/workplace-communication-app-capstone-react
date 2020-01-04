@@ -83,10 +83,12 @@ export default class IdeasFeed extends React.Component {
     let show = this.props.className;
     const { disableLoadMore } = this.state;
     return (
-      <div id="ideas-feed" className={`${show} feed`}>
+      <div id="ideas-feed" className={`${show}`}>
         {userType === "creator" ? (
           <>
-            <h4>Here are some Ideas posted by people in your WorkPlace</h4>
+            <h4 className="ideas-desc">
+              Here are some Ideas posted by people in your WorkPlace
+            </h4>
             {this.renderIdeas()}
           </>
         ) : (

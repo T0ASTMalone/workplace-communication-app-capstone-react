@@ -1,26 +1,36 @@
 .post {
   padding: 10px;
   margin-bottom: 10px;
+  min-width: 200px;
+  max-width: 650px;
+  background-color: white;
 }
 
 .post-title {
   border-bottom: 1px solid black;
-  padding: 10px 0 10px 0;
+  padding: 10px 0;
+  margin: 0;
 }
 
 .acknowledge {
   border: none;
   width: 100px;
   height: 40px;
+  width: 100px;
+  margin-right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #f8f9fc;
+  padding: 0 10px;
+  background-color: rgba(242, 253, 254, 1);
 }
 
 .acknowledge::before {
   content: url("https://img.icons8.com/material-sharp/24/000000/checkmark.png");
+}
+
+.acknowledge:hover {
+  background-color: rgba(255, 202, 88, 1);
 }
 
 .post-creator {
@@ -54,4 +64,11 @@
 
 .post-info {
   display: flex;
+}
+
+@media only screen and (min-width: 700px) {
+  .post {
+    margin: 20px;
+    flex-grow: 2;
+  }
 }

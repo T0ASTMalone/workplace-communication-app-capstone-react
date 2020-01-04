@@ -50,24 +50,25 @@ export default class Feed extends Component {
     let { disableLoadMore } = this.state;
     let show = this.props.className;
     return (
-      <div className={`${show} feed`}>
-        <div className="post">
-          <PostForm />
+      <>
+        <div className={`${show}`}>
+          <div className="">
+            <PostForm />
+          </div>
+          {posts.length > 0 ? (
+            posts.map((post, i) => <Post key={i} post={post} />)
+          ) : (
+            <p>Looks Like there are not posts here</p>
+          )}
+          {disableLoadMore ? (
+            <></>
+          ) : (
+            <button className="load-more" onClick={this.loadMorePosts}>
+              load more
+            </button>
+          )}
         </div>
-        {posts.length > 0 ? (
-          posts.map((post, i) => <Post key={i} post={post} />)
-        ) : (
-          <p>Looks Like there are not posts here</p>
-        )}
-        {disableLoadMore ? (
-          <></>
-        ) : (
-          <button className="load-more" onClick={this.loadMorePosts}>
-            load more
-          </button>
-        )}
-      </div>
-      
+      </>
     );
   }
 }

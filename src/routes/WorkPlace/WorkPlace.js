@@ -7,6 +7,7 @@ import WorkPlaceContext from "../../context/WorkPlaceContext";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 import NewMembers from "../../components/NewMembers/NewMembers";
 import WpService from "../../Services/wp-api-service";
+import Footer from "../../components/Footer/Footer";
 
 class WorkPlace extends Component {
   state = {
@@ -89,8 +90,9 @@ class WorkPlace extends Component {
           */}
           {ready ? (
             <>
-              <Feed className={main === "feed" ? "" : "hidden"} />
-              <IdeasFeed className={main === "feed" ? "hidden" : ""} />
+              <Feed className={main === "feed" ? "feed" : "hidden"} />
+              <IdeasFeed className={main === "feed" ? "hidden" : "feed"} />
+              <Footer />
             </>
           ) : (
             <></>

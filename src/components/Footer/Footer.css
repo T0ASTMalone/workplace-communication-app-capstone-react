@@ -1,5 +1,4 @@
 .footer {
-  border-top: 1px solid black;
   height: 125px;
   max-width: 1420px;
   align-self: center;
@@ -11,7 +10,7 @@
 
 footer h3 {
   font-size: 14px;
-  margin: 5px
+  margin: 5px;
 }
 
 li {
