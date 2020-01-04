@@ -1,17 +1,35 @@
 .feed {
-  max-height: 75vh;
-  min-height: 75vh;
+  max-height: 80vh;
+  min-height: 80vh;
   overflow: scroll;
-  box-shadow: 0 -20px -10px 0  rgb(191, 197, 191);
+  box-shadow: 0 -20px -10px 0 rgb(191, 197, 191);
 }
 
-.feed::-webkit-scrollbar  {
+.feed::-webkit-scrollbar {
   display: none;
 }
 
+.load-more {
+  background-color: rgba(150, 233, 245, 1);
+  margin: 15px;
+}
+
+.load-more:hover {
+  background-color: rgba(86, 222, 241, 1);
+}
 
 @media only screen and (min-width: 700px) {
   .feed {
-    padding-left: 20px;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 699px) {
+  .post,
+  .post-form-container {
+    margin: 20px auto;
+    max-width: 650px;
   }
 }

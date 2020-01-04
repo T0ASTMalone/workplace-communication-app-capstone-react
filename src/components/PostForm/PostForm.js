@@ -113,12 +113,11 @@ export default class PostForm extends Component {
     const { title, content } = this.state;
     return (
       <div className="post-form-container card">
-        <form action="" className="post-form"  onSubmit={this.handleAddPost}>
+        <form action="" className="post-form" onSubmit={this.handleAddPost}>
           <legend htmlFor="post-form">
-          <p className="form-desc">
-            Have Something everyone in your WorkPlace should know?
-          </p>
-            
+            <p className="form-desc">
+              Have Something everyone in your WorkPlace should know?
+            </p>
           </legend>
           <label htmlFor="title" className="post-form-item">
             Title
@@ -151,10 +150,14 @@ export default class PostForm extends Component {
             touched={content.touched}
           />
           <div className="form-button-container">
-            <button type="button" onClick={() => this.cancelPost()}>
+            <button
+              type="button"
+              className="decline"
+              onClick={() => this.cancelPost()}
+            >
               Cancel
             </button>
-            <button type="submit" className="creat-post">
+            <button type="submit" className="accept">
               Post
             </button>
           </div>
