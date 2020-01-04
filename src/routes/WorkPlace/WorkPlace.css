@@ -1,7 +1,6 @@
 .workplace {
   display: flex;
   flex-direction: column;
-  padding: 15px;
   margin: auto;
   max-width: 1000px;
 }
@@ -9,13 +8,12 @@
 .workplace-info {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
 }
 
 .nickname {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .user-info {
@@ -44,24 +42,46 @@
   max-width: 700px;
 }
 
+.workplace-header {
+  background-color: rgba(86, 222, 241, 1);
+}
+
+/* Start tabs styles */
+
 .tabs {
   display: flex;
+  border-radius: 6px;
+  background-color: rgba(86, 222, 241, 1);
 }
 
 .tab {
   width: 50%;
   height: 40px;
   display: flex;
-  border: 1px solid black;
-  border-bottom: none;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgba(86, 222, 241, 1);
+  border: none;
 }
 
-.feed {
-  border: 1px solid black;
-  padding: 10px;
+#ideas::before {
+  content: url("https://img.icons8.com/material-outlined/24/000000/idea.png");
+  width: 25px;
+  height: 25px;
+  left: 0;
+}
+
+#feed::before {
+  content: url("https://img.icons8.com/material-outlined/24/000000/activity-feed.png");
+  width: 25px;
+  height: 25px;
+  left: 0;
+}
+
+.tab:hover,
+.tab:hover::after,
+.pen-title:hover {
+  background-color: rgba(150, 233, 245, 1);
 }
 
 .hidden {
@@ -82,8 +102,7 @@
   }
 
   .workplace-header {
-    margin-right: 10px;
-    min-width: 300px;
+    min-width: 250px;
   }
 
   .workplace-main {
@@ -99,7 +118,6 @@
   }
 
   .tab {
-    border: 1px solid black;
     width: auto;
   }
 }

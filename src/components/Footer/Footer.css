@@ -1,11 +1,17 @@
 .footer {
   border-top: 1px solid black;
-  height: 150px;
+  height: 125px;
   max-width: 1420px;
   align-self: center;
-  margin: 20px auto;
+  margin: 0px auto;
   display: flex;
   justify-content: space-around;
+  font-size: 14px;
+}
+
+footer h3 {
+  font-size: 14px;
+  margin: 5px
 }
 
 li {
@@ -19,12 +25,12 @@ ul {
 
 @media only screen and (min-width: 775px) {
   .footer {
-    margin: 10px 20px;
+    margin: 0px 20px;
   }
 }
 
 @media only screen and (min-width: 1420px) {
   .footer {
-    margin: 10px auto;
+    margin: 0px auto;
   }
 }

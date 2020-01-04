@@ -67,7 +67,10 @@ export default function NewMembers() {
           : "pending-members"
       }
     >
-      <button className="pen-title" onClick={handleShowPenUsers}>
+      <button
+        className={show && (penUsers.length >= 1 || err) ? "open" : "pen-title"}
+        onClick={handleShowPenUsers}
+      >
         Pending Members
       </button>
       {penUsers.length >= 1 ? (
