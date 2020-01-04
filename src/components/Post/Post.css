@@ -1,5 +1,4 @@
 .post {
-  border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -10,11 +9,18 @@
 }
 
 .acknowledge {
-  background-color: white;
-  border: 1px solid black;
+  border: none;
   width: 100px;
   height: 40px;
-  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f9fc;
+}
+
+.acknowledge::before {
+  content: url("https://img.icons8.com/material-sharp/24/000000/checkmark.png");
 }
 
 .post-creator {

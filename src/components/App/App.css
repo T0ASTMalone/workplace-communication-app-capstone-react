@@ -1,3 +1,7 @@
 .err-msg {
   color: red;
 }
+
+.App {
+  height: 100vh;
+}
