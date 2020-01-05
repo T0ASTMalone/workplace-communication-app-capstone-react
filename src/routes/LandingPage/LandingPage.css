@@ -6,11 +6,49 @@
 }
 
 .landing-info {
-  border: 1px solid black;
   padding: 10px;
   margin-top: 10px;
+  background-color: white;
 }
 
 .to-wp {
   color: blue;
+}
+
+.landing-icon {
+  width: 200px;
+}
+
+.undraw-img {
+  width: 300px;
+  margin: 20px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.landing-section {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 795px) {
+  .landing-section {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+
+  #register-section{
+    flex-direction: row-reverse;
+  }
+
+  .content {
+    max-width: 700px;
+  }
+
+  .undraw-img {
+    width: 500px;
+  }
 }
