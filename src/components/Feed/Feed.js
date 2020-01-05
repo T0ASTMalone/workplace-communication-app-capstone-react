@@ -9,22 +9,24 @@ export default class Feed extends Component {
   state = {
     err: null,
     offset: 1,
-    disableLoadMore: false
+    disableLoadMore: null
   };
 
   static contextType = WorkPlaceContext;
 
   fetchPosts = (wpId, offset) => {
     return WpService.getWpPosts(wpId, "posts", offset)
-      .then(posts =>
+      .then(async posts =>
         //set posts in context
         {
-          if (posts.length < 10) {
-            this.setState({ disablenLoadMore: true });
-          }
+
           let currPosts = this.context.posts;
           let allPosts = [...currPosts, ...posts];
-          this.context.setPosts(allPosts);
+          await this.context.setPosts(allPosts);
+          if (posts.length < 10) {
+
+            this.setState({ disablenLoadMore: true });
+          }
         }
       )
       .catch(err => this.setState({ err }));
@@ -38,6 +40,7 @@ export default class Feed extends Component {
   }
 
   loadMorePosts = () => {
+
     let offset = this.state.offset;
     const { wpId } = this.context;
     offset++;

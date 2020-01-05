@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./SignInPage.css";
 import SignInForm from "../../components/SignInForm/SignInForm";
-import Footer from "../../components/Footer/Footer";
 
 export default class SignInPage extends Component {
   static defaultProps = {
