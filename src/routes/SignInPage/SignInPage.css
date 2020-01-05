@@ -18,6 +18,14 @@
   flex-grow: 1;
 }
 
+.footer-container{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 1200px) {
   .sign-in-page {
     flex-direction: row;
