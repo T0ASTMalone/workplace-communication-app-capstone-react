@@ -60,7 +60,7 @@ export default class App extends React.Component {
           <Route path={"/"} component={Header} />
         </header>
 
-        <main>
+        <main className='app-main'>
           {/* <p className="timestamp">
             This is the timer value: {this.state.timestamp}
           </p> */}
@@ -75,12 +75,9 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
-        <div className="footer-container">
         <Route path={"/sign-in"} component={Footer} />
         <Route path={"/join"} component={Footer} />
         <Route path={"/create"} component={Footer} />
-        </div>
-        {/* <Footer /> */}
       </div>
     );
   }

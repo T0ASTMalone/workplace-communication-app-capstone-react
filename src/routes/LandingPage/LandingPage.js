@@ -1,20 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./LandingPage.css";
 import invite from "../../img/svg/invite.svg";
 import wp from "../../img/svg/workplace.svg";
 import post from "../../img/svg/post.svg";
 import idea from "../../img/svg/idea.svg";
-import Footer from '../../components/Footer/Footer'
-
+import Footer from "../../components/Footer/Footer";
 
 function useOnScreen(options) {
   const ref = React.useRef();
-  
+
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
-
     const refCurCopy = ref.current;
     const observer = new IntersectionObserver(([entry]) => {
       setVisible(entry.isIntersecting);
@@ -31,47 +29,64 @@ function useOnScreen(options) {
     };
   }, [ref, options]);
 
-
   return [ref, visible];
 }
 
 export default function LandingPage() {
+  const [toJoin, setToJoin] = React.useState(false);
+  const [toCreate, setToCreate] = React.useState(false);
+  const [toSignIn, setToSignIn] = React.useState(false);
   let [ref, visible] = useOnScreen({ threshold: 0.2 });
   let [ref2, visible2] = useOnScreen({ threshold: 0.2 });
   let [ref3, visible3] = useOnScreen({ threshold: 0.2 });
   let [ref4, visible4] = useOnScreen({ threshold: 0.2 });
 
+  const goToJoin = () => {
+    setToJoin(true);
+  };
+
+  const goToCreate = () => {
+    setToCreate(true);
+  };
+
+  const goToSignIn = () => {
+    setToSignIn(true);
+  };
 
   return (
     <div className="landing-page">
+      {toJoin ? <Redirect to="/join" /> : null}
+      {toCreate ? <Redirect to="/create" /> : null}
+      {toSignIn ? <Redirect to="/sign-in" /> : null}
+
       <section ref={ref} className="landing-section">
         <div className={visible ? "active fade-inL" : " active undrawL"}>
           <img className="undraw-img" src={wp} alt="workplace" />
         </div>
-        <div className="content card landing-info">
-          <h1>WorkPlace</h1>
+        <div id="landing-info" className="content card landing-info">
+          <h1 className='App-name'> WorkPlace</h1>
 
           <div id="existing-user" className="">
             <h3>Already part of WorkPlace</h3>
-            <Link to={"/sign-in"} className="to-wp">
-              <span className="to-wp">Sign In</span>
-            </Link>
+
+            <button id='sign-in-button' onClick={goToSignIn} className="to-wp">
+              Sign In
+            </button>
           </div>
 
           <div className="register">
             <h3> New to WorkPlace?</h3>
-            <Link to={"/join"}>
-              <span className="to-wp">Join a workplace</span>
-            </Link>
+            
+            <button className='accept' onClick={goToJoin}>Join a Wp</button>
             <p>or</p>
-            <Link to={"/create"} className="to-wp">
-              <span className="to-wp">Register</span>
-            </Link>
+            <button onClick={goToCreate} className="accept">
+            Create a Wp
+          </button>
           </div>
         </div>
       </section>
 
-      <section ref={ref2}  id="register-section" className="landing-section">
+      <section ref={ref2} id="register-section" className="landing-section">
         <div className={visible2 ? "active slide-inR" : "active undrawR"}>
           <img src={invite} alt="register" className="undraw-img" />
         </div>
@@ -84,17 +99,11 @@ export default function LandingPage() {
             When a WorkPlace is created a WorkPlace code will be generated.
           </p>
 
-          {/* link to employer registration page */}
-          <Link to={"/create"} className="to-wp">
-            <span className="to-wp">Register</span>
-          </Link>
+
+
           <p className="landing-text">
             As a new member you can use a WorkPlace code to join a WorkPlace.
           </p>
-          {/* link to employee registration page */}
-          <Link to={"/join"}>
-            <span className="to-wp">Join a workplace</span>
-          </Link>
         </div>
       </section>
 
@@ -143,7 +152,7 @@ export default function LandingPage() {
           </p>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

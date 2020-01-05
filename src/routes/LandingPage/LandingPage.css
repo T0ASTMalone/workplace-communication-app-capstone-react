@@ -1,19 +1,26 @@
 .landing-page {
   padding: 15px;
-  max-width: 1420px;
-  margin: auto;
+  max-width: 1600px;
+  margin:  auto;
   min-height: 70vh;
+}
+
+
+.App-name{
+  font-size: 45px;
 }
 
 .landing-info {
   padding: 10px;
   margin-top: 10px;
-  background-color: white;
+  box-shadow: none;
+  text-align: center;
 }
 
-.to-wp {
-  color: blue;
-}
+/* #landing-info{
+  background-color: rgba(242, 253, 254, 1);
+  box-shadow: -9px -9px 16px 0 rgb(255,255, 255, 1 ), 9px 9px 16px 0 rgb(0, 0, 0 , 0.3);
+} */
 
 .landing-icon {
   width: 200px;
@@ -24,6 +31,7 @@
 }
 
 .active{
+  text-align: center;
   transition: 1.25s ease-in-out;
 }
 
@@ -55,6 +63,8 @@
 }
 
 @media only screen and (min-width: 795px) {
+
+  
   .undrawR{
     transform: translateX(500px);
   }
@@ -63,6 +73,14 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 60px;
+    height: 500px;
+
+  }
+
+  .landing-info{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
   }
 
   #register-section{

@@ -1,7 +1,7 @@
 .workplace {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  
   max-width: 1420px;
 }
 
@@ -94,12 +94,14 @@
   margin: 0;
   overflow-wrap: break-word;
 }
-
+  
 @media only screen and (min-width: 700px) {
   .hidden {
     display: none;
   }
   .workplace {
+    height: calc(100vh - 50px);
+    margin:auto;
     flex-direction: row;
     justify-content: flex-start;
   }

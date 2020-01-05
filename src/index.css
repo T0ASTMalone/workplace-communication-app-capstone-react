@@ -98,10 +98,6 @@
   background-color: rgba(255, 19, 0, 1);
 }
 
-html {
-  height: 100vh;
-}
-
 html::-webkit-scrollbar {
   display: none;
 }
@@ -151,7 +147,7 @@ textarea {
   box-shadow: 0 4.5px 10px 0 rgba(57, 59, 68, 0.322);
 }
 
-button {
+button{
   border-radius: 3px;
   border: none;
   width: 100px;
@@ -162,4 +158,12 @@ button {
 button:hover,
 button:focus {
   box-shadow: 0 4.5px 10px 0 rgba(57, 59, 68, 0.322);
+}
+
+.footer-container{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 20px;
 }
