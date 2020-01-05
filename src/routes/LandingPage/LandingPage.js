@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import invite from "../../img/svg/invite.svg";
 import wp from "../../img/svg/workplace.svg";
+import post from '../../img/svg/post.svg';
+import idea from '../../img/svg/idea.svg';
 
 export default class LandingPage extends Component {
   render() {
@@ -67,6 +69,12 @@ export default class LandingPage extends Component {
           // div describing creating events for your WorkPlace
         }
 
+        <section className="landing-section">
+
+        <div className='undraw'>
+          <img src={post} alt='in the loop' className='undraw-img'/>
+        </div>
+          
         <div className="landing-info">
           <h3 className="div-title">Keep everyone in the loop</h3>
           <p className="landing-text">
@@ -76,6 +84,13 @@ export default class LandingPage extends Component {
           {
             //screen shot of WorkPlace main feed
           }
+        </div>
+        </section>
+
+        <section id='register-section' className="landing-section">
+
+        <div className='undraw'>
+          <img src={idea} alt='idea for the workplace' className='undraw-img'/>
         </div>
         <div className="landing-info">
           <h3 className="div-title">Feedback</h3>
@@ -96,6 +111,8 @@ export default class LandingPage extends Component {
             and if they have been seen by the creator of the WorkPlace
           </p>
         </div>
+        </section>
+
       </div>
     );
   }
