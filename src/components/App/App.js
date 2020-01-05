@@ -6,7 +6,7 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
-// import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import IdleService from "../../Services/idle-service";
 //import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
@@ -75,6 +75,11 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
+        <div className="footer-container">
+        <Route path={"/sign-in"} component={Footer} />
+        <Route path={"/join"} component={Footer} />
+        <Route path={"/create"} component={Footer} />
+        </div>
         {/* <Footer /> */}
       </div>
     );
