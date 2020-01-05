@@ -1,41 +1,68 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
+import invite from "../../img/svg/invite.svg";
+import wp from "../../img/svg/workplace.svg";
 
 export default class LandingPage extends Component {
   render() {
     return (
       <div className="landing-page">
-        <h1>WorkPlace</h1>
+        <section className="landing-section">
+          <div className="undraw">
+            <img className="undraw-img" src={wp} alt="workplace" />
+          </div>
+          <div className="content card landing-info">
+            <h1>WorkPlace</h1>
 
-        <div id="existing-user" className="landing-info">
-          <h3>Already part of a WorkPlace</h3>
-          <Link to={"/sign-in"} className="to-wp">
-            <span className="to-wp">Sign In</span>
-          </Link>
-        </div>
+            <div id="existing-user" className="">
+              <h3>Already part of WorkPlace</h3>
+              <Link to={"/sign-in"} className="to-wp">
+                <span className="to-wp">Sign In</span>
+              </Link>
+            </div>
 
-        <div id="new-user" className="landing-info">
-          <h3>Register</h3>
-          <p className="landing-text">
-            Register as a creator or member of a WorkPlace.
-          </p>
-          <p className="landing-text">
-            When a WorkPlace is created a WorkPlace code will be generated.
-          </p>
+            <div className="register">
+              <h3> New to WorkPlace?</h3>
+              <Link to={"/join"}>
+                <span className="to-wp">Join a workplace</span>
+              </Link>
+              <p>or</p>
+              <Link to={"/create"} className="to-wp">
+                <span className="to-wp">Register</span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
-          {/* link to employer registration page */}
-          <Link to={"/create"} className="to-wp">
-            <span className="to-wp">Register</span>
-          </Link>
-          <p className="landing-text">
-            As a new member you can use a WorkPlace code to join a WorkPlace.
-          </p>
-          {/* link to employee registration page */}
-          <Link to={"/join"}>
-            <span className="to-wp">Join a workplace</span>
-          </Link>
-        </div>
+        <section id='register-section' className="landing-section">
+        <div className="undraw">
+            <img src={invite} alt="register" className="undraw-img" />
+          </div>
+          <div id="new-user" className="landing-info content card">
+            <h3>Register</h3>
+            <p className="landing-text">
+              Register as a creator or member of a WorkPlace.
+            </p>
+            <p className="landing-text">
+              When a WorkPlace is created a WorkPlace code will be generated.
+            </p>
+
+            {/* link to employer registration page */}
+            <Link to={"/create"} className="to-wp">
+              <span className="to-wp">Register</span>
+            </Link>
+            <p className="landing-text">
+              As a new member you can use a WorkPlace code to join a WorkPlace.
+            </p>
+            {/* link to employee registration page */}
+            <Link to={"/join"}>
+              <span className="to-wp">Join a workplace</span>
+            </Link>
+          </div>
+
+        </section>
+
         {
           // div describing creating events for your WorkPlace
         }

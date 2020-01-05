@@ -173,7 +173,9 @@ export default class SignInForm extends Component {
           </button>
           <p className="new-user">Are you new to WorkPlace?</p>
           <Link to={"/join"}>
-            <button className="register-button">Register</button>
+            <button className="registration-button" type="button">
+              Register
+            </button>
           </Link>
         </form>
       </>
