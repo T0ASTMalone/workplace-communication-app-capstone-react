@@ -20,7 +20,7 @@ export default class Feed extends Component {
         //set posts in context
         {
           if (posts.length < 10) {
-            this.setState({ disableLoadMore: true });
+            this.setState({ disablenLoadMore: true });
           }
           let currPosts = this.context.posts;
           let allPosts = [...currPosts, ...posts];
