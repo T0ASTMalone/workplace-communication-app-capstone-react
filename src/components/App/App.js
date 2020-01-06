@@ -6,7 +6,7 @@ import LandingPage from "../../routes/LandingPage/LandingPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
-// import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import IdleService from "../../Services/idle-service";
 //import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
@@ -60,7 +60,7 @@ export default class App extends React.Component {
           <Route path={"/"} component={Header} />
         </header>
 
-        <main>
+        <main className='app-main'>
           {/* <p className="timestamp">
             This is the timer value: {this.state.timestamp}
           </p> */}
@@ -75,7 +75,9 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
-        {/* <Footer /> */}
+        <Route path={"/sign-in"} component={Footer} />
+        <Route path={"/join"} component={Footer} />
+        <Route path={"/create"} component={Footer} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 .feed {
-  max-height: 80vh;
+  max-height: 100vh;
   min-height: 80vh;
   overflow: scroll;
   box-shadow: 0 -20px -10px 0 rgb(191, 197, 191);
@@ -23,7 +23,9 @@
     padding: 0 10px;
     flex-wrap: wrap;
     display: flex;
+    max-height: 80vh;
   }
+  
 }
 
 @media only screen and (min-width: 450px) and (max-width: 699px) {
@@ -32,4 +34,6 @@
     margin: 20px auto;
     max-width: 650px;
   }
+
+
 }
