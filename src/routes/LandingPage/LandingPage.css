@@ -1,27 +1,54 @@
 .landing-page {
   padding: 15px;
-  max-width: 1420px;
+  max-width: 1600px;
   margin: auto;
   min-height: 70vh;
+}
+
+.App-name {
+  font-size: 45px;
 }
 
 .landing-info {
   padding: 10px;
   margin-top: 10px;
-  background-color: white;
+  box-shadow: none;
+  text-align: center;
 }
 
-.to-wp {
-  color: blue;
-}
+/* #landing-info{
+  background-color: rgba(242, 253, 254, 1);
+  box-shadow: -9px -9px 16px 0 rgb(255,255, 255, 1 ), 9px 9px 16px 0 rgb(0, 0, 0 , 0.3);
+} */
 
 .landing-icon {
   width: 200px;
 }
 
+.undrawL {
+  transform: translateX(-500px);
+}
+
+.active {
+  text-align: center;
+  transition: 1.25s ease-in-out;
+}
+
+.slide-inL {
+  transform: translateX(0px);
+}
+
+.undrawR {
+  transform: translateX(500px);
+}
+
+.slide-inR {
+  transform: translateX(0px);
+}
+
 .undraw-img {
-  width: 260px;
-  margin: 20px;
+  width: 300px;
+  padding: 20px;
 }
 
 .content {
@@ -34,18 +61,29 @@
 }
 
 @media only screen and (min-width: 795px) {
+  .undrawR {
+    transform: translateX(500px);
+  }
+
   .landing-section {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 60px;
+    height: 500px;
   }
 
-  #register-section{
+  .landing-info {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  #register-section {
     flex-direction: row-reverse;
   }
 
   .content {
-    max-width: 700px;
+    max-width: 600px;
   }
 
   .undraw-img {
