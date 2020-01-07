@@ -35,7 +35,8 @@ export class WorkPlaceProvider extends Component {
       wpId: "",
       posts: [],
       ideas: [],
-      error: null
+      error: null,
+      postOffset: 1
     };
   }
 
@@ -74,6 +75,10 @@ export class WorkPlaceProvider extends Component {
     this.setState({ wpCode });
   };
 
+  setPostOffset = postOffset => {
+    this.setState({ postOffset });
+  };
+
   clearContext = () => {
     this.setState({
       userType: null,
@@ -85,7 +90,8 @@ export class WorkPlaceProvider extends Component {
       wpId: "",
       posts: [],
       ideas: [],
-      error: null
+      error: null,
+      postOffset: 1
     });
   };
 
@@ -101,6 +107,7 @@ export class WorkPlaceProvider extends Component {
       posts: this.state.posts,
       ideas: this.state.ideas,
       error: this.state.error,
+      postOffset: this.state.postOffset,
       setUserType: this.setUserType,
       setWp: this.setWp,
       setPosts: this.setPosts,
@@ -110,6 +117,7 @@ export class WorkPlaceProvider extends Component {
       setUserId: this.setUserId,
       setNickname: this.setNickname,
       setIdeas: this.setIdeas,
+      setPostOffset: this.setPostOffset,
       clearContext: this.clearContext
     };
 

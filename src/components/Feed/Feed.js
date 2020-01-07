@@ -8,46 +8,55 @@ import WpService from "../../Services/wp-api-service";
 export default class Feed extends Component {
   state = {
     err: null,
-    offset: 1,
-    disableLoadMore: false
+    offset: 1
   };
 
   static contextType = WorkPlaceContext;
 
   fetchPosts = (wpId, offset) => {
     return WpService.getWpPosts(wpId, "posts", offset)
-      .then(posts =>
+      .then(async posts =>
         //set posts in context
         {
-          if (posts.length < 10) {
-            this.setState({ disableLoadMore: true });
-          }
           let currPosts = this.context.posts;
           let allPosts = [...currPosts, ...posts];
-          this.context.setPosts(allPosts);
+          await this.context.setPosts(allPosts);
+          // if less than 10 posts are returned disable
+          // load more posts button by setting offset to 0
+          if (posts.length < 10) {
+            // set offset to 0
+            return this.context.setPostOffset(0);
+          }
+          // else increment offset
+          offset++;
+          // keep track of offset in context
+          // incase component unmounts
+          this.context.setPostOffset(offset);
         }
       )
       .catch(err => this.setState({ err }));
   };
 
   async componentDidMount() {
-    //fetch posts for workplace
-    const { wpId } = this.context;
-    const { offset } = this.state;
-    await this.fetchPosts(wpId, offset);
+    const { wpId, posts, postOffset } = this.context;
+    // check if there are posts in context
+    if (posts.length >= 1) {
+      // if there is return
+      return;
+    }
+    // otherwise fetch posts
+    await this.fetchPosts(wpId, postOffset);
   }
 
   loadMorePosts = () => {
-    let offset = this.state.offset;
-    const { wpId } = this.context;
-    offset++;
-    this.fetchPosts(wpId, offset);
-    this.setState({ offset });
+    // get offset
+    const { wpId, postOffset } = this.context;
+    // fetch more posts
+    this.fetchPosts(wpId, postOffset);
   };
 
   render() {
-    let posts = this.context.posts;
-    let { disableLoadMore } = this.state;
+    let { posts, postOffset } = this.context;
     let show = this.props.className;
     return (
       <div className={`${show} feed`}>
@@ -59,7 +68,11 @@ export default class Feed extends Component {
         ) : (
           <p>Looks Like there are not posts here</p>
         )}
-        {disableLoadMore ? (
+        {/* 
+        if offset is set to 0 all posts have been fetched
+        so don't render load more button
+        */}
+        {postOffset === 0 ? (
           <></>
         ) : (
           <button className="load-more" onClick={this.loadMorePosts}>
