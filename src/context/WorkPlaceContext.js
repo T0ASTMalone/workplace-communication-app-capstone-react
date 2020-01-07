@@ -36,7 +36,8 @@ export class WorkPlaceProvider extends Component {
       posts: [],
       ideas: [],
       error: null,
-      postOffset: 1
+      postOffset: 1,
+      ideaOffset: 1
     };
   }
 
@@ -79,6 +80,10 @@ export class WorkPlaceProvider extends Component {
     this.setState({ postOffset });
   };
 
+  setIdeaOffset = ideaOffset => {
+    this.setState({ ideaOffset });
+  };
+
   clearContext = () => {
     this.setState({
       userType: null,
@@ -91,7 +96,8 @@ export class WorkPlaceProvider extends Component {
       posts: [],
       ideas: [],
       error: null,
-      postOffset: 1
+      postOffset: 1,
+      ideaOffset: 1
     });
   };
 
@@ -108,6 +114,7 @@ export class WorkPlaceProvider extends Component {
       ideas: this.state.ideas,
       error: this.state.error,
       postOffset: this.state.postOffset,
+      ideaOffset: this.state.ideaOffset,
       setUserType: this.setUserType,
       setWp: this.setWp,
       setPosts: this.setPosts,
@@ -118,6 +125,7 @@ export class WorkPlaceProvider extends Component {
       setNickname: this.setNickname,
       setIdeas: this.setIdeas,
       setPostOffset: this.setPostOffset,
+      setIdeaOffset: this.setIdeaOffset,
       clearContext: this.clearContext
     };
 

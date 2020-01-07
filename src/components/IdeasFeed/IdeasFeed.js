@@ -16,31 +16,47 @@ export default class IdeasFeed extends React.Component {
 
   fetchPosts = (wpId, offset) => {
     return WpService.getWpPosts(wpId, "idea", offset)
-      .then(posts =>
+      .then(async posts =>
         //set posts in context
         {
-          if (posts.length < 10) {
-            this.setState({ disableLoadMore: true });
-          }
           let currPosts = this.context.ideas;
           let allPosts = [...currPosts, ...posts];
-          this.context.setIdeas(allPosts);
+          await this.context.setIdeas(allPosts);
+          // if less than 10 posts are returned disable
+          // load more posts button by setting offset to 0
+          if (posts.length < 10) {
+            // set offset to 0
+            return this.context.setIdeaOffset(0);
+          }
+          // else increment offset
+          offset++;
+          // keep track of offset in context
+          // incase component unmounts
+          this.context.setIdeaOffset(offset);
         }
       )
       .catch(err => this.setState({ err }));
   };
 
-  fetchUserPosts = (wpId, offset) => {
-    return WpService.getWpPosts(wpId, "idea", offset)
-      .then(posts =>
+  fetchUserPosts = (id, offset) => {
+    return WpService.getUserPosts(id, "idea", offset)
+      .then(async posts =>
         //set posts in context
         {
-          if (posts.length < 10) {
-            this.setState({ disableLoadMore: true });
-          }
           let currPosts = this.context.ideas;
           let allPosts = [...currPosts, ...posts];
-          this.context.setIdeas(allPosts);
+          await this.context.setIdeas(allPosts);
+          // if less than 10 posts are returned disable
+          // load more posts button by setting offset to 0
+          if (posts.length < 10) {
+            // set offset to 0
+            return this.context.setIdeaOffset(0);
+          }
+          // else increment offset
+          offset++;
+          // keep track of offset in context
+          // incase component unmounts
+          this.context.setIdeaOffset(offset);
         }
       )
       .catch(err => this.setState({ err }));
@@ -48,25 +64,24 @@ export default class IdeasFeed extends React.Component {
 
   async componentDidMount() {
     //fetch posts for workplace
-    const { wpId, userType } = this.context;
-    const { offset } = this.state;
+    const { wpId, userType, userId, ideaOffset, ideas } = this.context;
+    if (ideas.length >= 1) {
+      return;
+    }
     if (userType === "creator") {
-      await this.fetchPosts(wpId, offset);
+      await this.fetchPosts(wpId, ideaOffset);
     } else {
-      await this.fetchUserPosts(wpId, offset);
+      await this.fetchUserPosts(userId, ideaOffset);
     }
   }
 
   loadMorePosts = () => {
-    let offset = this.state.offset;
-    const { wpId, userType } = this.context;
-    offset++;
+    const { wpId, userType, userId, ideaOffset } = this.context;
     if (userType === "creator") {
-      this.fetchPosts(wpId, offset);
+      this.fetchPosts(wpId, ideaOffset);
     } else {
-      this.fetchUserPosts(wpId, offset);
+      this.fetchUserPosts(userId, ideaOffset);
     }
-    this.setState({ offset });
   };
 
   renderIdeas = () => {
@@ -79,9 +94,9 @@ export default class IdeasFeed extends React.Component {
   };
 
   render() {
-    let { userType } = this.context;
+    let { userType, ideaOffset } = this.context;
     let show = this.props.className;
-    const { disableLoadMore } = this.state;
+
     return (
       <div id="ideas-feed" className={`${show} feed`}>
         {userType === "creator" ? (
@@ -96,7 +111,7 @@ export default class IdeasFeed extends React.Component {
             {this.renderIdeas()}
           </>
         )}
-        {disableLoadMore ? (
+        {ideaOffset === 0 ? (
           <></>
         ) : (
           <button className="load-more" onClick={this.loadMorePosts}>
