@@ -19,13 +19,11 @@ export default class Feed extends Component {
       .then(async posts =>
         //set posts in context
         {
-
           let currPosts = this.context.posts;
           let allPosts = [...currPosts, ...posts];
           await this.context.setPosts(allPosts);
           if (posts.length < 10) {
-
-            this.setState({ disablenLoadMore: true });
+            this.setState({ disableLoadMore: true });
           }
         }
       )
@@ -34,13 +32,15 @@ export default class Feed extends Component {
 
   async componentDidMount() {
     //fetch posts for workplace
-    const { wpId } = this.context;
+    const { wpId, posts } = this.context;
     const { offset } = this.state;
+    if (posts.length > 1) {
+      return;
+    }
     await this.fetchPosts(wpId, offset);
   }
 
   loadMorePosts = () => {
-
     let offset = this.state.offset;
     const { wpId } = this.context;
     offset++;

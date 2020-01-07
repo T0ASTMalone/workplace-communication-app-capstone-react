@@ -4,6 +4,7 @@ import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
 import "./IdeasFeed.css";
 import WpService from "../../Services/wp-api-service";
+import idea from "../../img/svg/idea.svg";
 
 export default class IdeasFeed extends React.Component {
   state = {
@@ -48,8 +49,11 @@ export default class IdeasFeed extends React.Component {
 
   async componentDidMount() {
     //fetch posts for workplace
-    const { wpId, userType } = this.context;
+    const { wpId, userType, ideas } = this.context;
     const { offset } = this.state;
+    if (ideas.length > 1) {
+      return;
+    }
     if (userType === "creator") {
       await this.fetchPosts(wpId, offset);
     } else {
@@ -69,10 +73,14 @@ export default class IdeasFeed extends React.Component {
     this.setState({ offset });
   };
 
-  renderIdeas = () => {
+  renderIdeas = user => {
     const { ideas } = this.context;
     return ideas.length > 0 ? (
-      ideas.map((idea, i) => <Post key={i} post={idea} />)
+      ideas.map((idea, i) => (
+        <>
+          <Post key={i} post={idea} />
+        </>
+      ))
     ) : (
       <p>There are no ideas here</p>
     );
@@ -86,16 +94,21 @@ export default class IdeasFeed extends React.Component {
       <div id="ideas-feed" className={`${show}`}>
         {userType === "creator" ? (
           <>
-            <h4 className="ideas-desc">
-              Here are some Ideas posted by people in your WorkPlace
-            </h4>
-            {this.renderIdeas()}
+            <div className="feed-desc card">
+              <h2>Here are the ideas posted to your WorkPlace</h2>
+              <img src={idea} alt="idea" id="idea-svg" />
+            </div>
+
+            {this.renderIdeas(userType)}
           </>
         ) : (
           <>
             <IdeasForm />
-            <p className="user-ideas">Here are the ideas you have posted</p>
-            {this.renderIdeas()}
+            <div className="feed-desc card">
+              <h2>Here are your Ideas</h2>
+              <img src={idea} alt="idea" id="idea-svg" />
+            </div>
+            {this.renderIdeas(userType)}
           </>
         )}
         {disableLoadMore ? (
