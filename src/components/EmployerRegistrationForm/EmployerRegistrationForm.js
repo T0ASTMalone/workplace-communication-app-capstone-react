@@ -55,9 +55,13 @@ export default class EmployerRegistrationForm extends Component {
     }
   };
   validatePasswordConfirm = () => {
-    let value = this.state.passwordConfirm.value;
-    if (value.length < 1) {
+    const { passwordConfirm, password } = this.state;
+
+    if (passwordConfirm.value.length < 1) {
       return "Please confirm password";
+    }
+    if (passwordConfirm.value !== password.value) {
+      return "Password does not match";
     }
   };
 
