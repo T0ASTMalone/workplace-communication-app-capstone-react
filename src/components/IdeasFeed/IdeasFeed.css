@@ -5,4 +5,24 @@
 
 .ideas-desc {
   padding: 5px;
+  margin: 20px;
+}
+
+.feed-desc {
+  background-color: #ffff;
+  min-width: 300px;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+
+#idea-svg {
+  width: 200px;
+}
+
+@media only screen and (min-width: 700px) {
+  .feed-desc {
+    margin: 20px;
+    flex-grow: 2;
+  }
 }

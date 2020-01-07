@@ -74,6 +74,10 @@ export class WorkPlaceProvider extends Component {
     this.setState({ wpCode });
   };
 
+  clearPosts = () => {
+    this.setState({ posts: [] });
+  };
+
   clearContext = () => {
     this.setState({
       userType: null,
@@ -110,7 +114,8 @@ export class WorkPlaceProvider extends Component {
       setUserId: this.setUserId,
       setNickname: this.setNickname,
       setIdeas: this.setIdeas,
-      clearContext: this.clearContext
+      clearContext: this.clearContext,
+      clearPosts: this.clearPosts
     };
 
     return (
