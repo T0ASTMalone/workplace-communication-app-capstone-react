@@ -18,8 +18,7 @@ export default class SignInForm extends Component {
       password: {
         value: "",
         touched: false
-      },
-      type: "creator"
+      }
     };
   }
 
@@ -44,31 +43,21 @@ export default class SignInForm extends Component {
     this.setState({ nickname: { value: ev, touched: true } });
   }
 
-  handleUpdateType(type) {
-    this.setState({ type });
-  }
-
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    if (this.validatePassword()) {
+    if (this.validatePassword() || this.validateUserName()) {
       this.setAllToTouched();
     } else {
-      // check if user is workplace creator or workplace user
-      // if user make api call to user table in db
-      // else make api call to creator table in db
-
-      const { nickname, password, type } = this.state;
+      const { nickname, password } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,
-        password: password.value,
-        type
+        password: password.value
       })
         .then(res => {
           this.context.clearContext();
           this.setState({
             nickname: { value: "", touched: false },
-            password: { value: "", touched: false },
-            type: { value: "creator" }
+            password: { value: "", touched: false }
           });
           this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
@@ -148,28 +137,8 @@ export default class SignInForm extends Component {
             touched={password.touched}
             className="login-error"
           />
-          <div className="type-of-user">
-            <label htmlFor="employer-select">Creator</label>
-            <input
-              name="user-type"
-              id="employer-select"
-              type="radio"
-              value="creator"
-              onChange={e => this.handleUpdateType(e.target.value)}
-              defaultChecked
-            />
-            <label htmlFor="employee-select">Member</label>
-            <input
-              name="user-type"
-              type="radio"
-              value="user"
-              onChange={e => this.handleUpdateType(e.target.value)}
-            />
-          </div>
           <button id="sign-in-button" className="button" type="submit">
             Sign In
-            {/*Temp link to workplace */}
-            {/* <Link to={"/workplace"}>Sign In</Link> */}
           </button>
           <p className="new-user">Are you new to WorkPlace?</p>
           <Link to={"/join"}>
