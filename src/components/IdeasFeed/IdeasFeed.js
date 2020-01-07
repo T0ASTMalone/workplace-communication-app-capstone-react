@@ -51,13 +51,17 @@ export default class IdeasFeed extends React.Component {
     //fetch posts for workplace
     const { wpId, userType, ideas } = this.context;
     const { offset } = this.state;
-    if (ideas.length > 1) {
+    if (ideas.length >= 1) {
+      this.setState({ disableLoadMore: true });
       return;
     }
     if (userType === "creator") {
       await this.fetchPosts(wpId, offset);
     } else {
       await this.fetchUserPosts(wpId, offset);
+    }
+    if (ideas.length < 10) {
+      this.setState({ disableLoadMore: true });
     }
   }
 
@@ -73,7 +77,7 @@ export default class IdeasFeed extends React.Component {
     this.setState({ offset });
   };
 
-  renderIdeas = user => {
+  renderIdeas = () => {
     const { ideas } = this.context;
     return ideas.length > 0 ? (
       ideas.map((idea, i) => (
@@ -99,7 +103,7 @@ export default class IdeasFeed extends React.Component {
               <img src={idea} alt="idea" id="idea-svg" />
             </div>
 
-            {this.renderIdeas(userType)}
+            {this.renderIdeas()}
           </>
         ) : (
           <>
@@ -108,7 +112,7 @@ export default class IdeasFeed extends React.Component {
               <h2>Here are your Ideas</h2>
               <img src={idea} alt="idea" id="idea-svg" />
             </div>
-            {this.renderIdeas(userType)}
+            {this.renderIdeas()}
           </>
         )}
         {disableLoadMore ? (
