@@ -30,5 +30,6 @@
   .post-form-container,
   .ideas-form-container {
     margin: 20px;
+    flex-grow: 2;
   }
 }

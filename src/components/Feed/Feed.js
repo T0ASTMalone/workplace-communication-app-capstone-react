@@ -34,10 +34,14 @@ export default class Feed extends Component {
     //fetch posts for workplace
     const { wpId, posts } = this.context;
     const { offset } = this.state;
-    if (posts.length > 1) {
+    if (posts.length >= 1) {
+      this.setState({ disableLoadMore: true });
       return;
     }
     await this.fetchPosts(wpId, offset);
+    if (posts.length <= 10) {
+      this.setState({ disableLoadMore: true });
+    }
   }
 
   loadMorePosts = () => {
@@ -55,9 +59,8 @@ export default class Feed extends Component {
     return (
       <>
         <div className={`${show}`}>
-          <div className="">
-            <PostForm />
-          </div>
+          <PostForm />
+
           {posts.length > 0 ? (
             posts.map((post, i) => <Post key={i} post={post} />)
           ) : (
