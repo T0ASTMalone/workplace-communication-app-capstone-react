@@ -65,7 +65,9 @@ export default class Feed extends Component {
           {posts.length > 0 ? (
             posts.map((post, i) => <Post key={i} post={post} />)
           ) : (
-            <p>Looks Like there are not posts here</p>
+            <p className="nothing-to-see card">
+              Looks Like there are not posts here
+            </p>
           )}
           {/* 
         if offset is set to 0 all posts have been fetched

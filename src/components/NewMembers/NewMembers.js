@@ -34,7 +34,8 @@ export default function NewMembers() {
     WpService.getUsers(context.wpId, "pending").then(users => {
       // toggle pending users
       if (users.length < 1) {
-        return setErr("There are no pending users");
+        setErr("There are no pending users");
+        setShow(!show);
       }
       setShow(!show);
 
@@ -86,7 +87,7 @@ export default function NewMembers() {
           ))
         ) : (
           <>
-            <p className="error">{err}</p>
+            <p className="pending-error">{err}</p>
           </>
         )}
       </div>

@@ -10,6 +10,7 @@
 .post-form-container,
 .ideas-form-container {
   margin: 10px 5px;
+  height: fit-content;
 }
 
 .post-form-item,

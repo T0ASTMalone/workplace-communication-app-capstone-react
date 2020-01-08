@@ -97,7 +97,7 @@ export default class IdeasFeed extends React.Component {
         </>
       ))
     ) : (
-      <p>There are no ideas here</p>
+      <p className="nothing-to-see card">There are no ideas here</p>
     );
   };
 

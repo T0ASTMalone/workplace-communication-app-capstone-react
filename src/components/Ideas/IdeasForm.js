@@ -71,7 +71,7 @@ export default class IdeasFrom extends Component {
   validateIdea = () => {
     const idea = this.state.idea.value;
     if (idea < 1) {
-      return "A idea is required";
+      return "An idea is required";
     }
   };
 

@@ -61,6 +61,10 @@
   transition: 0.5s ease-in-out;
 }
 
+.pending-error {
+  padding: 10px;
+}
+
 .show-members {
   overflow-y: scroll;
   max-height: 400px;
