@@ -66,6 +66,8 @@ export default class PostForm extends Component {
   };
 
   setAllToTouched = () => {
+    // set all to touched if submitted and there are missing values
+    // in order to display all errors
     let title = this.state.title.value;
     let content = this.state.content.value;
     this.setState({
@@ -103,6 +105,7 @@ export default class PostForm extends Component {
   };
 
   cancelPost = () => {
+    // clear inputs when cancel button is clicked
     this.setState({
       title: { value: "", touched: false },
       content: { value: "", touched: false }
