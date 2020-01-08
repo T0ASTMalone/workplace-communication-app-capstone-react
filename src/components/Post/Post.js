@@ -62,8 +62,6 @@ class Post extends Component {
         <p className="post-content">{post.content}</p>
         <div className="post-info">
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
-            {/* replace "seen" text with icon of an eye or some other icon 
-              that is an acknowledgement of having seen the post */}
             {seen}
           </button>
           <p className="date">{new Date(post.date_added).toUTCString()}</p>

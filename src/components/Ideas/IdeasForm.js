@@ -45,6 +45,7 @@ export default class IdeasFrom extends Component {
   };
 
   setAllToTouched = () => {
+    // show all errors if any when submit button is clicked
     const { title, idea } = this.state;
     this.setState({
       title: { value: title.value, touched: true },
@@ -75,6 +76,7 @@ export default class IdeasFrom extends Component {
   };
 
   cancelPost = () => {
+    // clear inputs when cancel button is clicked
     this.setState({
       title: { value: "", touched: false },
       idea: { value: "", touched: false }

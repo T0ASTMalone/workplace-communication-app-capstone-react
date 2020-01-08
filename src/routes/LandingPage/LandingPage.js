@@ -8,13 +8,16 @@ import idea from "../../img/svg/idea.svg";
 import Footer from "../../components/Footer/Footer";
 
 function useOnScreen(options) {
+  // hook to observe when element enters the viewport
   const ref = React.useRef();
 
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
     const refCurCopy = ref.current;
+
     const observer = new IntersectionObserver(([entry]) => {
+      // set to visible to true if element is in viewport
       setVisible(entry.isIntersecting);
     }, options);
 
@@ -29,13 +32,19 @@ function useOnScreen(options) {
     };
   }, [ref, options]);
 
+  // return ref.current and whether it is visible
   return [ref, visible];
 }
 
 export default function LandingPage() {
+  // redirect to join workplace
   const [toJoin, setToJoin] = React.useState(false);
+  // redirect to create workplace
   const [toCreate, setToCreate] = React.useState(false);
+  // redirect to sign in
   const [toSignIn, setToSignIn] = React.useState(false);
+
+  // monitor if imgs are in the viewport
   let [ref, visible] = useOnScreen({ threshold: 0.2 });
   let [ref2, visible2] = useOnScreen({ threshold: 0.2 });
   let [ref3, visible3] = useOnScreen({ threshold: 0.2 });
@@ -64,24 +73,26 @@ export default function LandingPage() {
           <img className="undraw-img" src={wp} alt="workplace" />
         </div>
         <div id="landing-info" className="content card landing-info">
-          <h1 className='App-name'> WorkPlace</h1>
+          <h1 className="App-name"> WorkPlace</h1>
 
           <div id="existing-user" className="">
             <h3>Already part of WorkPlace</h3>
 
-            <button id='sign-in-button' onClick={goToSignIn} className="to-wp">
+            <button id="sign-in-button" onClick={goToSignIn} className="to-wp">
               Sign In
             </button>
           </div>
 
           <div className="register">
             <h3> New to WorkPlace?</h3>
-            
-            <button className='accept' onClick={goToJoin}>Join a Wp</button>
+
+            <button className="accept" onClick={goToJoin}>
+              Join a Wp
+            </button>
             <p>or</p>
             <button onClick={goToCreate} className="accept">
-            Create a Wp
-          </button>
+              Create a Wp
+            </button>
           </div>
         </div>
       </section>
@@ -99,17 +110,11 @@ export default function LandingPage() {
             When a WorkPlace is created a WorkPlace code will be generated.
           </p>
 
-
-
           <p className="landing-text">
             As a new member you can use a WorkPlace code to join a WorkPlace.
           </p>
         </div>
       </section>
-
-      {
-        // div describing creating events for your WorkPlace
-      }
 
       <section ref={ref3} className="landing-section">
         <div className={visible3 ? "active slide-inL" : "active undrawL"}>
@@ -122,9 +127,6 @@ export default function LandingPage() {
             As a member of a WorkPlace you can make posts that other members of
             your WorkPlace need to see.
           </p>
-          {
-            //screen shot of WorkPlace main feed
-          }
         </div>
       </section>
 
@@ -139,9 +141,6 @@ export default function LandingPage() {
             issues you might need to bring up, you can make a post under the
             ideas tab so that the creator of the WorkPlace may see your idea.
           </p>
-          {
-            //screen shot of ideas form / feed
-          }
           <p className="landing-text">
             As the creator of the WorkPlace you can see these ideas posted by
             members of your WorkPlace.
