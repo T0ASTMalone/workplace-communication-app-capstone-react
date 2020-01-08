@@ -7,14 +7,11 @@ import AuthApiService from "../../Services/auth-api-services";
 export default class EmployeeRegistrationForm extends Component {
   state = {
     userName: { value: "", touched: false },
-
     code: { value: "", touched: false },
-
     password: { value: "", touched: false },
-
     passwordConfirm: { value: "", touched: false },
-
-    nickname: { value: "", touched: false }
+    nickname: { value: "", touched: false },
+    submitting: false
   };
 
   updateUserName = value => {
@@ -114,6 +111,7 @@ export default class EmployeeRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
+      this.setState({ submitting: true });
       const { userName, nickname, password, code } = this.state;
       const user = {
         username: userName.value,
@@ -129,7 +127,7 @@ export default class EmployeeRegistrationForm extends Component {
           this.props.registered();
         })
         .catch(err => {
-          this.setState({ error: err.error.message });
+          this.setState({ error: err.error.message, submitting: false });
         });
     }
   };
@@ -141,7 +139,8 @@ export default class EmployeeRegistrationForm extends Component {
       passwordConfirm,
       code,
       nickname,
-      error
+      error,
+      submitting
     } = this.state;
     return (
       <div className="employee-registration">
@@ -216,7 +215,11 @@ export default class EmployeeRegistrationForm extends Component {
             onChange={e => this.updateCode(e.target.value)}
           />
           <InputError hasError={this.validateCode()} touched={code.touched} />
-          <button className="registration-button" type="submit">
+          <button
+            className="registration-button"
+            type="submit"
+            disabled={submitting}
+          >
             Register
           </button>
           <Link to={"/sign-in"}>

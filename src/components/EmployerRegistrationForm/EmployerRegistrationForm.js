@@ -10,7 +10,8 @@ export default class EmployerRegistrationForm extends Component {
     company: { value: "", touched: false },
     password: { value: "", touched: false },
     passwordConfirm: { value: "", touched: false },
-    nickname: { value: "", touched: false }
+    nickname: { value: "", touched: false },
+    submitting: false
   };
 
   updateUserName = value => {
@@ -95,6 +96,7 @@ export default class EmployerRegistrationForm extends Component {
     ) {
       this.setAllToTouched();
     } else {
+      this.setState({ submitting: true });
       const { userName, nickname, password, company } = this.state;
       const user = {
         username: userName.value,
@@ -112,7 +114,7 @@ export default class EmployerRegistrationForm extends Component {
           this.props.registered();
         })
         .catch(err => {
-          this.setState({ error: err.error.message });
+          this.setState({ error: err.error.message, submitting: false });
         });
     }
   };
@@ -130,7 +132,8 @@ export default class EmployerRegistrationForm extends Component {
       company,
       password,
       passwordConfirm,
-      error
+      error,
+      submitting
     } = this.state;
     return (
       <div className="employer-registration">
@@ -209,7 +212,11 @@ export default class EmployerRegistrationForm extends Component {
             hasError={this.validatePasswordConfirm()}
             touched={passwordConfirm.touched}
           />
-          <button className="registration-button" type="submit">
+          <button
+            className="registration-button"
+            type="submit"
+            disabled={submitting}
+          >
             Register
           </button>
           <p className="existing-user">Already a member of a WorkPlace?</p>

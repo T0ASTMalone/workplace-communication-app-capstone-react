@@ -25,7 +25,7 @@ export default class Header extends Component {
         TokenService.hasAuthToken() ? (
           <button
             className="to-dash"
-            onClick={() => this.props.history.push(path)}
+            onClick={() => this.props.history.goBack()}
           >
             Back to WorkPlace
           </button>

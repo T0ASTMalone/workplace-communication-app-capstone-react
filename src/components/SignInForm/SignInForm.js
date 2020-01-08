@@ -18,7 +18,8 @@ export default class SignInForm extends Component {
       password: {
         value: "",
         touched: false
-      }
+      },
+      submitting: false
     };
   }
 
@@ -48,6 +49,7 @@ export default class SignInForm extends Component {
     if (this.validatePassword() || this.validateUserName()) {
       this.setAllToTouched();
     } else {
+      this.setState({ submitting: true });
       const { nickname, password } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,
@@ -62,7 +64,7 @@ export default class SignInForm extends Component {
           this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
         .catch(res => {
-          this.setState({ error: res.error.message });
+          this.setState({ error: res.error.message, submitting: false });
         });
     }
   };
@@ -98,7 +100,7 @@ export default class SignInForm extends Component {
   };
 
   render() {
-    const { error, nickname, password } = this.state;
+    const { error, nickname, password, submitting } = this.state;
     return (
       <>
         <form
@@ -137,7 +139,12 @@ export default class SignInForm extends Component {
             touched={password.touched}
             className="login-error"
           />
-          <button id="sign-in-button" className="button" type="submit">
+          <button
+            id="sign-in-button"
+            className="button"
+            type="submit"
+            disabled={submitting}
+          >
             Sign In
           </button>
           <p className="new-user">Are you new to WorkPlace?</p>
