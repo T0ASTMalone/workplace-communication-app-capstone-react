@@ -16,10 +16,10 @@
   text-align: center;
 }
 
-/* #landing-info{
-  background-color: rgba(242, 253, 254, 1);
-  box-shadow: -9px -9px 16px 0 rgb(255,255, 255, 1 ), 9px 9px 16px 0 rgb(0, 0, 0 , 0.3);
-} */
+#in-the-loop,
+#new-user {
+  justify-content: center;
+}
 
 .landing-icon {
   width: 200px;
@@ -30,6 +30,7 @@
 }
 
 .active {
+  display: flex;
   text-align: center;
   transition: 1.25s ease-in-out;
 }

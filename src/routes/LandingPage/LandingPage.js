@@ -104,14 +104,9 @@ export default function LandingPage() {
         <div id="new-user" className="landing-info content card">
           <h3>Register</h3>
           <p className="landing-text">
-            Register as a creator or member of a WorkPlace.
-          </p>
-          <p className="landing-text">
-            When a WorkPlace is created a WorkPlace code will be generated.
-          </p>
-
-          <p className="landing-text">
-            As a new member you can use a WorkPlace code to join a WorkPlace.
+            Create or join a workplace. When a WorkPlace is created a WorkPlace
+            code will be generated and new members can use this code to join
+            your workplace.
           </p>
         </div>
       </section>
@@ -121,11 +116,11 @@ export default function LandingPage() {
           <img src={post} alt="in the loop" className="undraw-img" />
         </div>
 
-        <div className="landing-info card content">
+        <div id="in-the-loop" className="landing-info card content">
           <h3 className="div-title">Keep everyone in the loop</h3>
           <p className="landing-text">
-            As a member of a WorkPlace you can make posts that other members of
-            your WorkPlace need to see.
+            As a member you can make posts that other members of your WorkPlace
+            need to see.
           </p>
         </div>
       </section>
@@ -142,12 +137,10 @@ export default function LandingPage() {
             ideas tab so that the creator of the WorkPlace may see your idea.
           </p>
           <p className="landing-text">
-            As the creator of the WorkPlace you can see these ideas posted by
-            members of your WorkPlace.
-          </p>
-          <p className="landing-text">
-            As a member of the WorkPlace you can see the ideas you have posted
-            and if they have been seen by the creator of the WorkPlace
+            As the creator of the WorkPlace you can see the ideas posted by
+            members of your WorkPlace. As a member of the WorkPlace you can see
+            the ideas you have posted and if they have been seen by the creator
+            of the WorkPlace
           </p>
         </div>
       </section>
