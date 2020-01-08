@@ -21,11 +21,11 @@ As a new user, I would like to learn more about what the site is about.
 
 **Register**
 
-As a user, I want to register and create a workplace as an employer.
+As a user, I want to register and create a workplace.
 
 ![Employer Registration](/src/img/screenshots/create-a-wp.png)
 
-As a user, I want to register and join a workplace as an employee
+As a user, I want to register and join a workplace.
 
 ![Employee Registration](/src/img/screenshots/join-a-wp.png)
 
@@ -37,13 +37,13 @@ As a user, I want to sign in to my workplace
 
 **User Feed**
 
-As a user, I want to see what has been posted on my workplace
+As a user, I want to see what has been posted on my workplace.
 
 ![WorkPlace Feed](/src/img/screenshots/workplace.png)
 
 **Ideas Page**
 
-As a user, I want to post an idea so my employer can see it
+As a user, I want to post an idea so the creator of the workplace can see it.
 
 ![Ideas Page](/src/img/screenshots/ideas.png)
 
