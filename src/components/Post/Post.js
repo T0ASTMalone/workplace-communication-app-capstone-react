@@ -50,7 +50,7 @@ class Post extends Component {
     const post = this.props.post;
     const seen = this.state.seen;
     return (
-      <div className="post">
+      <div className="post card">
         <div className="post-creator">
           <img src={usrImg} alt="test user" className="user-img" />
           <div className="usernames">
@@ -62,9 +62,7 @@ class Post extends Component {
         <p className="post-content">{post.content}</p>
         <div className="post-info">
           <button className="acknowledge" onClick={() => this.toggleSeen()}>
-            {/* replace "seen" text with icon of an eye or some other icon 
-              that is an acknowledgement of having seen the post */}
-            Seen {seen}
+            {seen}
           </button>
           <p className="date">{new Date(post.date_added).toUTCString()}</p>
         </div>

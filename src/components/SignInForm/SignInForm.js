@@ -56,6 +56,7 @@ export default class SignInForm extends Component {
         password: password.value
       })
         .then(res => {
+          // clean context
           this.context.clearContext();
           this.setState({
             nickname: { value: "", touched: false },
@@ -70,6 +71,7 @@ export default class SignInForm extends Component {
   };
 
   setAllToTouched = () => {
+    // set all inputs touched property to true
     const { nickname, password } = this.state;
     this.setState({
       nickname: { value: nickname.value, touched: true },
@@ -77,15 +79,8 @@ export default class SignInForm extends Component {
     });
   };
 
-  updateUserName = nickname => {
-    this.setState({ nickname: { value: nickname, touched: true } });
-  };
-
-  updatePassword = password => {
-    this.setState({ password: { value: password, touched: true } });
-  };
-
   validateUserName = () => {
+    // check if username was entered
     const nickname = this.state.nickname.value;
     if (nickname < 1) {
       return "A user name is required";
@@ -93,6 +88,7 @@ export default class SignInForm extends Component {
   };
 
   validatePassword = () => {
+    // check if password was entered
     const password = this.state.password.value;
     if (password < 1) {
       return "A password is required";
@@ -149,7 +145,9 @@ export default class SignInForm extends Component {
           </button>
           <p className="new-user">Are you new to WorkPlace?</p>
           <Link to={"/join"}>
-            <button className="register-button">Register</button>
+            <button className="registration-button" type="button">
+              Register
+            </button>
           </Link>
         </form>
       </>

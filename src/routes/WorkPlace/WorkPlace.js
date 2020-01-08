@@ -7,6 +7,7 @@ import WorkPlaceContext from "../../context/WorkPlaceContext";
 import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 import NewMembers from "../../components/NewMembers/NewMembers";
 import WpService from "../../Services/wp-api-service";
+import Footer from "../../components/Footer/Footer";
 
 class WorkPlace extends Component {
   state = {
@@ -35,6 +36,7 @@ class WorkPlace extends Component {
   }
 
   updateWpMain = e => {
+    // toggle between wp feed and ideas feed
     this.setState({ main: e });
   };
 
@@ -44,7 +46,7 @@ class WorkPlace extends Component {
     return (
       <div className="workplace">
         <div className="workplace-header">
-          <div className="workplace-info">
+          <div className="workplace-info card">
             <div className="user-info">
               <h2 className="user nickname">{nickname}</h2>
               <h3 className="user user-name">{userName}</h3>
@@ -66,33 +68,27 @@ class WorkPlace extends Component {
             {userType === "creator" ? <NewMembers /> : <></>}
           </div>
 
-          <div className="tabs">
+          <div className="tabs ">
             <button
+              id="feed"
               className="tab"
               value="feed"
               onClick={e => this.updateWpMain(e.target.value)}
-            >
-              Feed
-            </button>
+            ></button>
             <button
               className="tab"
+              id="ideas"
               value="ideas"
               onClick={e => this.updateWpMain(e.target.value)}
-            >
-              Ideas
-            </button>
+            ></button>
           </div>
         </div>
         <div className="workplace-main">
-          {/* 
-            remove conditional rendering of components
-            instead conditionally apply class hidden 
-            to prevent components from unmounting
-          */}
           {ready ? (
             <>
-              <Feed className={main === "feed" ? "" : "hidden"} />
-              <IdeasFeed className={main === "feed" ? "hidden" : ""} />
+              <Feed className={main === "feed" ? "feed" : "hidden"} />
+              <IdeasFeed className={main === "feed" ? "hidden" : "feed"} />
+              <Footer />
             </>
           ) : (
             <></>

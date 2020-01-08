@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./EmployeeRegistrationForm.css";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
 import AuthApiService from "../../Services/auth-api-services";
 
@@ -11,7 +11,10 @@ export default class EmployeeRegistrationForm extends Component {
     password: { value: "", touched: false },
     passwordConfirm: { value: "", touched: false },
     nickname: { value: "", touched: false },
-    submitting: false
+    submitting: false,
+
+    signIn: false,
+    create: false
   };
 
   updateUserName = value => {
@@ -132,6 +135,14 @@ export default class EmployeeRegistrationForm extends Component {
     }
   };
 
+  goToSignIn = () => {
+    this.setState({ signIn: true });
+  };
+
+  goToCreate = () => {
+    this.setState({ create: true });
+  };
+
   render() {
     const {
       userName,
@@ -140,7 +151,9 @@ export default class EmployeeRegistrationForm extends Component {
       code,
       nickname,
       error,
-      submitting
+      submitting,
+      signIn,
+      create
     } = this.state;
     return (
       <div className="employee-registration">
@@ -149,7 +162,7 @@ export default class EmployeeRegistrationForm extends Component {
           className="employee-registration-form"
           onSubmit={e => this.handleSubmit(e)}
         >
-          <legend htmlFor="employee-registration-form">Join a WorkPlace</legend>
+          <h2 className="form-name">Join a WorkPlace</h2>
           {error ? <p className="err">{error}</p> : <></>}
           {/* employee name */}
           <label htmlFor="employee-name">User Name</label>
@@ -222,15 +235,27 @@ export default class EmployeeRegistrationForm extends Component {
           >
             Register
           </button>
-          <Link to={"/sign-in"}>
-            <button className="registration-button">Sign In</button>
-          </Link>
+          <p className="existing-user">Already a member of a WorkPlace?</p>
+          <button
+            className="registration-button"
+            type="button"
+            onClick={this.goToSignIn}
+          >
+            Sign In
+          </button>
+
           <p className="create-wp">Are you creating a new WorkPlace?</p>
-          <Link to={"/create"}>
-            <button className="registration-button create-wp">
-              Create a WorkPlace
-            </button>
-          </Link>
+
+          <button
+            className="registration-button create-wp"
+            onClick={this.goToCreate}
+            type="button"
+          >
+            Create Wp
+          </button>
+
+          {signIn ? <Redirect to={"sign-in"} /> : <></>}
+          {create ? <Redirect to={"create"} /> : <></>}
         </form>
       </div>
     );

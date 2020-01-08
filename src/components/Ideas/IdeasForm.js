@@ -45,6 +45,7 @@ export default class IdeasFrom extends Component {
   };
 
   setAllToTouched = () => {
+    // show all errors if any when submit button is clicked
     const { title, idea } = this.state;
     this.setState({
       title: { value: title.value, touched: true },
@@ -75,6 +76,7 @@ export default class IdeasFrom extends Component {
   };
 
   cancelPost = () => {
+    // clear inputs when cancel button is clicked
     this.setState({
       title: { value: "", touched: false },
       idea: { value: "", touched: false }
@@ -84,17 +86,16 @@ export default class IdeasFrom extends Component {
   render() {
     const { title, idea } = this.state;
     return (
-      <div className="ideas-form-container">
+      <div className="ideas-form-container card">
         <form
           action=""
           className="idea-form"
           onSubmit={e => this.handleSubmit(e)}
         >
           <legend>
-            <h3>Have an Idea?</h3>
+            <h3>Have an idea that can improve your WorkPlace?</h3>
           </legend>
 
-          <p className="form-desc">Have an that can improve your WorkPlace?</p>
           <label htmlFor="idea-title" className="idea-item">
             Title
           </label>
@@ -121,10 +122,16 @@ export default class IdeasFrom extends Component {
           />
           <InputError hasError={this.validateIdea()} touched={idea.touched} />
           <div className=" form-button-container">
-            <button type="button" onClick={() => this.cancelPost()}>
+            <button
+              type="button"
+              className="decline"
+              onClick={() => this.cancelPost()}
+            >
               Cancel
             </button>
-            <button type="submit">Send</button>
+            <button type="submit" className="accept">
+              Send
+            </button>
           </div>
         </form>
       </div>

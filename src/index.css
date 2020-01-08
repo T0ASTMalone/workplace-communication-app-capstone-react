@@ -1,14 +1,115 @@
-html {
-  height: 100vh;
+/* As hex codes */
+
+.color-primary-0 {
+  color: #56def1;
+} /* Main Primary color */
+.color-primary-1 {
+  color: #f2fdfe;
+}
+.color-primary-2 {
+  color: #96e9f5;
+}
+.color-primary-3 {
+  color: #1bd6f1;
+}
+.color-primary-4 {
+  color: #01d1ee;
+}
+
+.color-secondary-1-0 {
+  color: #ffca58;
+} /* Main Secondary color (1) */
+.color-secondary-1-1 {
+  color: #fffbf3;
+}
+.color-secondary-1-2 {
+  color: #ffdf9a;
+}
+.color-secondary-1-3 {
+  color: #ffb619;
+}
+.color-secondary-1-4 {
+  color: #ffae00;
+}
+
+.color-secondary-2-0 {
+  color: #ff6458;
+} /* Main Secondary color (2) */
+.color-secondary-2-1 {
+  color: #fff4f3;
+}
+.color-secondary-2-2 {
+  color: #ffa29a;
+}
+.color-secondary-2-3 {
+  color: #ff2a19;
+}
+.color-secondary-2-4 {
+  color: #ff1300;
+}
+
+/* As RGBa codes */
+
+.rgba-primary-0 {
+  background-color: rgba(86, 222, 241, 1);
+} /* Main Primary color */
+.rgba-primary-1 {
+  background-color: rgba(242, 253, 254, 1);
+}
+.rgba-primary-2 {
+  background-color: rgba(150, 233, 245, 1);
+}
+.rgba-primary-3 {
+  background-color: rgba(27, 214, 241, 1);
+}
+.rgba-primary-4 {
+  background-color: rgba(1, 209, 238, 1);
+}
+
+.rgba-secondary-1-0 {
+  background-color: rgba(255, 202, 88, 1);
+} /* Main Secondary color (1) */
+.rgba-secondary-1-1 {
+  background-color: rgba(255, 251, 243, 1);
+}
+.rgba-secondary-1-2 {
+  background-color: rgba(255, 223, 154, 1);
+}
+.rgba-secondary-1-3 {
+  background-color: rgba(255, 182, 25, 1);
+}
+.rgba-secondary-1-4 {
+  background-color: rgba(255, 174, 0, 1);
+}
+
+.rgba-secondary-2-0 {
+  background-color: rgba(255, 100, 88, 1);
+} /* Main Secondary color (2) */
+.rgba-secondary-2-1 {
+  background-color: rgba(255, 244, 243, 1);
+}
+.rgba-secondary-2-2 {
+  background-color: rgba(255, 162, 154, 1);
+}
+.rgba-secondary-2-3 {
+  background-color: rgba(255, 42, 25, 1);
+}
+.rgba-secondary-2-4 {
+  background-color: rgba(255, 19, 0, 1);
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 * {
   box-sizing: border-box;
-  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   font-size: 16px;
+  background-color: rgba(242, 253, 254, 1);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -20,4 +121,49 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+input,
+textarea {
+  padding: 6px 12px;
+  border: none;
+  color: #6e707e;
+  background-color: rgb(228, 240, 241) !important;
+  border-radius: 6px;
+}
+
+input {
+  height: 40px;
+}
+
+textarea {
+  height: 50px;
+}
+
+.card {
+  margin: 10px 5px;
+  border-radius: 6px;
+  border: 4px rgba(57, 59, 68, 0.322);
+  box-shadow: 0 4.5px 10px 0 rgba(57, 59, 68, 0.322);
+}
+
+button{
+  border-radius: 3px;
+  border: none;
+  width: 100px;
+  height: 40px;
+  transition: 0.5s ease-in-out;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 4.5px 10px 0 rgba(57, 59, 68, 0.322);
+}
+
+.footer-container{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 20px;
 }

@@ -8,7 +8,7 @@ const AuthApiService = {
       name: info.wp_name,
       type: info.wp_type
     };
-
+    // new creator
     const user = {
       username: info.username,
       type: info.user_type,
@@ -16,7 +16,7 @@ const AuthApiService = {
       nickname: info.nickname,
       img: info.img
     };
-
+    // create wp
     return fetch(`${config.API_ENDPOINT}/wp`, {
       method: "POST",
       headers: {
@@ -29,10 +29,13 @@ const AuthApiService = {
       }
 
       return res.json().then(resJson => {
+        // get wp code and id
         const { wp_code, wp_id } = resJson;
 
+        // add code to new creator object
         user.code = wp_code;
 
+        // post user to db
         return fetch(`${config.API_ENDPOINT}/users`, {
           method: "POST",
           headers: {
@@ -40,8 +43,10 @@ const AuthApiService = {
           },
           body: JSON.stringify(user)
         }).then(res2 =>
+          // if user failed to post delete workplace that was just created
           !res2.ok
             ? res2.json().then(e => {
+                // delete wp
                 fetch(`${config.API_ENDPOINT}/wp/err/${wp_id}`, {
                   method: "DELETE",
                   headers: {

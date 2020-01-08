@@ -84,6 +84,10 @@ export class WorkPlaceProvider extends Component {
     this.setState({ ideaOffset });
   };
 
+  clearPosts = () => {
+    this.setState({ posts: [] });
+  };
+
   clearContext = () => {
     this.setState({
       userType: null,
@@ -126,7 +130,9 @@ export class WorkPlaceProvider extends Component {
       setIdeas: this.setIdeas,
       setPostOffset: this.setPostOffset,
       setIdeaOffset: this.setIdeaOffset,
-      clearContext: this.clearContext
+      clearContext: this.clearContext,
+
+      clearPosts: this.clearPosts
     };
 
     return (

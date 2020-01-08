@@ -1,9 +1,8 @@
 .pending-member {
-  border: 1px solid black;
   padding: 5px;
-  margin-bottom: 10px;
+  margin: 10px;
+  background-color: white;
 }
-
 .user-info {
   display: flex;
   margin-bottom: 10px;
@@ -11,4 +10,37 @@
 
 .profile-pic {
   margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.decline {
+  background-color: rgba(255, 162, 154, 1);
+  transition: 0.5s ease-in-out;
+}
+
+.accept {
+  background-color: rgba(255, 223, 154, 1);
+  transition: 0.5s ease-in-out;
+}
+
+.accept:hover,
+.decline:hover,
+.accept:focus,
+.decline:focus {
+  box-shadow: 0 4.5px 10px 0 rgba(57, 59, 68, 0.322);
+}
+
+.accept:hover,
+.accept:focus {
+  background-color: rgba(255, 202, 88, 1);
+}
+
+.decline:hover,
+.decline:focus {
+  background-color: rgba(255, 100, 88, 1);
 }

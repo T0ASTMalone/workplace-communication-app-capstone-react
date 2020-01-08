@@ -56,11 +56,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="header-container">
           <Route path={"/"} component={Header} />
         </header>
 
-        <main>
+        <main className="app-main">
           {/* <p className="timestamp">
             This is the timer value: {this.state.timestamp}
           </p> */}
@@ -75,7 +75,9 @@ export default class App extends React.Component {
             <Route path={"/join"} component={Registration} />
           </Switch>
         </main>
-        <Footer />
+        <Route path={"/sign-in"} component={Footer} />
+        <Route path={"/join"} component={Footer} />
+        <Route path={"/create"} component={Footer} />
       </div>
     );
   }

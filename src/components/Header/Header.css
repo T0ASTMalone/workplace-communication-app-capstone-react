@@ -4,10 +4,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  height: 50px;
   flex-grow: 1;
   z-index: 99;
-  height: 40px;
   margin: auto;
 }
 
@@ -25,7 +23,7 @@
 }
 
 .header-title {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 a:active,
@@ -35,12 +33,13 @@ a {
 }
 
 .header-title {
-  font-size: 30px;
+  color: black;
 }
 
 a:active,
 a:visited,
 a {
+  color: black;
   text-decoration: none;
 }
 
@@ -51,6 +50,20 @@ a {
 
 .to-dash,
 .login-out {
-  color: blue;
+  color: black;
   font-size: 14px;
+}
+
+.header-button {
+  background-color: rgba(255, 223, 154, 1);
+}
+
+.header-button:hover {
+  background-color: rgba(255, 202, 88, 1);
+}
+
+@media only screen and (min-width: 775px) {
+  .header-title {
+    font-size: 40px;
+  }
 }

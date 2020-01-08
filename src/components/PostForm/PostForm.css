@@ -2,15 +2,34 @@
 .idea-form {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.post-form-container,
+.ideas-form-container {
+  margin: 10px 5px;
 }
 
 .post-form-item,
 .idea-item {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .form-button-container {
   display: flex;
   justify-content: space-between;
+}
+
+.form-desc {
+  margin: 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .post-form-container,
+  .ideas-form-container {
+    margin: 20px;
+    flex-grow: 2;
+  }
 }

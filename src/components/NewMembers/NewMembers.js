@@ -36,14 +36,15 @@ export default function NewMembers() {
       if (users.length < 1) {
         return setErr("There are no pending users");
       }
-      if (penUsers.length > 1) {
+      setShow(!show);
+
+      if (penUsers.length >= 1) {
         setPenUsers([]);
       } else {
         setPenUsers(users);
       }
     });
     // show pending users
-    setShow(!show);
   };
 
   const handleDecline = id => {
@@ -67,23 +68,28 @@ export default function NewMembers() {
           : "pending-members"
       }
     >
-      <button className="pen-title" onClick={handleShowPenUsers}>
+      <button
+        className={show && (penUsers.length >= 1 || err) ? "open" : "pen-title"}
+        onClick={handleShowPenUsers}
+      >
         Pending Members
       </button>
-      {penUsers.length >= 1 ? (
-        penUsers.map((user, i) => (
-          <PendingMember
-            key={i}
-            member={user}
-            accept={handleAccept}
-            decline={handleDecline}
-          />
-        ))
-      ) : (
-        <>
-          <p className="error">{err}</p>
-        </>
-      )}
+      <div className="pending-users">
+        {penUsers.length >= 1 ? (
+          penUsers.map((user, i) => (
+            <PendingMember
+              key={i}
+              member={user}
+              accept={handleAccept}
+              decline={handleDecline}
+            />
+          ))
+        ) : (
+          <>
+            <p className="error">{err}</p>
+          </>
+        )}
+      </div>
     </div>
   );
 }

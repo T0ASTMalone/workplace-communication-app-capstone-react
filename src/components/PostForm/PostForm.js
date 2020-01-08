@@ -66,6 +66,8 @@ export default class PostForm extends Component {
   };
 
   setAllToTouched = () => {
+    // set all to touched if submitted and there are missing values
+    // in order to display all errors
     let title = this.state.title.value;
     let content = this.state.content.value;
     this.setState({
@@ -103,6 +105,7 @@ export default class PostForm extends Component {
   };
 
   cancelPost = () => {
+    // clear inputs when cancel button is clicked
     this.setState({
       title: { value: "", touched: false },
       content: { value: "", touched: false }
@@ -112,13 +115,12 @@ export default class PostForm extends Component {
   render() {
     const { title, content } = this.state;
     return (
-      <div className="post-form-container">
+      <div className="post-form-container card">
         <form action="" className="post-form" onSubmit={this.handleAddPost}>
-          <p className="form-desc">
-            Have Something everyone in your WorkPlace should know?
-          </p>
           <legend htmlFor="post-form">
-            <h3>Make a new post</h3>
+            <p className="form-desc">
+              Have Something everyone in your WorkPlace should know?
+            </p>
           </legend>
           <label htmlFor="title" className="post-form-item">
             Title
@@ -151,10 +153,14 @@ export default class PostForm extends Component {
             touched={content.touched}
           />
           <div className="form-button-container">
-            <button type="button" onClick={() => this.cancelPost()}>
+            <button
+              type="button"
+              className="decline"
+              onClick={() => this.cancelPost()}
+            >
               Cancel
             </button>
-            <button type="submit" className="creat-post">
+            <button type="submit" className="accept">
               Post
             </button>
           </div>

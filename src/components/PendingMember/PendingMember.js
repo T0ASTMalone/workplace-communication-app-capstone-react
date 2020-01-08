@@ -8,7 +8,7 @@ const PendingMember = props => {
   let member = props.member;
 
   return (
-    <div className="pending-member">
+    <div className="pending-member card">
       <div className="new-user-info">
         <img
           className="user-img"
@@ -18,9 +18,17 @@ const PendingMember = props => {
 
         <p>{member.username}</p>
       </div>
-
-      <button onClick={() => props.accept(member.user_id)}>Accept</button>
-      <button onClick={() => props.decline(member.user_id)}> Decline</button>
+      <div className="button-container">
+        <button className="accept" onClick={() => props.accept(member.user_id)}>
+          Accept
+        </button>
+        <button
+          className="decline"
+          onClick={() => props.decline(member.user_id)}
+        >
+          Decline
+        </button>
+      </div>
     </div>
   );
 };

@@ -59,27 +59,27 @@ export default class Feed extends Component {
     let { posts, postOffset } = this.context;
     let show = this.props.className;
     return (
-      <div className={`${show} feed`}>
-        <div className="post">
+      <>
+        <div className={`${show}`}>
           <PostForm />
-        </div>
-        {posts.length > 0 ? (
-          posts.map((post, i) => <Post key={i} post={post} />)
-        ) : (
-          <p>Looks Like there are not posts here</p>
-        )}
-        {/* 
+          {posts.length > 0 ? (
+            posts.map((post, i) => <Post key={i} post={post} />)
+          ) : (
+            <p>Looks Like there are not posts here</p>
+          )}
+          {/* 
         if offset is set to 0 all posts have been fetched
         so don't render load more button
         */}
-        {postOffset === 0 ? (
-          <></>
-        ) : (
-          <button className="load-more" onClick={this.loadMorePosts}>
-            load more
-          </button>
-        )}
-      </div>
+          {postOffset === 0 ? (
+            <></>
+          ) : (
+            <button className="load-more" onClick={this.loadMorePosts}>
+              load more
+            </button>
+          )}
+        </div>
+      </>
     );
   }
 }

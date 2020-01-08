@@ -4,6 +4,7 @@ import WorkPlaceContext from "../../context/WorkPlaceContext";
 import Post from "../Post/Post";
 import "./IdeasFeed.css";
 import WpService from "../../Services/wp-api-service";
+import idea from "../../img/svg/idea.svg";
 
 export default class IdeasFeed extends React.Component {
   state = {
@@ -73,6 +74,9 @@ export default class IdeasFeed extends React.Component {
     } else {
       await this.fetchUserPosts(userId, ideaOffset);
     }
+    if (ideas.length < 10) {
+      this.setState({ disableLoadMore: true });
+    }
   }
 
   loadMorePosts = () => {
@@ -87,7 +91,11 @@ export default class IdeasFeed extends React.Component {
   renderIdeas = () => {
     const { ideas } = this.context;
     return ideas.length > 0 ? (
-      ideas.map((idea, i) => <Post key={i} post={idea} />)
+      ideas.map((idea, i) => (
+        <>
+          <Post key={i} post={idea} />
+        </>
+      ))
     ) : (
       <p>There are no ideas here</p>
     );
@@ -98,16 +106,23 @@ export default class IdeasFeed extends React.Component {
     let show = this.props.className;
 
     return (
-      <div id="ideas-feed" className={`${show} feed`}>
+      <div id="ideas-feed" className={`${show}`}>
         {userType === "creator" ? (
           <>
-            <h4>Here are some Ideas posted by people in your WorkPlace</h4>
+            <div className="feed-desc card">
+              <h2>Here are the ideas posted to your WorkPlace</h2>
+              <img src={idea} alt="idea" id="idea-svg" />
+            </div>
+
             {this.renderIdeas()}
           </>
         ) : (
           <>
             <IdeasForm />
-            <p className="user-ideas">Here are the ideas you have posted</p>
+            <div className="feed-desc card">
+              <h2>Here are your Ideas</h2>
+              <img src={idea} alt="idea" id="idea-svg" />
+            </div>
             {this.renderIdeas()}
           </>
         )}

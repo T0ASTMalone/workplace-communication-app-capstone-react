@@ -7,14 +7,27 @@ import TokenService from "../../Services/token-service";
 import IdleService from "../../Services/idle-service";
 
 export default class Header extends Component {
+  state = {
+    wp: "",
+    user: ""
+  };
   static contextType = WorkPlaceContext;
 
   handleLogoutClick = () => {
+    this.props.history.push("/");
     this.context.clearContext();
     TokenService.clearAuthToken();
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
   };
+
+  componentDidMount() {
+    let { workPlace, userId } = this.context;
+    this.setState({
+      wp: workPlace,
+      user: userId
+    });
+  }
 
   renderLogoutLink(signOut) {
     let { workPlace, userId } = this.context;
@@ -24,15 +37,18 @@ export default class Header extends Component {
         {this.props.location.pathname !== `${path}` &&
         TokenService.hasAuthToken() ? (
           <button
-            className="to-dash"
+            className="to-dash header-button"
             onClick={() => this.props.history.goBack()}
           >
-            Back to WorkPlace
+            Back to Wp
           </button>
         ) : (
-          <Link className="login-out" onClick={this.handleLogoutClick} to="/">
+          <button
+            className="login-out header-button"
+            onClick={this.handleLogoutClick}
+          >
             Sign out
-          </Link>
+          </button>
         )}
       </div>
     );
