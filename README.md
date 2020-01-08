@@ -1,6 +1,6 @@
 # workplace-communication-app-capstone-react
 
-WorkPlace is where employers can communicate with employees in
+WorkPlace is where team members can communicate and share ideas with one another in
 order to keep everyone in the loop and up to date with the day to day events of their workplace.
 
 ## Website
@@ -17,33 +17,35 @@ url: https://workplace-communication-app.now.sh/
 
 As a new user, I would like to learn more about what the site is about.
 
+![Landing page](src\img\screenshots\landing-page.png)
+
 **Register**
 
 As a user, I want to register and create a workplace as an employer.
 
-![Employer Registration](src\img\wireframes\employer-registration-page.png)
+![Employer Registration](src\img\screenshots\create-a-wp.png)
 
 As a user, I want to register and join a workplace as an employee
 
-![Employee Registration](src\img\wireframes\employee-registration-page.png)
+![Employee Registration](src\img\screenshots\join-a-wp.png)
 
 **Sign In**
 
 As a user, I want to sign in to my workplace
 
-![Sign In Page](src\img\wireframes\sign-in.png)
+![Sign In Page](src\img\screenshots\sign-in.png)
 
 **User Feed**
 
 As a user, I want to see what has been posted on my workplace
 
-![WorkPlace Feed](src\img\wireframes\workplace-feed.png)
+![WorkPlace Feed](src\img\screenshots\workplace.png)
 
 **Ideas Page**
 
 As a user, I want to post an idea so my employer can see it
 
-![Ideas Page](src\img\wireframes\ideas-page.png)
+![Ideas Page](src\img\screenshots\ideas.png)
 
 ## Technical
 
