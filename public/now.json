@@ -8,6 +8,19 @@
       "dest": "/static/$1"
     },
     {
+      "src": "^/favicon.ico$",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "^/manifest.json$",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "^/android-chrome-192x192.png$",
+      "dest": "/android-chrome-192x192.png",
+      "headers": { "Content-Type": "image/png" }
+    },
+    {
       "src": ".*",
       "dest": "/index.html"
     }
