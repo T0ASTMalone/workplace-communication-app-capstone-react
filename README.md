@@ -9,6 +9,8 @@ The website is a Heroku/Zeit application and may take a minute to start up when 
 
 url: https://workplace-communication-app.now.sh/
 
+## Demo User
+
 ## User Stories
 
 ---

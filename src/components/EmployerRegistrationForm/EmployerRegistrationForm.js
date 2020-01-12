@@ -155,13 +155,13 @@ export default class EmployerRegistrationForm extends Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <h2 className="form-name">Create a WorkPlace</h2>
-          {error ? <p className="err">{error}</p> : <></>}
-          <label htmlFor="employer-name">Name</label>
+          {error ? <p className="err-msg">{error}</p> : <></>}
+          <label htmlFor="employer-name">Your Name</label>
           <input
             id="employer-name"
             type="text"
             className="new-employer"
-            placeholder="Name"
+            placeholder="Your Name"
             value={userName.value}
             onChange={e => this.updateUserName(e.target.value)}
           />
@@ -169,12 +169,12 @@ export default class EmployerRegistrationForm extends Component {
             hasError={this.validateUserName()}
             touched={userName.touched}
           />
-          <label htmlFor="employer-nickname">Nickname</label>
+          <label htmlFor="employer-nickname">Username</label>
           <input
             id="employer-nickname"
             type="text"
             className="new-employer"
-            placeholder="Nickname"
+            placeholder="Username for signing in"
             value={nickname.value}
             onChange={e => this.updateNickname(e.target.value)}
           />
@@ -183,12 +183,13 @@ export default class EmployerRegistrationForm extends Component {
             touched={nickname.touched}
           />
           <label htmlFor="company-name">WorkPlace Name</label>
+          <p className="input-desc">(This will be the name of your page)</p>
           {/* project name */}
           <input
             id="company-name"
             type="text"
             className="new-employer"
-            placeholder="WorkPlace Name"
+            placeholder="Team, Project or Company Name"
             value={company.value}
             onChange={e => this.updateCompany(e.target.value)}
           />

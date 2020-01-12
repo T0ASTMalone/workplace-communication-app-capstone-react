@@ -106,12 +106,12 @@ export default class SignInForm extends Component {
         >
           <h2 className="form-name">Sign In</h2>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
-          <label htmlFor="user">Nickname</label>
+          <label htmlFor="user">Username</label>
           <input
             id="user"
             type="text"
             className="sign-in-input login"
-            placeholder="Nickname"
+            placeholder="Username"
             value={nickname.value}
             onChange={e => this.handleUpdateUserName(e.target.value)}
             //required

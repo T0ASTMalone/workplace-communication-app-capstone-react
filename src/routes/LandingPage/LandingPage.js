@@ -106,7 +106,7 @@ export default function LandingPage() {
           <p className="landing-text">
             Create or join a workplace. When a WorkPlace is created a WorkPlace
             code will be generated and new members can use this code to join
-            your workplace.
+            your WorkPlace.
           </p>
         </div>
       </section>
@@ -143,6 +143,10 @@ export default function LandingPage() {
             of the WorkPlace
           </p>
         </div>
+      </section>
+
+      <section id="demo user" className="landing-section">
+        <h3>Check it out</h3>
       </section>
       <Footer />
     </div>

@@ -33,6 +33,7 @@
   display: flex;
   text-align: center;
   transition: 1.25s ease-in-out;
+  justify-content: center;
 }
 
 .slide-inL {

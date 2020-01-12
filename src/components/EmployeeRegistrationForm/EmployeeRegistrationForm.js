@@ -163,14 +163,14 @@ export default class EmployeeRegistrationForm extends Component {
           onSubmit={e => this.handleSubmit(e)}
         >
           <h2 className="form-name">Join a WorkPlace</h2>
-          {error ? <p className="err">{error}</p> : <></>}
+          {error ? <p className="err-msg">{error}</p> : <></>}
           {/* employee name */}
-          <label htmlFor="employee-name">User Name</label>
+          <label htmlFor="employee-name">Your Name</label>
           <input
             id="employee-name"
             type="text"
             className="new-employee"
-            placeholder="Name"
+            placeholder="Your Name"
             value={userName.value}
             onChange={e => this.updateUserName(e.target.value)}
           />
@@ -178,12 +178,12 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validateUserName()}
             touched={userName.touched}
           />
-          <label htmlFor="employee-nickname">Nickname</label>
+          <label htmlFor="employee-nickname">Username</label>
           <input
             id="member-nickname"
             type="text"
             className="new-employee"
-            placeholder="Nickname"
+            placeholder="Username for signing in"
             value={nickname.value}
             onChange={e => this.updateNickname(e.target.value)}
           />
@@ -219,6 +219,9 @@ export default class EmployeeRegistrationForm extends Component {
           />
           {/* workplace code */}
           <label htmlFor="workplace-code">WorkPlace Code</label>
+          <p className="input-desc">
+            (The creator of the page will have this code)
+          </p>
           <input
             id="workplace-code"
             type="text"
