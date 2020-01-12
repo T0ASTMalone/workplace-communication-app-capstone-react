@@ -68,12 +68,12 @@ class WorkPlace extends Component {
           <div className="tabs ">
             <button
               id="feed"
-              className="tab"
+              className={main === "feed" ? "tab current" : "tab"}
               value="feed"
               onClick={e => this.updateWpMain(e.target.value)}
             ></button>
             <button
-              className="tab"
+              className={main === "feed" ? "tab" : "tab current"}
               id="ideas"
               value="ideas"
               onClick={e => this.updateWpMain(e.target.value)}

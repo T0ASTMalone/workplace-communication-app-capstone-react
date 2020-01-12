@@ -61,6 +61,10 @@
   margin-bottom: 10px;
 }
 
+.current {
+  background-color: rgba(150, 233, 245, 1);
+}
+
 #ideas::before {
   content: url("https://img.icons8.com/material-outlined/24/000000/idea.png");
   width: 25px;
