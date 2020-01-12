@@ -106,14 +106,20 @@ export default function LandingPage() {
         <div id="new-user" className="landing-info content card">
           <h3>Register</h3>
           <p className="landing-text">
-            Create or join a workplace. When a WorkPlace is created a WorkPlace
-            code will be generated and new members can use this code to join
-            your WorkPlace.
+            When joining or creating a WorkPlace, new members will register
+            using the name that other members of the WorkPlace page know you by
+            and a username that will be used for signing in.
+          </p>
+          <p className="landing-text">
+            When a WorkPlace is created a name must be given to the WorkPlace
+            page. (i.e. A Company, Team or Project name) A WorkPlace code will
+            be generated and new members can use this code to join your
+            WorkPlace.
           </p>
           <div className="demo-wp-info">
             <p className="input-desc">Demo Wp Creator</p>
             <WpInfo
-              nickname="Cris"
+              nickname="Cris006"
               userName="Ramon Ponce"
               userType="creator"
               wpCode="Mmcrhjrm"
@@ -177,20 +183,28 @@ export default function LandingPage() {
           />
         </div>
         <div className="landing-info content">
-          <h3 className="demo-title">Try It Out</h3>
-          <div className=" demo-account">
+          <h3 className="demo-title">Try Out WorkPlace</h3>
+          <div className="demo-account card">
             <h4 className="div-title">Demo Creator</h4>
             <ul className="demo-user">
-              <li className="demo-info">Username: Cris</li>
-              <li className="demo-info">Password: Thisis@testpassword!2</li>
+              <li className="demo-info">
+                <span className="bold">Username:</span> Cris
+              </li>
+              <li className="demo-info">
+                <span className="bold">Password:</span> Thisis@testpassword!2
+              </li>
             </ul>
           </div>
 
-          <div className=" demo-account">
+          <div className="demo-account card">
             <h4>Demo Member</h4>
-            <ul className="demo-user ">
-              <li className="demo-info">Username: map</li>
-              <li className="demo-info">Password: Thisis@testpassword!2</li>
+            <ul className="demo-user">
+              <li className="demo-info">
+                <span className="bold">Username:</span> map
+              </li>
+              <li className="demo-info">
+                <span className="bold">Password:</span> Thisis@testpassword!2
+              </li>
             </ul>
           </div>
         </div>

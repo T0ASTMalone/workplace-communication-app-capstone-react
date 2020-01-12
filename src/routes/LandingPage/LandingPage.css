@@ -1,6 +1,6 @@
 .landing-page {
-  padding: 15px;
-  max-width: 1600px;
+  padding: 10px;
+  max-width: 1500px;
   margin: auto;
   min-height: 70vh;
 }
@@ -80,14 +80,23 @@
 .demo-account {
   padding: 10px;
   max-height: 200px;
-  margin: 0;
+  max-width: 400px;
+  margin: 0 auto;
   margin-bottom: 10px;
+  background-color: #ffdf9a;
+  align-self: center;
 }
 
 .wp-screenshot {
   max-width: 300px;
   max-height: 471px;
   border-radius: 3px;
+  margin: 0;
+  transition: 1.5s ease-in-out;
+}
+
+.wp-screenshot:hover {
+  transform: scale(2) translateX(75px) translateY(60px);
 }
 
 .demo-screenshot {
@@ -96,13 +105,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 795px) {
+  .wp-screenshot:hover {
+    transform: scale(1.5) translateX(100px) translateY(100px);
+  }
+
+  .demo-title {
+    margin: 0;
+  }
+
   .wp-screenshot {
     max-width: 500px;
     max-height: 471px;
     border-radius: 3px;
+    margin: 0;
+    transition: 1s ease-in-out;
+  }
+
+  .demo-screenshot {
+    margin: 20px;
+  }
+
+  .demo-account {
+    margin: 0;
+    width: 100%;
   }
 
   .undrawR {

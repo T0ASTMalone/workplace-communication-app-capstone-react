@@ -1,6 +1,11 @@
 .user-info {
   text-align: left;
-  min-width: 98px;
+  min-width: 120px;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 16px;
 }
 
 .workplace-name {
