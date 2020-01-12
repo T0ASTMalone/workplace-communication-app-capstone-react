@@ -31,20 +31,22 @@ export default function NewMembers() {
 
   const handleShowPenUsers = () => {
     //fetch pending users
-    WpService.getUsers(context.wpId, "pending").then(users => {
-      // toggle pending users
-      if (users.length < 1) {
-        setErr("There are no pending users");
+    WpService.getUsers(context.wpId, "pending")
+      .then(users => {
+        // toggle pending users
+        if (users.length < 1) {
+          setErr("There are no pending users");
+          setShow(!show);
+        }
         setShow(!show);
-      }
-      setShow(!show);
 
-      if (penUsers.length >= 1) {
-        setPenUsers([]);
-      } else {
-        setPenUsers(users);
-      }
-    });
+        if (penUsers.length >= 1) {
+          setPenUsers([]);
+        } else {
+          setPenUsers(users);
+        }
+      })
+      .catch(err => setErr(err));
     // show pending users
   };
 

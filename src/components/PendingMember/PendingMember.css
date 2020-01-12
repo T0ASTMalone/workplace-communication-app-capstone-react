@@ -12,6 +12,16 @@
   margin-right: 10px;
 }
 
+.pending-nickname {
+  margin-top: 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.pending-name {
+  margin-bottom: 0;
+}
+
 .button-container {
   display: flex;
   justify-content: space-between;

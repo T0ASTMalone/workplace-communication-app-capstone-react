@@ -1,19 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import PendingMember from "./PendingMember";
 import { BrowserRouter as Router } from "react-router-dom";
-import WorkPlace from "./WorkPlace";
 
 it("renders without crashing", () => {
-  const match = {
-    params: {
-      user: "testuser",
-      wp: "Tesla"
-    }
+  const member = {
+    user_img: "testImg",
+    username: "test user",
+    nickname: "test nickname",
+    user_id: 1
   };
+
+  const decline = () => {};
+  const accept = () => {};
+
   const div = document.createElement("div");
   ReactDOM.render(
     <Router>
-      <WorkPlace match={match} />
+      <PendingMember member={member} accept={accept} decline={decline} />
     </Router>,
     div
   );

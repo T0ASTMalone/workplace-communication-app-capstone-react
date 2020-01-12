@@ -15,8 +15,8 @@ const PendingMember = props => {
           src={member.user_img ? member.user_img : profile}
           alt="profile"
         />
-
-        <p>{member.username}</p>
+        <p className="pending-name">{member.username}</p>
+        <p className="pending-nickname">{member.nickname}</p>
       </div>
       <div className="button-container">
         <button className="accept" onClick={() => props.accept(member.user_id)}>

@@ -1,19 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import NewMembers from "./NewMembers";
 import { BrowserRouter as Router } from "react-router-dom";
-import WorkPlace from "./WorkPlace";
 
 it("renders without crashing", () => {
-  const match = {
-    params: {
-      user: "testuser",
-      wp: "Tesla"
-    }
-  };
   const div = document.createElement("div");
   ReactDOM.render(
     <Router>
-      <WorkPlace match={match} />
+      <NewMembers />
     </Router>,
     div
   );

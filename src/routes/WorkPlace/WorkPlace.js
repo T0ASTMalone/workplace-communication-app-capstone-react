@@ -19,19 +19,26 @@ class WorkPlace extends Component {
 
   async componentDidMount() {
     let { user, wp } = this.props.match.params;
+
     //get user info by id
-    await WpService.getUserInfo(user).then(async res => {
-      const { username, type, nickname, user_id, wp_id, code } = res;
-      //set user info in context
-      await this.context.setUserType(type);
-      await this.context.setNickname(nickname);
-      await this.context.setUserName(username);
-      await this.context.setUserId(user_id);
-      await this.context.setWp(wp);
-      await this.context.setWpId(wp_id);
-      await this.context.setCode(code);
-      this.setState({ ready: true });
-    });
+    await WpService.getUserInfo(user)
+      .then(async res => {
+        try {
+          const { username, type, nickname, user_id, wp_id, code } = res;
+          //set user info in context
+          await this.context.setUserType(type);
+          await this.context.setNickname(nickname);
+          await this.context.setUserName(username);
+          await this.context.setUserId(user_id);
+          await this.context.setWp(wp);
+          await this.context.setWpId(wp_id);
+          await this.context.setCode(code);
+          this.setState({ ready: true });
+        } catch (err) {
+          console.error(err);
+        }
+      })
+      .catch(err => console.error(err));
     // if user type is wpCreator
     //  display pending users component
   }
