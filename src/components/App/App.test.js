@@ -4,7 +4,7 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { WorkPlaceProvider } from "../../context/WorkPlaceContext";
 
-it("renders without crashing", () => {
+it("renders App without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <Router>

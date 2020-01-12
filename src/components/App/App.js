@@ -26,12 +26,10 @@ export default class App extends React.Component {
   };
 
   static getDerivedStateFromError(error) {
-    console.error(error);
     return { hasError: true };
   }
 
   componentDidMount() {
-    console.log("test running");
     IdleService.setIdleCallBack(this.logoutFromIdle);
     if (TokenService.hasAuthToken()) {
       IdleService.registerIdleTimerResets();
