@@ -48,16 +48,17 @@
   width: 50px;
 }
 
-.nickname {
+.username {
   font-weight: bold;
   font-size: 16px;
 }
 
+.nickname,
 .username {
   margin: 0;
 }
 
-.username,
+.nickname,
 .date {
   font-size: 14px;
   font-style: italic;

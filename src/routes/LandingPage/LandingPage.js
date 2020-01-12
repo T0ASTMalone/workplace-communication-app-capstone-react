@@ -6,6 +6,8 @@ import wp from "../../img/svg/workplace.svg";
 import post from "../../img/svg/post.svg";
 import idea from "../../img/svg/idea.svg";
 import Footer from "../../components/Footer/Footer";
+import WpInfo from "../../components/Wpinfo/WpInfo";
+import WpScreenshot from "../../img/screenshots/workplace.png";
 
 function useOnScreen(options) {
   // hook to observe when element enters the viewport
@@ -76,7 +78,7 @@ export default function LandingPage() {
           <h1 className="App-name"> WorkPlace</h1>
 
           <div id="existing-user" className="">
-            <h3>Already part of WorkPlace</h3>
+            <h3>Already part of a WorkPlace</h3>
 
             <button id="sign-in-button" onClick={goToSignIn} className="to-wp">
               Sign In
@@ -108,6 +110,16 @@ export default function LandingPage() {
             code will be generated and new members can use this code to join
             your WorkPlace.
           </p>
+          <div className="demo-wp-info">
+            <p className="input-desc">Demo Wp Creator</p>
+            <WpInfo
+              nickname="Cris"
+              userName="Ramon Ponce"
+              userType="creator"
+              wpCode="Mmcrhjrm"
+              workPlace="Tesla"
+            />
+          </div>
         </div>
       </section>
 
@@ -120,7 +132,13 @@ export default function LandingPage() {
           <h3 className="div-title">Keep everyone in the loop</h3>
           <p className="landing-text">
             As a member you can make posts that other members of your WorkPlace
-            need to see.
+            need to see under the{" "}
+            <img
+              className="feed-icon-landing"
+              src="https://img.icons8.com/material-outlined/24/000000/activity-feed.png"
+              alt="feed-icon"
+            />{" "}
+            posts tab
           </p>
         </div>
       </section>
@@ -130,10 +148,15 @@ export default function LandingPage() {
           <img src={idea} alt="idea for the workplace" className="undraw-img" />
         </div>
         <div className="landing-info card content">
-          <h3 className="div-title">Feedback</h3>
+          <h3 className="div-title">Ideas</h3>
           <p className="landing-text">
             If you have ideas for improvement, safety concerns, or any other
-            issues you might need to bring up, you can make a post under the
+            issues you might need to bring up, you can make a post under the{" "}
+            <img
+              className="feed-icon-landing"
+              src="https://img.icons8.com/material-outlined/24/000000/idea.png"
+              alt="feed-icon"
+            />{" "}
             ideas tab so that the creator of the WorkPlace may see your idea.
           </p>
           <p className="landing-text">
@@ -145,8 +168,32 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="demo user" className="landing-section">
-        <h3>Check it out</h3>
+      <section id="demo" className="landing-section">
+        <div className=" demo-screenshot">
+          <img
+            src={WpScreenshot}
+            alt="wp-page"
+            className="wp-screenshot card"
+          />
+        </div>
+        <div className="landing-info content">
+          <h3 className="demo-title">Try It Out</h3>
+          <div className=" demo-account">
+            <h4 className="div-title">Demo Creator</h4>
+            <ul className="demo-user">
+              <li className="demo-info">Username: Cris</li>
+              <li className="demo-info">Password: Thisis@testpassword!2</li>
+            </ul>
+          </div>
+
+          <div className=" demo-account">
+            <h4>Demo Member</h4>
+            <ul className="demo-user ">
+              <li className="demo-info">Username: map</li>
+              <li className="demo-info">Password: Thisis@testpassword!2</li>
+            </ul>
+          </div>
+        </div>
       </section>
       <Footer />
     </div>

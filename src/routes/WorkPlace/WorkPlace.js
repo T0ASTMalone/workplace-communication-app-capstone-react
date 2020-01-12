@@ -8,6 +8,7 @@ import IdeasFeed from "../../components/IdeasFeed/IdeasFeed";
 import NewMembers from "../../components/NewMembers/NewMembers";
 import WpService from "../../Services/wp-api-service";
 import Footer from "../../components/Footer/Footer";
+import WpInfo from "../../components/Wpinfo/WpInfo";
 
 class WorkPlace extends Component {
   state = {
@@ -46,24 +47,13 @@ class WorkPlace extends Component {
     return (
       <div className="workplace">
         <div className="workplace-header">
-          <div className="workplace-info card">
-            <div className="user-info">
-              <h2 className="user nickname">{nickname}</h2>
-              <h3 className="user user-name">{userName}</h3>
-              <h3 className="user user-type">
-                {userType === "user" ? "member" : userType}
-              </h3>
-            </div>
-            <div className="wp-info">
-              <h2 className="workplace-name">{workPlace}</h2>
-              {userType === "creator" ? (
-                <p className="wpCode">wp code: {wpCode}</p>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-
+          <WpInfo
+            nickname={nickname}
+            userName={userName}
+            userType={userType}
+            wpCode={wpCode}
+            workPlace={workPlace}
+          />
           <div className="new-members">
             {userType === "creator" ? <NewMembers /> : <></>}
           </div>

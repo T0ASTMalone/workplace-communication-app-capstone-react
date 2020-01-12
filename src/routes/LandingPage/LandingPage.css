@@ -62,7 +62,49 @@
   flex-direction: column;
 }
 
+.screen-shots {
+  width: 50%;
+}
+
+.demo-wp-info {
+  max-width: 300px;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.feed-icon-landing {
+  position: relative;
+  top: 5px;
+}
+
+.demo-account {
+  padding: 10px;
+  max-height: 200px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.wp-screenshot {
+  max-width: 300px;
+  max-height: 471px;
+  border-radius: 3px;
+}
+
+.demo-screenshot {
+  max-width: 600px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 795px) {
+  .wp-screenshot {
+    max-width: 500px;
+    max-height: 471px;
+    border-radius: 3px;
+  }
+
   .undrawR {
     transform: translateX(500px);
   }

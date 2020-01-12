@@ -12,10 +12,6 @@
   padding: 10px;
 }
 
-.nickname {
-  margin: 0;
-}
-
 .user-info {
   display: flex;
   flex-direction: column;
@@ -29,8 +25,13 @@
   max-width: 970px;
 }
 
-.user-type,
 .user-name {
+  margin: 0;
+  font-size: 14px;
+}
+
+.user-type,
+.nickname {
   font-size: 14px;
   margin: 0;
   font-weight: 500;
