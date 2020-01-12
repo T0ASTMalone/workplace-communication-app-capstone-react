@@ -35,10 +35,10 @@ class WorkPlace extends Component {
           await this.context.setCode(code);
           this.setState({ ready: true });
         } catch (err) {
-          console.error(err);
+          this.setState({ error: err });
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => this.setState({ error: err }));
     // if user type is wpCreator
     //  display pending users component
   }

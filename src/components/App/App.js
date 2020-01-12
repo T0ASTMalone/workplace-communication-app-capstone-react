@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
@@ -8,18 +8,11 @@ import WorkPlace from "../../routes/WorkPlace/WorkPlace";
 import Registration from "../../routes/Registration/Registration";
 import Footer from "../../components/Footer/Footer";
 import IdleService from "../../Services/idle-service";
-//import PublicOnlyRoute from "../utils/PublicOnlyRoute";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
 import AuthApiService from "../../Services/auth-api-services";
 import TokenService from "../../Services/token-service";
-//import { subscribeToTimer } from "../../api";
 
-export default class App extends React.Component {
-  //constructor(props) {
-  //  super(props);
-  //subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
-  //}
-
+export default class App extends Component {
   state = {
     hasError: false,
     timestamp: "no timestamp yet"
@@ -30,6 +23,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("componentDidMount");
     IdleService.setIdleCallBack(this.logoutFromIdle);
     if (TokenService.hasAuthToken()) {
       IdleService.registerIdleTimerResets();
@@ -60,9 +54,6 @@ export default class App extends React.Component {
         </header>
 
         <main className="app-main">
-          {/* <p className="timestamp">
-            This is the timer value: {this.state.timestamp}
-          </p> */}
           <Switch>
             <Route exact path={"/"} component={LandingPage} />
             <PrivateOnlyRoute
