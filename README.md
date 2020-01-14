@@ -11,6 +11,20 @@ url: https://workplace-communication-app.now.sh/
 
 ## Demo User
 
+Two demo users that are part of the same WorkPlace page
+
+**Demo Creator**
+
+- username: Cris
+
+- password: Thisis@testpassword!2
+
+**Demo Member**
+
+- username: map
+
+- password: Thisis@testpassword!2
+
 ## User Stories
 
 ---

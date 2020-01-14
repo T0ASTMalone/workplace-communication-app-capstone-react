@@ -23,7 +23,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     IdleService.setIdleCallBack(this.logoutFromIdle);
     if (TokenService.hasAuthToken()) {
       IdleService.registerIdleTimerResets();
