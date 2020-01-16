@@ -14,8 +14,7 @@ import TokenService from "../../Services/token-service";
 
 export default class App extends Component {
   state = {
-    hasError: false,
-    timestamp: "no timestamp yet"
+    hasError: false
   };
 
   static getDerivedStateFromError(error) {
