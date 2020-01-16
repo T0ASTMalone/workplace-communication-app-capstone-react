@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
 import "./EmployerRegistrationForm.css";
 import AuthApiService from "../../Services/auth-api-services";
-
+import PropTypes from "prop-types";
 export default class EmployerRegistrationForm extends Component {
   state = {
     userName: { value: "", touched: false },
@@ -259,3 +259,10 @@ export default class EmployerRegistrationForm extends Component {
     );
   }
 }
+
+EmployerRegistrationForm.propTypes = {
+  registered: PropTypes.func.isRequired,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

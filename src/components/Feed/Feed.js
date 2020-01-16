@@ -4,6 +4,7 @@ import Post from "../Post/Post";
 import WorkPlaceContext from "../../context/WorkPlaceContext";
 import "./Feed.css";
 import WpService from "../../Services/wp-api-service";
+import PropTypes from "prop-types";
 
 export default class Feed extends Component {
   state = {
@@ -85,3 +86,7 @@ export default class Feed extends Component {
     );
   }
 }
+
+Feed.propTypes = {
+  className: PropTypes.string
+};

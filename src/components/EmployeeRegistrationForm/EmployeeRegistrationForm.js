@@ -3,6 +3,7 @@ import "./EmployeeRegistrationForm.css";
 import { Redirect } from "react-router-dom";
 import InputError from "./EmployeeRegistrationFormErr";
 import AuthApiService from "../../Services/auth-api-services";
+import PropTypes from "prop-types";
 
 export default class EmployeeRegistrationForm extends Component {
   state = {
@@ -264,3 +265,7 @@ export default class EmployeeRegistrationForm extends Component {
     );
   }
 }
+
+EmployeeRegistrationForm.propTypes = {
+  registered: PropTypes.func.isRequired
+};

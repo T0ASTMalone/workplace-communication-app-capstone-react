@@ -5,6 +5,7 @@ import Post from "../Post/Post";
 import "./IdeasFeed.css";
 import WpService from "../../Services/wp-api-service";
 import idea from "../../img/svg/idea.svg";
+import PropTypes from "prop-types";
 
 export default class IdeasFeed extends React.Component {
   state = {
@@ -133,3 +134,7 @@ export default class IdeasFeed extends React.Component {
     );
   }
 }
+
+IdeasFeed.propTypes = {
+  className: PropTypes.string
+};
