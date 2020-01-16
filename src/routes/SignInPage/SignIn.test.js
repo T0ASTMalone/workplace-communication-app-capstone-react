@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SignInPage from "./SignInPage";
+import { BrowserRouter as Router } from "react-router-dom";
 
-it.skip("renders without crashing", () => {
+it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<SignInPage />, div);
+  ReactDOM.render(
+    <Router>
+      <SignInPage />
+    </Router>,
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });
