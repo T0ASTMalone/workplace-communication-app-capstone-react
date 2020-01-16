@@ -91,11 +91,7 @@ export default class IdeasFeed extends React.Component {
   renderIdeas = () => {
     const { ideas } = this.context;
     return ideas.length > 0 ? (
-      ideas.map((idea, i) => (
-        <>
-          <Post key={i} post={idea} />
-        </>
-      ))
+      ideas.map((idea, i) => <Post key={i} post={idea} />)
     ) : (
       <p className="nothing-to-see card">There are no ideas here</p>
     );

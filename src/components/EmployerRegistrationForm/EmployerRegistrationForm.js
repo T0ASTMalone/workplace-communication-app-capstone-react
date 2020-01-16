@@ -35,13 +35,13 @@ export default class EmployerRegistrationForm extends Component {
   validateUserName = () => {
     let userName = this.state.userName.value;
     if (userName.length < 1) {
-      return "A user name is required";
+      return "Your name is required";
     }
   };
   validateNickname = () => {
     let nickname = this.state.nickname.value;
     if (nickname.length < 1) {
-      return "A user name is required";
+      return "A username is required";
     }
   };
 

@@ -1,9 +1,10 @@
 import React from "react";
 import "./WpInfo.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export default function WpInfo(props) {
-  const { nickname, userName, userType, wpCode, workPlace } = props;
+  let { nickname, userName, userType, wpCode, workPlace } = props;
+
   return (
     <div className="workplace-info card">
       <div className="user-info">
@@ -14,7 +15,11 @@ export default function WpInfo(props) {
         </h3>
       </div>
       <div className="wp-info">
-        <h2 className="workplace-name">{workPlace}</h2>
+        <h2 className="workplace-name tooltip">
+          {workPlace}
+          <span className="tooltiptext card">{workPlace}</span>
+        </h2>
+
         {userType === "creator" ? (
           <p className="wpCode">wp code: {wpCode}</p>
         ) : (
@@ -24,3 +29,13 @@ export default function WpInfo(props) {
     </div>
   );
 }
+
+WpInfo.propTypes = {
+  props: PropTypes.shape({
+    nickname: PropTypes.string,
+    userName: PropTypes.string,
+    userType: PropTypes.string,
+    wpCode: PropTypes.string,
+    workPlace: PropTypes.string
+  })
+};
