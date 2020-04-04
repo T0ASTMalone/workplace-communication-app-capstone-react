@@ -13,13 +13,13 @@ export default class SignInForm extends Component {
       error: null,
       nickname: {
         value: "",
-        touched: false
+        touched: false,
       },
       password: {
         value: "",
-        touched: false
+        touched: false,
       },
-      type: "creator"
+      type: "creator",
     };
   }
 
@@ -28,12 +28,12 @@ export default class SignInForm extends Component {
   static defaultProps = {
     location: {},
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
   static defaultProps = {
-    onLoginSuccess: () => {}
+    onLoginSuccess: () => {},
   };
 
   handleUpdatePassword(ev) {
@@ -48,7 +48,7 @@ export default class SignInForm extends Component {
     this.setState({ type });
   }
 
-  handleSubmitJwtAuth = ev => {
+  handleSubmitJwtAuth = (ev) => {
     ev.preventDefault();
     if (this.validatePassword()) {
       this.setAllToTouched();
@@ -57,48 +57,42 @@ export default class SignInForm extends Component {
       // if user make api call to user table in db
       // else make api call to creator table in db
 
-
       // get rid of user type on login
       // this is already fetched when wp mounts
-      
+
       const { nickname, password, type } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,
         password: password.value,
-        type
+        type,
       })
-        .then(res => {
+        .then((res) => {
+          // clean context
           this.context.clearContext();
           this.setState({
             nickname: { value: "", touched: false },
             password: { value: "", touched: false },
-            type: { value: "creator" }
+            type: { value: "creator" },
           });
           this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
-        .catch(res => {
+        .catch((res) => {
           this.setState({ error: res.error.message });
         });
     }
   };
 
   setAllToTouched = () => {
+    // set all inputs touched property to true
     const { nickname, password } = this.state;
     this.setState({
       nickname: { value: nickname.value, touched: true },
-      password: { value: password.value, touched: true }
+      password: { value: password.value, touched: true },
     });
   };
 
-  updateUserName = nickname => {
-    this.setState({ nickname: { value: nickname, touched: true } });
-  };
-
-  updatePassword = password => {
-    this.setState({ password: { value: password, touched: true } });
-  };
-
   validateUserName = () => {
+    // check if username was entered
     const nickname = this.state.nickname.value;
     if (nickname < 1) {
       return "A user name is required";
@@ -106,6 +100,7 @@ export default class SignInForm extends Component {
   };
 
   validatePassword = () => {
+    // check if password was entered
     const password = this.state.password.value;
     if (password < 1) {
       return "A password is required";
@@ -117,67 +112,67 @@ export default class SignInForm extends Component {
     return (
       <>
         <form
-          action="sign-in"
-          className="sign-in"
+          action='sign-in'
+          className='sign-in'
           onSubmit={this.handleSubmitJwtAuth}
         >
-          <h2 className="form-name">Sign In</h2>
-          <div role="alert">{error && <p className="red">{error}</p>}</div>
-          <label htmlFor="user">Nickname</label>
+          <h2 className='form-name'>Sign In</h2>
+          <div role='alert'>{error && <p className='red'>{error}</p>}</div>
+          <label htmlFor='user'>Nickname</label>
           <input
-            id="user"
-            type="text"
-            className="sign-in-input login"
-            placeholder="Nickname"
+            id='user'
+            type='text'
+            className='sign-in-input login'
+            placeholder='Nickname'
             value={nickname.value}
-            onChange={e => this.handleUpdateUserName(e.target.value)}
+            onChange={(e) => this.handleUpdateUserName(e.target.value)}
             //required
           />
           <SignInError
             hasError={this.validateUserName()}
             touched={nickname.touched}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor='password'>Password</label>
           <input
-            type="password"
-            className="sign-in-input login"
-            placeholder="password"
+            type='password'
+            className='sign-in-input login'
+            placeholder='password'
             value={password.value}
-            onChange={e => this.handleUpdatePassword(e.target.value)}
+            onChange={(e) => this.handleUpdatePassword(e.target.value)}
             //required
-            id="password"
+            id='password'
           />
           <SignInError
             hasError={this.validatePassword()}
             touched={password.touched}
-            className="login-error"
+            className='login-error'
           />
-          <div className="type-of-user">
-            <label htmlFor="employer-select">Creator</label>
+          <div className='type-of-user'>
+            <label htmlFor='employer-select'>Creator</label>
             <input
-              name="user-type"
-              id="employer-select"
-              type="radio"
-              value="creator"
-              onChange={e => this.handleUpdateType(e.target.value)}
+              name='user-type'
+              id='employer-select'
+              type='radio'
+              value='creator'
+              onChange={(e) => this.handleUpdateType(e.target.value)}
               defaultChecked
             />
-            <label htmlFor="employee-select">Member</label>
+            <label htmlFor='employee-select'>Member</label>
             <input
-              name="user-type"
-              type="radio"
-              value="user"
-              onChange={e => this.handleUpdateType(e.target.value)}
+              name='user-type'
+              type='radio'
+              value='user'
+              onChange={(e) => this.handleUpdateType(e.target.value)}
             />
           </div>
-          <button id="sign-in-button" className="button" type="submit">
+          <button id='sign-in-button' className='button' type='submit'>
             Sign In
             {/*Temp link to workplace */}
             {/* <Link to={"/workplace"}>Sign In</Link> */}
           </button>
-          <p className="new-user">Are you new to WorkPlace?</p>
+          <p className='new-user'>Are you new to WorkPlace?</p>
           <Link to={"/join"}>
-            <button className="registration-button" type="button">
+            <button className='registration-button' type='button'>
               Register
             </button>
           </Link>
@@ -188,5 +183,5 @@ export default class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  onLoginSuccess: PropTypes.func
+  onLoginSuccess: PropTypes.func,
 };

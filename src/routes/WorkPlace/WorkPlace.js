@@ -36,6 +36,7 @@ class WorkPlace extends Component {
   }
 
   updateWpMain = e => {
+    // toggle between wp feed and ideas feed
     this.setState({ main: e });
   };
 
@@ -83,11 +84,6 @@ class WorkPlace extends Component {
           </div>
         </div>
         <div className="workplace-main">
-          {/* 
-            remove conditional rendering of components
-            instead conditionally apply class hidden 
-            to prevent components from unmounting
-          */}
           {ready ? (
             <>
               <Feed className={main === "feed" ? "feed" : "hidden"} />
