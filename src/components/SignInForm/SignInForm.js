@@ -57,6 +57,10 @@ export default class SignInForm extends Component {
       // if user make api call to user table in db
       // else make api call to creator table in db
 
+
+      // get rid of user type on login
+      // this is already fetched when wp mounts
+      
       const { nickname, password, type } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,

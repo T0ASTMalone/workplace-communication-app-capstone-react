@@ -74,10 +74,15 @@ export default class EmployeeRegistrationForm extends Component {
   };
 
   validatePasswordConfirm = () => {
+    let password = this.state.password.value;
     let value = this.state.passwordConfirm.value;
 
     if (value.length < 1) {
       return "Please confirm password";
+    }
+    // check if password confirmation matches password
+    if (value !== password) {
+      return "Password does not match";
     }
   };
 
@@ -155,21 +160,21 @@ export default class EmployeeRegistrationForm extends Component {
       create
     } = this.state;
     return (
-      <div className="employee-registration">
+      <div className='employee-registration'>
         <form
-          action=""
-          className="employee-registration-form"
+          action=''
+          className='employee-registration-form'
           onSubmit={e => this.handleSubmit(e)}
         >
-          <h2 className="form-name">Join a WorkPlace</h2>
-          {error ? <p className="err">{error}</p> : <></>}
+          <h2 className='form-name'>Join a WorkPlace</h2>
+          {error ? <p className='err'>{error}</p> : <></>}
           {/* employee name */}
-          <label htmlFor="employee-name">User Name</label>
+          <label htmlFor='employee-name'>User Name</label>
           <input
-            id="employee-name"
-            type="text"
-            className="new-employee"
-            placeholder="Name"
+            id='employee-name'
+            type='text'
+            className='new-employee'
+            placeholder='Name'
             value={userName.value}
             onChange={e => this.updateUserName(e.target.value)}
           />
@@ -177,12 +182,12 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validateUserName()}
             touched={userName.touched}
           />
-          <label htmlFor="employee-nickname">Nickname</label>
+          <label htmlFor='employee-nickname'>Nickname</label>
           <input
-            id="member-nickname"
-            type="text"
-            className="new-employee"
-            placeholder="Nickname"
+            id='member-nickname'
+            type='text'
+            className='new-employee'
+            placeholder='Nickname'
             value={nickname.value}
             onChange={e => this.updateNickname(e.target.value)}
           />
@@ -190,12 +195,12 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validateNickname()}
             touched={nickname.touched}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor='password'>Password</label>
           <input
-            id="password"
-            type="password"
-            className="new-employee"
-            placeholder="Password"
+            id='password'
+            type='password'
+            className='new-employee'
+            placeholder='Password'
             value={password.value}
             onChange={e => this.updatePassword(e.target.value)}
           />
@@ -203,12 +208,12 @@ export default class EmployeeRegistrationForm extends Component {
             hasError={this.validatePassword()}
             touched={password.touched}
           />
-          <label htmlFor="password-confirm">Confirm Password</label>
+          <label htmlFor='password-confirm'>Confirm Password</label>
           <input
-            id="password-confirm"
-            type="password"
-            className="new-employee"
-            placeholder="Confirm Password"
+            id='password-confirm'
+            type='password'
+            className='new-employee'
+            placeholder='Confirm Password'
             value={passwordConfirm.value}
             onChange={e => this.updatePasswordConfirm(e.target.value)}
           />
@@ -217,34 +222,34 @@ export default class EmployeeRegistrationForm extends Component {
             touched={passwordConfirm.touched}
           />
           {/* workplace code */}
-          <label htmlFor="workplace-code">WorkPlace Code</label>
+          <label htmlFor='workplace-code'>WorkPlace Code</label>
           <input
-            id="workplace-code"
-            type="text"
-            className="new-employee"
-            placeholder="WorkPlace Code"
+            id='workplace-code'
+            type='text'
+            className='new-employee'
+            placeholder='WorkPlace Code'
             value={code.value}
             onChange={e => this.updateCode(e.target.value)}
           />
           <InputError hasError={this.validateCode()} touched={code.touched} />
-          <button className="registration-button" type="submit">
+          <button className='registration-button' type='submit'>
             Register
           </button>
-          <p className="existing-user">Already a member of a WorkPlace?</p>
+          <p className='existing-user'>Already a member of a WorkPlace?</p>
           <button
-            className="registration-button"
-            type="button"
+            className='registration-button'
+            type='button'
             onClick={this.goToSignIn}
           >
             Sign In
           </button>
 
-          <p className="create-wp">Are you creating a new WorkPlace?</p>
+          <p className='create-wp'>Are you creating a new WorkPlace?</p>
 
           <button
-            className="registration-button create-wp"
+            className='registration-button create-wp'
             onClick={this.goToCreate}
-            type="button"
+            type='button'
           >
             Create Wp
           </button>
