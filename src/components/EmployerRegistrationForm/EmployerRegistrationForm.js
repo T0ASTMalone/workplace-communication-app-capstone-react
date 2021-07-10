@@ -148,9 +148,6 @@ export default class EmployerRegistrationForm extends Component {
       join,
     } = this.state;
 
-    const search = this.props.location;
-
-    console.log(search);
     return (
       <div className="employer-registration">
         <form

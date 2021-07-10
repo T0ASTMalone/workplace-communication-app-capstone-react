@@ -104,7 +104,6 @@ export default class SignInForm extends Component {
 
   render() {
     const { error, nickname, password, submitting } = this.state;
-    console.log(this.props);
     return (
       <>
         <form
