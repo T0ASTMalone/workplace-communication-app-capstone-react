@@ -12,11 +12,11 @@ export default class SignInForm extends Component {
     this.state = {
       error: null,
       nickname: {
-        value: props.user,
+        value: props.user || "",
         touched: props.pass || false,
       },
       password: {
-        value: props.pass,
+        value: props.pass || "",
         touched: props.pass || false,
       },
       submitting: false,
