@@ -60,7 +60,7 @@ export default class EmployeeRegistrationForm extends Component {
   validateCode = () => {
     let code = this.state.code.value;
 
-    if (code.length < 1) {
+    if (code && code.length < 1) {
       return "A WorkPlace code is required";
     }
   };
