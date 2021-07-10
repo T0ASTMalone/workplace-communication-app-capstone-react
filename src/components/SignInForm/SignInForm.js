@@ -12,14 +12,14 @@ export default class SignInForm extends Component {
     this.state = {
       error: null,
       nickname: {
-        value: "",
-        touched: false
+        value: props.user,
+        touched: props.pass || false,
       },
       password: {
-        value: "",
-        touched: false
+        value: props.pass,
+        touched: props.pass || false,
       },
-      submitting: false
+      submitting: false,
     };
   }
 
@@ -28,12 +28,12 @@ export default class SignInForm extends Component {
   static defaultProps = {
     location: {},
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
 
   static defaultProps = {
-    onLoginSuccess: () => {}
+    onLoginSuccess: () => {},
   };
 
   handleUpdatePassword(ev) {
@@ -44,7 +44,7 @@ export default class SignInForm extends Component {
     this.setState({ nickname: { value: ev, touched: true } });
   }
 
-  handleSubmitJwtAuth = ev => {
+  handleSubmitJwtAuth = (ev) => {
     ev.preventDefault();
     if (this.validatePassword() || this.validateUserName()) {
       this.setAllToTouched();
@@ -53,19 +53,26 @@ export default class SignInForm extends Component {
       const { nickname, password } = this.state;
       AuthApiService.postLogin({
         nickname: nickname.value,
-        password: password.value
+        password: password.value,
       })
-        .then(res => {
+        .then((res) => {
           // clean context
           this.context.clearContext();
           this.setState({
             nickname: { value: "", touched: false },
-            password: { value: "", touched: false }
+            password: { value: "", touched: false },
           });
           this.props.onLoginSuccess(res.wp_name, res.payload.user_id);
         })
-        .catch(res => {
-          this.setState({ error: res.error.message, submitting: false });
+        .catch((res) => {
+          if (res.error) {
+            this.setState({ error: res.error.message, submitting: false });
+          } else {
+            this.setState({
+              error: "somethign bad happend",
+              submitting: false,
+            });
+          }
         });
     }
   };
@@ -75,7 +82,7 @@ export default class SignInForm extends Component {
     const { nickname, password } = this.state;
     this.setState({
       nickname: { value: nickname.value, touched: true },
-      password: { value: password.value, touched: true }
+      password: { value: password.value, touched: true },
     });
   };
 
@@ -97,6 +104,7 @@ export default class SignInForm extends Component {
 
   render() {
     const { error, nickname, password, submitting } = this.state;
+    console.log(this.props);
     return (
       <>
         <form
@@ -113,7 +121,7 @@ export default class SignInForm extends Component {
             className="sign-in-input login"
             placeholder="Username"
             value={nickname.value}
-            onChange={e => this.handleUpdateUserName(e.target.value)}
+            onChange={(e) => this.handleUpdateUserName(e.target.value)}
             //required
           />
           <SignInError
@@ -126,7 +134,7 @@ export default class SignInForm extends Component {
             className="sign-in-input login"
             placeholder="password"
             value={password.value}
-            onChange={e => this.handleUpdatePassword(e.target.value)}
+            onChange={(e) => this.handleUpdatePassword(e.target.value)}
             //required
             id="password"
           />
@@ -156,5 +164,5 @@ export default class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  onLoginSuccess: PropTypes.func
+  onLoginSuccess: PropTypes.func,
 };

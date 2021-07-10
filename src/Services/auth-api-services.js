@@ -2,6 +2,8 @@ import config from "../config";
 import TokenService from "./token-service";
 import IdleService from "./idle-service";
 
+console.log(config);
+
 const AuthApiService = {
   postCreator(info) {
     const wp = {
@@ -64,6 +66,7 @@ const AuthApiService = {
   },
 
   postMember(user) {
+    console.log(config);
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: "POST",
       headers: {
@@ -76,6 +79,7 @@ const AuthApiService = {
   },
 
   postLogin(credentials) {
+    console.log(config);
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: "POST",
       headers: {

@@ -13,22 +13,22 @@ export default class EmployerRegistrationForm extends Component {
     nickname: { value: "", touched: false },
     submitting: false,
     signIn: false,
-    join: false
+    join: false,
   };
 
-  updateUserName = value => {
+  updateUserName = (value) => {
     this.setState({ userName: { value, touched: true } });
   };
-  updateNickname = value => {
+  updateNickname = (value) => {
     this.setState({ nickname: { value, touched: true } });
   };
-  updateCompany = value => {
+  updateCompany = (value) => {
     this.setState({ company: { value, touched: true } });
   };
-  updatePassword = value => {
+  updatePassword = (value) => {
     this.setState({ password: { value, touched: true } });
   };
-  updatePasswordConfirm = value => {
+  updatePasswordConfirm = (value) => {
     this.setState({ passwordConfirm: { value, touched: true } });
   };
 
@@ -74,7 +74,7 @@ export default class EmployerRegistrationForm extends Component {
       userName: { value: userName.value, touched: true },
       company: { value: company.value, touched: true },
       password: { value: password.value, touched: true },
-      passwordConfirm: { value: passwordConfirm.value, touched: true }
+      passwordConfirm: { value: passwordConfirm.value, touched: true },
     });
   };
 
@@ -84,11 +84,11 @@ export default class EmployerRegistrationForm extends Component {
       company: { value: "", touched: false },
       password: { value: "", touched: false },
       passwordConfirm: { value: "", touched: false },
-      nickname: { value: "", touched: false }
+      nickname: { value: "", touched: false },
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (
       this.validateUserName() ||
@@ -107,15 +107,15 @@ export default class EmployerRegistrationForm extends Component {
         wp_name: company.value,
         wp_type: "company",
         user_type: "creator",
-        img: ""
+        img: "",
       };
 
       AuthApiService.postCreator(user)
-        .then(res => {
+        .then((res) => {
           this.clearValues();
           this.props.registered();
         })
-        .catch(err => {
+        .catch((err) => {
           this.setState({ error: err.error.message, submitting: false });
         });
     }
@@ -145,14 +145,18 @@ export default class EmployerRegistrationForm extends Component {
       error,
       submitting,
       signIn,
-      join
+      join,
     } = this.state;
+
+    const search = this.props.location;
+
+    console.log(search);
     return (
       <div className="employer-registration">
         <form
           action=""
           className="employee-registration-form"
-          onSubmit={e => this.handleSubmit(e)}
+          onSubmit={(e) => this.handleSubmit(e)}
         >
           <h2 className="form-name">Create a WorkPlace</h2>
           {error ? <p className="err-msg">{error}</p> : <></>}
@@ -163,7 +167,7 @@ export default class EmployerRegistrationForm extends Component {
             className="new-employer"
             placeholder="Your Name"
             value={userName.value}
-            onChange={e => this.updateUserName(e.target.value)}
+            onChange={(e) => this.updateUserName(e.target.value)}
           />
           <InputError
             hasError={this.validateUserName()}
@@ -176,7 +180,7 @@ export default class EmployerRegistrationForm extends Component {
             className="new-employer"
             placeholder="Username for signing in"
             value={nickname.value}
-            onChange={e => this.updateNickname(e.target.value)}
+            onChange={(e) => this.updateNickname(e.target.value)}
           />
           <InputError
             hasError={this.validateNickname()}
@@ -191,7 +195,7 @@ export default class EmployerRegistrationForm extends Component {
             className="new-employer"
             placeholder="Team, Project or Company Name"
             value={company.value}
-            onChange={e => this.updateCompany(e.target.value)}
+            onChange={(e) => this.updateCompany(e.target.value)}
           />
           <InputError
             hasError={this.validateCompany()}
@@ -205,7 +209,7 @@ export default class EmployerRegistrationForm extends Component {
             className="new-employer"
             placeholder="Password"
             value={password.value}
-            onChange={e => this.updatePassword(e.target.value)}
+            onChange={(e) => this.updatePassword(e.target.value)}
           />
           <InputError
             hasError={this.validatePassword()}
@@ -219,7 +223,7 @@ export default class EmployerRegistrationForm extends Component {
             className="new-employer"
             placeholder="Confirm Password"
             value={passwordConfirm.value}
-            onChange={e => this.updatePasswordConfirm(e.target.value)}
+            onChange={(e) => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError
             hasError={this.validatePasswordConfirm()}
@@ -264,5 +268,5 @@ EmployerRegistrationForm.propTypes = {
   registered: PropTypes.func.isRequired,
   history: PropTypes.object,
   location: PropTypes.object,
-  match: PropTypes.object
+  match: PropTypes.object,
 };

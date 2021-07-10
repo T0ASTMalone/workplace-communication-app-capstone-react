@@ -6,35 +6,38 @@ import AuthApiService from "../../Services/auth-api-services";
 import PropTypes from "prop-types";
 
 export default class EmployeeRegistrationForm extends Component {
-  state = {
-    userName: { value: "", touched: false },
-    code: { value: "", touched: false },
-    password: { value: "", touched: false },
-    passwordConfirm: { value: "", touched: false },
-    nickname: { value: "", touched: false },
-    submitting: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: { value: "", touched: false },
+      code: { value: this.props.wp, touched: this.props.wp || false },
+      password: { value: "", touched: false },
+      passwordConfirm: { value: "", touched: false },
+      nickname: { value: "", touched: false },
+      submitting: false,
 
-    signIn: false,
-    create: false
-  };
+      signIn: false,
+      create: false,
+    };
+  }
 
-  updateUserName = value => {
+  updateUserName = (value) => {
     this.setState({ userName: { value, touched: true } });
   };
 
-  updateNickname = value => {
+  updateNickname = (value) => {
     this.setState({ nickname: { value, touched: true } });
   };
 
-  updateCode = value => {
+  updateCode = (value) => {
     this.setState({ code: { value, touched: true } });
   };
 
-  updatePassword = value => {
+  updatePassword = (value) => {
     this.setState({ password: { value, touched: true } });
   };
 
-  updatePasswordConfirm = value => {
+  updatePasswordConfirm = (value) => {
     this.setState({ passwordConfirm: { value, touched: true } });
   };
 
@@ -89,7 +92,7 @@ export default class EmployeeRegistrationForm extends Component {
       code: { value: code.value, touched: true },
       password: { value: password.value, touched: true },
       passwordConfirm: { value: passwordConfirm.value, touched: true },
-      nickname: { value: nickname.value, touched: true }
+      nickname: { value: nickname.value, touched: true },
     });
   };
 
@@ -99,11 +102,11 @@ export default class EmployeeRegistrationForm extends Component {
       code: { value: "", touched: false },
       password: { value: "", touched: false },
       passwordConfirm: { value: "", touched: false },
-      nickname: { value: "", touched: false }
+      nickname: { value: "", touched: false },
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     if (
@@ -123,14 +126,14 @@ export default class EmployeeRegistrationForm extends Component {
         password: password.value,
         code: code.value,
         type: "pending",
-        img: ""
+        img: "",
       };
       AuthApiService.postMember(user)
-        .then(res => {
+        .then((res) => {
           this.clearValues();
           this.props.registered();
         })
-        .catch(err => {
+        .catch((err) => {
           this.setState({ error: err.error.message, submitting: false });
         });
     }
@@ -154,14 +157,14 @@ export default class EmployeeRegistrationForm extends Component {
       error,
       submitting,
       signIn,
-      create
+      create,
     } = this.state;
     return (
       <div className="employee-registration">
         <form
           action=""
           className="employee-registration-form"
-          onSubmit={e => this.handleSubmit(e)}
+          onSubmit={(e) => this.handleSubmit(e)}
         >
           <h2 className="form-name">Join a WorkPlace</h2>
           {error ? <p className="err-msg">{error}</p> : <></>}
@@ -173,7 +176,7 @@ export default class EmployeeRegistrationForm extends Component {
             className="new-employee"
             placeholder="Your Name"
             value={userName.value}
-            onChange={e => this.updateUserName(e.target.value)}
+            onChange={(e) => this.updateUserName(e.target.value)}
           />
           <InputError
             hasError={this.validateUserName()}
@@ -186,7 +189,7 @@ export default class EmployeeRegistrationForm extends Component {
             className="new-employee"
             placeholder="Username for signing in"
             value={nickname.value}
-            onChange={e => this.updateNickname(e.target.value)}
+            onChange={(e) => this.updateNickname(e.target.value)}
           />
           <InputError
             hasError={this.validateNickname()}
@@ -199,7 +202,7 @@ export default class EmployeeRegistrationForm extends Component {
             className="new-employee"
             placeholder="Password"
             value={password.value}
-            onChange={e => this.updatePassword(e.target.value)}
+            onChange={(e) => this.updatePassword(e.target.value)}
           />
           <InputError
             hasError={this.validatePassword()}
@@ -212,7 +215,7 @@ export default class EmployeeRegistrationForm extends Component {
             className="new-employee"
             placeholder="Confirm Password"
             value={passwordConfirm.value}
-            onChange={e => this.updatePasswordConfirm(e.target.value)}
+            onChange={(e) => this.updatePasswordConfirm(e.target.value)}
           />
           <InputError
             hasError={this.validatePasswordConfirm()}
@@ -229,7 +232,7 @@ export default class EmployeeRegistrationForm extends Component {
             className="new-employee"
             placeholder="WorkPlace Code"
             value={code.value}
-            onChange={e => this.updateCode(e.target.value)}
+            onChange={(e) => this.updateCode(e.target.value)}
           />
           <InputError hasError={this.validateCode()} touched={code.touched} />
           <button
@@ -267,5 +270,5 @@ export default class EmployeeRegistrationForm extends Component {
 }
 
 EmployeeRegistrationForm.propTypes = {
-  registered: PropTypes.func.isRequired
+  registered: PropTypes.func.isRequired,
 };

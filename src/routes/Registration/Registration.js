@@ -12,11 +12,13 @@ export default class Registration extends Component {
 
   render() {
     let location = this.props.location.pathname;
+    const search = new URLSearchParams(this.props.location.search);
     return (
       <div className="registration">
         {location === "/join" ? (
           <EmployeeRegistrationForm
             registered={this.handleRegistrationSuccess}
+            wp={search.get("wp")}
           />
         ) : (
           <EmployerRegistrationForm
@@ -31,5 +33,5 @@ export default class Registration extends Component {
 Registration.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object,
-  match: PropTypes.object
+  match: PropTypes.object,
 };

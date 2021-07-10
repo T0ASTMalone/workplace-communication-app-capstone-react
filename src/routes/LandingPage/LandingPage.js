@@ -184,29 +184,33 @@ export default function LandingPage() {
         </div>
         <div className="landing-info content">
           <h3 className="demo-title">Try Out WorkPlace</h3>
-          <div className="demo-account card">
-            <h4 className="div-title">Demo Creator</h4>
-            <ul className="demo-user">
-              <li className="demo-info">
-                <span className="bold">Username:</span> Cris
-              </li>
-              <li className="demo-info">
-                <span className="bold">Password:</span> Thisis@testpassword!2
-              </li>
-            </ul>
-          </div>
+          <a href={`/sign-in?u=Cris&p=Thisis@testpassword!2`}>
+            <div className="demo-account card">
+              <h4 className="div-title">Demo Creator</h4>
 
-          <div className="demo-account card">
-            <h4>Demo Member</h4>
-            <ul className="demo-user">
-              <li className="demo-info">
-                <span className="bold">Username:</span> map
-              </li>
-              <li className="demo-info">
-                <span className="bold">Password:</span> Thisis@testpassword!2
-              </li>
-            </ul>
-          </div>
+              <ul className="demo-user">
+                <li className="demo-info">
+                  <span className="bold">Username:</span> Cris
+                </li>
+                <li className="demo-info">
+                  <span className="bold">Password:</span> Thisis@testpassword!2
+                </li>
+              </ul>
+            </div>
+          </a>
+          <a href={`/sign-in?u=map&p=Thisis@testpassword!2`}>
+            <div className="demo-account card">
+              <h4>Demo Member</h4>
+              <ul className="demo-user">
+                <li className="demo-info">
+                  <span className="bold">Username:</span> map
+                </li>
+                <li className="demo-info">
+                  <span className="bold">Password:</span> Thisis@testpassword!2
+                </li>
+              </ul>
+            </div>
+          </a>
         </div>
       </section>
       <Footer />
