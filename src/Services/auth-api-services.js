@@ -20,7 +20,7 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/wp`, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(wp),
     }).then((res) => {
@@ -39,7 +39,7 @@ const AuthApiService = {
         return fetch(`${config.API_ENDPOINT}/users`, {
           method: "POST",
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(user),
         }).then((res2) =>
@@ -50,7 +50,7 @@ const AuthApiService = {
                 fetch(`${config.API_ENDPOINT}/wp/err/${wp_id}`, {
                   method: "DELETE",
                   headers: {
-                    "content-type": "application/json",
+                    "Content-Type": "application/json",
                   },
                 }).then((res3) => {
                   if (!res3.ok) res3.json().then((e) => Promise.reject(e));
@@ -67,7 +67,7 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     }).then((res) =>
@@ -79,7 +79,7 @@ const AuthApiService = {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
     })
