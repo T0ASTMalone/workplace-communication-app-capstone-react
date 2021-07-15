@@ -190,7 +190,7 @@ export default function LandingPage() {
 
               <ul className="demo-user">
                 <li className="demo-info">
-                  <span className="bold">Username:</span> Cris
+                  <span className="bold">Username:</span> T0astMalone
                 </li>
                 <li className="demo-info">
                   <span className="bold">Password:</span> Thisis@testpassword!2
@@ -203,7 +203,7 @@ export default function LandingPage() {
               <h4>Demo Member</h4>
               <ul className="demo-user">
                 <li className="demo-info">
-                  <span className="bold">Username:</span> map
+                  <span className="bold">Username:</span> @testuser
                 </li>
                 <li className="demo-info">
                   <span className="bold">Password:</span> Thisis@testpassword!2
