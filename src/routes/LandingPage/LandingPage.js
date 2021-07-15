@@ -119,11 +119,11 @@ export default function LandingPage() {
           <div className="demo-wp-info">
             <p className="input-desc">Demo Wp Creator</p>
             <WpInfo
-              nickname="Cris006"
-              userName="Ramon Ponce"
+              nickname="T0astMalone"
+              userName="Miguel Ponce"
               userType="creator"
-              wpCode="Mmcrhjrm"
-              workPlace="Tesla"
+              wpCode="GsMlMGuMs"
+              workPlace="T0AST HEADQUARTERS"
             />
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function LandingPage() {
         </div>
         <div className="landing-info content">
           <h3 className="demo-title">Try Out WorkPlace</h3>
-          <a href={`/sign-in?u=Cris&p=Thisis@testpassword!2`}>
+          <a href={`/sign-in?u=T0astMalone&p=Thisis@testpassword!2`}>
             <div className="demo-account card">
               <h4 className="div-title">Demo Creator</h4>
 
@@ -198,7 +198,7 @@ export default function LandingPage() {
               </ul>
             </div>
           </a>
-          <a href={`/sign-in?u=map&p=Thisis@testpassword!2`}>
+          <a href={`/sign-in?u=@testuser&p=Thisis@testpassword!2`}>
             <div className="demo-account card">
               <h4>Demo Member</h4>
               <ul className="demo-user">
