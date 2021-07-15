@@ -1,12 +1,17 @@
 import React from "react";
 import "./WpInfo.css";
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
 export default function WpInfo(props) {
+  const location = useLocation();
   let { nickname, userName, userType, wpCode, workPlace } = props;
-
   return (
-    <a href={`/join?wp=${wpCode}`}>
+    <a
+      href={`/join?wp=${wpCode}`}
+      style={location.pathname !== "/" ? { pointerEvents: "none" } : null}
+      onClick={(e) => location.pathname !== "/" && e.preventDefault()}
+    >
       <div className="workplace-info card">
         <div className="user-info">
           <h3 className="user user-name">{userName}</h3>
