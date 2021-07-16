@@ -11,10 +11,12 @@ import IdleService from "../../Services/idle-service";
 import PrivateOnlyRoute from "../utils/PrivateRoute";
 import AuthApiService from "../../Services/auth-api-services";
 import TokenService from "../../Services/token-service";
+import ogImage from "../../img/screenshots/workplace-share.png";
+import SEO from "../utils/SEO";
 
 export default class App extends Component {
   state = {
-    hasError: false
+    hasError: false,
   };
 
   static getDerivedStateFromError(error) {
@@ -47,6 +49,13 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <SEO
+          title="WorkPlace"
+          description="Work Place Communication App"
+          image={ogImage}
+          pathname="https://workplace-communication-app.vercel.app/"
+          author="Miguel Ponce"
+        />
         <header className="header-container">
           <Route path={"/"} component={Header} />
         </header>
