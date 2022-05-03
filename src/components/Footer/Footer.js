@@ -1,7 +1,9 @@
 import React from "react";
+import useBeamer from '../../hooks/useBeamer';
 import "./Footer.css";
 
 export default function Footer() {
+  useBeamer('WHpHUOyZ43829');
   return (
     <footer className="footer">
       <div className="about">
